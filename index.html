@@ -17,3 +17,35 @@
     <div class="axis_name quadcolumn">TRADITION</div>
     <div class="axis_name quadcolumn">FAITH</div>
 </div>
+<br>
+<button class="button" onclick="location.href='instructions.html';" style="font-size:36pt;">Click here to start!</button>
+<br><hr>
+<h2>What is Third Position Values?</h2>
+    <p>Third Position Values is a test that attempts to guess and specify your ideology in the broad term of Third Position. You will be presented by a statement, and then you will answer with your opinion on the statement, from <b>Strongly Agree</b> to <b>Strongly Disagree</b>, with each answer slightly affecting your scores. At the end of the quiz, your answers will be compared to the maximum possible for each value, thus giving you a percentage. Answer honestly!<br /><br />
+    There are <b><u><span id="numOfQuestions"></span></u></b> questions in the test.</p>
+
+<h2><a id="anchor">What are the values?</a></h2>
+    <p>There are four axes; with the first two making a square compass and the remaining being independent - State Interference, Ownership, Tradition and Faith.:</p>
+      
+    <script type="application/javascript" src="questions.js"></script>
+    <script type="text/javascript">
+        document.getElementById("numOfQuestions").innerHTML = questions.length;
+
+        window.onload = function() {
+            var background = new Image();
+            background.onload = function() {
+                var c = document.createElement("canvas");
+                c.width = 1850;
+                c.height = 1300;
+                var ctx = c.getContext("2d");
+                ctx.fillStyle = "#EEEEEE"
+                ctx.fillRect(0, 0, 1850, 1300);
+                ctx.drawImage(background, 0, 0);
+
+                document.getElementById("banner").src = c.toDataURL();
+            }
+            background.src = "./compass.png";
+        }
+    </script>
+</body>
+    </div>
