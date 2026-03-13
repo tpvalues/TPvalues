@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2 id="questionText"></h2>
+
+<div id="answers">
+
+<button onclick="answer(1)">Strongly Agree</button>
+<button onclick="answer(0.5)">Agree</button>
+<button onclick="answer(0)">Neutral</button>
+<button onclick="answer(-0.5)">Disagree</button>
+<button onclick="answer(-1)">Strongly Disagree</button>
+
+</div>
+
+<p id="progress"></p>
+
+<script src="questions.js"></script>
+<script src="quiz.js"></script>
+
+</body>
+</html>

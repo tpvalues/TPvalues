@@ -1,0 +1,52 @@
+let scores = JSON.parse(localStorage.getItem("scores"));
+
+function normalize(score){
+
+return ((score + 50) / 100) * 100;
+
+}
+
+let interference = normalize(scores.interference);
+let ownership = normalize(scores.ownership);
+let tradition = normalize(scores.tradition);
+let faith = normalize(scores.faith);
+
+document.getElementById("traditionScore").innerText =
+Math.round(tradition);
+
+document.getElementById("faithScore").innerText =
+Math.round(faith);
+
+drawCompass();
+
+function drawCompass(){
+
+let canvas = document.getElementById("compass");
+let ctx = canvas.getContext("2d");
+
+let size = 500;
+
+ctx.clearRect(0,0,size,size);
+
+ctx.strokeStyle = "black";
+
+ctx.beginPath();
+ctx.moveTo(250,0);
+ctx.lineTo(250,500);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(0,250);
+ctx.lineTo(500,250);
+ctx.stroke();
+
+let x = ownership/100 * size;
+let y = size - (interference/100 * size);
+
+ctx.fillStyle = "red";
+
+ctx.beginPath();
+ctx.arc(x,y,8,0,2*Math.PI);
+ctx.fill();
+
+}

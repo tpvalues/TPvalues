@@ -1,0 +1,20 @@
+const questions = [];
+
+function addQuestions(axis, start, count) {
+
+for (let i = 0; i < count; i++) {
+
+questions.push({
+text: "Question " + (start + i),
+axis: axis,
+direction: 1
+});
+
+}
+
+}
+
+addQuestions("interference",1,50);
+addQuestions("ownership",51,50);
+addQuestions("tradition",101,50);
+addQuestions("faith",151,50);

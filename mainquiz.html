@@ -1,0 +1,42 @@
+let currentQuestion = 0;
+
+let scores = {
+interference:0,
+ownership:0,
+tradition:0,
+faith:0
+};
+
+function showQuestion(){
+
+let q = questions[currentQuestion];
+
+document.getElementById("questionText").innerText = q.text;
+
+document.getElementById("progress").innerText =
+(currentQuestion+1) + " / " + questions.length;
+
+}
+
+function answer(value){
+
+let q = questions[currentQuestion];
+
+scores[q.axis] += value * q.direction;
+
+currentQuestion++;
+
+if(currentQuestion >= questions.length){
+
+localStorage.setItem("scores", JSON.stringify(scores));
+
+window.location.href = "results.html";
+
+return;
+}
+
+showQuestion();
+
+}
+
+showQuestion();
