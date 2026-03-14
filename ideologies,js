@@ -1,0 +1,22 @@
+const ideologies = [
+  {
+    name: "National Syndicalism",
+    logo: "logos/national-syndicalism.png",
+    description: "Strong economic coordination by the nation, rejection of both liberal capitalism and Marxist class struggle, emphasis on organic hierarchy and tradition.",
+    scores: { interference: 65, ownership: 40, tradition: 80, faith: 60 }
+  },
+  {
+    name: "Distributism",
+    logo: "logos/distributism.png",
+    description: "Widespread distribution of productive property, subsidiarity, anti-monopoly, influenced by Catholic social teaching.",
+    scores: { interference: 30, ownership: -70, tradition: 75, faith: 85 }
+  },
+  {
+    name: "Strasserism",
+    logo: "logos/strasserism.png",
+    description: "Left-wing national socialism, anti-capitalist but anti-Marxist, strong worker focus, revolutionary nationalism.",
+    scores: { interference: 75, ownership: 80, tradition: 40, faith: 30 }
+  },
+  // ... add the other ~67 entries here
+  // You fill in realistic approximate scores in -100..+100 range for each axis
+];
