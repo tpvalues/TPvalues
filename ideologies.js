@@ -1,7 +1,7 @@
 const ideologies = [
   {
     name: "Ailtirí na hAiséirghe",
-    logo: "architectsofresurrection",
+    logo: "/logos/architectsofresurrection.png",
     description: "The Architects of the Resurrection (Irish: Ailtirí na hAiséirghe), was a Fascist political party in Ireland, founded by Gearóid Ó Cuinneagáin in March 1942. Focused on the revival of the Irish language, they sought to create a one-party Corporatist state rejecting Liberal Democracy, jews and freemasons. The party promoted strong Irish Nationalism and even Pan-Celtism, supporting Welsh independence movements and showing open hostility to the partition of Ireland. Despite strong Nationalism and inspiration from the Papal Encyclicals, the party was tolerant of Protestantism, using Christian rather than Catholic terminology.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
