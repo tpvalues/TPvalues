@@ -31,62 +31,94 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      padding: 5rem 1rem 2rem;
+    }
+
+    .brand-fixed {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
+      gap: 12px;
+      background: rgba(15, 18, 26, 0.7);
+      padding: 8px 14px 8px 8px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+    }
+
+    .brand-fixed img {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+      white-space: nowrap;
     }
 
     .quiz-container {
       max-width: 720px;
       width: 100%;
+      margin: 0 auto;
       text-align: center;
     }
 
     .question-header {
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
     }
 
     .question-number {
-      font-size: 1.1rem;
-      color: #94a3b8;
-      margin-bottom: 0.6rem;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.5px;
     }
 
     h2#questionText {
-      font-size: 1.95rem;
-      font-weight: 600;
-      line-height: 1.38;
-      margin-bottom: 3.2rem;
+      font-size: 1.85rem;
+      font-weight: 500;
+      line-height: 1.42;
+      margin-bottom: 3.5rem;
       color: #e0e7ff;
     }
 
     #answers {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
-      margin: 0 auto 2.8rem;
-      max-width: 520px;
+      gap: 0.9rem;
+      margin: 0 auto 2.5rem;
+      max-width: 460px;
     }
 
     .answer-btn {
       font-family: 'Lexend', sans-serif;
-      font-size: 1.38rem;
+      font-size: 1.18rem;
       font-weight: 600;
       color: white;
-      padding: 1.15rem 2.4rem;
+      padding: 0.95rem 1.8rem;
       border: none;
-      border-radius: 14px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.24s ease;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.42);
-      letter-spacing: 0.3px;
+      transition: all 0.22s ease;
+      box-shadow: 0 5px 16px rgba(0,0,0,0.38);
+      letter-spacing: 0.2px;
     }
 
     .answer-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.58);
+      transform: translateY(-2px);
+      box-shadow: 0 9px 24px rgba(0,0,0,0.52);
     }
 
     .answer-btn:active {
@@ -100,14 +132,14 @@
     #btn-strong-disagree{ background: #d32f2f; }
 
     #btn-back {
-      font-size: 1.18rem;
+      font-size: 1.1rem;
       font-weight: 500;
       color: #cbd5e1;
       background: transparent;
       border: 1px solid #555;
-      padding: 0.95rem 2.4rem;
+      padding: 0.85rem 2rem;
       border-radius: 999px;
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       cursor: pointer;
       transition: all 0.22s ease;
     }
@@ -121,16 +153,14 @@
       opacity: 0.4;
       cursor: not-allowed;
     }
-
-    #progress {
-      font-size: 1.05rem;
-      color: #94a3b8;
-      margin-top: 2rem;
-      opacity: 0.85;
-    }
   </style>
 </head>
 <body>
+
+  <div class="brand-fixed">
+    <img src="tplogo.png" alt="TP Values Logo">
+    <span class="brand-text">TP Values</span>
+  </div>
 
   <div class="quiz-container">
     <div class="question-header">
@@ -197,7 +227,7 @@
 
     function clearHighlight() {
       document.querySelectorAll(".answer-btn").forEach(btn => {
-        btn.style.boxShadow = "0 6px 20px rgba(0,0,0,0.42)";
+        btn.style.boxShadow = "0 5px 16px rgba(0,0,0,0.38)";
       });
     }
 
