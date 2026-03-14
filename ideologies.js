@@ -442,5 +442,5 @@ const ideologies = [
     img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
     description: "The Yugoslav Radical Union (Serbian Cyrillic: Југословенска радикална заједница) was a political party who's agenda was based off of Yugoslav Fascism and Corporate Statism founded by Milan Stojadinović and Dragiša Cvetković. The party, whose agenda was based on fascism, was the dominant political movement. Stojadinović told Italian foreign minister Galeazzo Ciano that, although the party had initially been established as a moderate authoritarian movement, his intention was to model the party after the Italian National Fascist Party.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
-  },
+  }
 ];
