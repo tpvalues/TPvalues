@@ -277,67 +277,67 @@ const ideologies = [
   },
   {
     name: "National Synarchist Union",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/natsynarchunion.png",
     description: "The National Synarchist Union (Spanish: Unión Nacional Sinarquista) was a Mexican political organization. The ideology derived from Clerical Fascism and papal teachings like the Rerum novarum of Pope Leo XIII. The group sought to mobilise the working class against \"Atheistic and Communist tendencies\" and the the Judeo-Masonic threat, promoting social co-operation and Corporatism as opposed to the class conflict of Socialism, and hierarchy and respect for authority as opposed to Liberalism. The group promoted Hispanidad as an identity and had an anti-American sentiment.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "National Syndicalist Movement",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/portugesenatsynd.png",
     description: "The National Syndicalist Movement (Portuguese: Movimento Nacional-Sindicalista) was a political movement that briefly flourished in Portugal in the 1930s. Under the leadership of Francisco Rolão Preto, the National Syndicalists emerged in 1932 from a tradition of Monarchism and Integralismo Lusitano to offer a platform that they hoped would lead to full corporatism of association or unionism in opposition to Capitalism and Communism. They called for a totalitarian state and and made Catholic identity an important part of their appeal.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Neosocialism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/neosocialism.png",
     description: "Neosocialism was a political faction that existed in France and Belgium during the 1930s established by Marcel Deat. Marcel Deat believed in class collaboration and national solidarity, advocated Social Corporatism as a model of organisation, replaced the Marxist socialist mode of production with anti-Capitalism and supported a technocratic state, which would plan the economy and in which parliamentarism would be replaced by political technocracy. Neosocialism also believes in a revolution from above, which they termed as a constructive revolution.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Nouvelle Droite",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/nouvelledroitte.png",
     description: "The New Right (French: Nouvelle Droite), is a political movement and the origin of the wider European New Right, which emerged in France during the late 1960s. It openly opposes Multiculturalism, Liberal Democracy, Capitalism and the mixing of different cultures within a single society. It pushes for an \"Archeofuturistic\"; non-Reactionary \"Revolutionary Conservative\", method to the reinvigoration of the Pan-European identity and culture, while encouraging the preservation of regions where Europeans may reside, like in the Identitarian movement.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Party of National Socialists",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/polishnatsoc.png",
     description: "The Party of National Socialists (Polish: Partia Narodowych Socjalistów), was a polish National Socialist party founded in 1933. The PNS developed its own variant of National Socialism that was explicitly anti-German and declaredly Democratic. The PNS proposed the creation of a bloc of Slavic states and, on a global scale, the establishment of a general union of National Socialist republics. It declared attachment to Christianity, though anti-Clerical tendencies sometimes emerged. While critical of Fascism and Nazism as foreign models, it acknowledged the anti-Semitism and Revisionist aims with approval.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Patriot Front",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/patriotfront.png",
     description: "The Patriot Front is an active American neo-Fascist group in the USA. The movement focuses on promoting White Nationalism and the tradition of the \"pre-Columbian forefathers\"; seeing the American identity as an extraordinary one. It emphasizes a need for a hard reset of society and a return to the traditions and virtues of the European Settlers, calling for a balance of personal liberty alongside social responsibility for the betterment of both. It openly opposes Modernism, Leftism, Democracy, Communism and modern-time points of discourse like abortion, gay rights and mass migration.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Patriotic People's Movement",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/finnishfascism.png",
     description: "The Patriotic People's Movement (Finnish: Isänmaallinen kansanliike) is a Finnish Nationalist and anti-Communist political party which was the continuation of it's predecessor (The Lapua Movement). Ideologically the party was anti-Communist and very Nationalistic, endorsing an aggressive foreign policy against the Soviet Union and hostility towards the Swedish language. The creation of a Greater Finland was one of the party's big long-term goals, though It's manifested purpose was to be the Christian-moral conscience of the parliament.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Peronism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/peronism.png",
     description: "The Justicialist Party (Spanish: Partido Justicialista), is a political party in Argentina, known for it's ideology of Peronism; named after the founder Juan Perón and his wife Eva. Inspired by European Fascism, it created a more left-wing approach, focused on Patriotism, Ehtno-Nationalism and the expansion of worker's and women's rights. The ideology opposed Communism, Anarchism and Capitalism, though Peron's views were heavily based on the Socialist rhetoric. It promoted a \"worker-style\" Populist mix of Corporatism and Socialism, heavily shaped by the Catholic social teachings.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Petainism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/petainism.png",
     description: "Petainism, or the Révolution nationale (National Revolution) was the official ideological program promoted by Vichy France which had been established in July 1940 and led by Marshal Philippe Pétain. Pétain's regime was characterized by anti-Parliamentarism, personality cultism, Xenophobia, promotion of traditional values, rejection of the constitutional separation of powers, and State Corporatism, as well as opposition to the theory of class conflict. Though not Fascist, it exhibited characteristics of the traditional right; being strongly clericalist and eulogising national religious figures such as Joan d'Arc",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Phibunism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/phibunism.png",
     description: "Phibunism is a term for the ideological framework of Thai Field Marshal Plaek Phibunsongkhram, who governed Thailand; earlier Siam, from 1939 to 1957. The regime; inspired by Italian Fascism, focused on Thai Nationalism, strong Sinophobia; along with anti-Communism. Allied to the Imperial Japan, it opted for a Militarist Agrarian based state, passing cultural mandates promoting Western-style dress and emphasizing the Thai language. Although the ideology played a part in changing the Absolute Monarchy to a Constitutional one, some factions supported the King as a national symbol.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Poujadism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/poujadism.png",
     description: "Poujadism is a political ideology and movement named after Pierre Poujade. On 29 November 1953, Pierre Poujade created the Union de Défense des Commerçants et Artisans (Defense Union of Shopkeepers and Craftsmen) to organize tax protests. He articulated the economic interests and grievances of shopkeepers and other proprietor-managers of small businesses facing economic and social change. Poujadism was opposed to industrialization, urbanization, and American-style modernization, which were perceived as a threat to the identity of rural France.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
