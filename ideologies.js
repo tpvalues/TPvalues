@@ -443,4 +443,10 @@ const ideologies = [
     description: "The Yugoslav Radical Union (Serbian Cyrillic: Југословенска радикална заједница) was a political party who's agenda was based off of Yugoslav Fascism and Corporate Statism founded by Milan Stojadinović and Dragiša Cvetković. The party, whose agenda was based on fascism, was the dominant political movement. Stojadinović told Italian foreign minister Galeazzo Ciano that, although the party had initially been established as a moderate authoritarian movement, his intention was to model the party after the Italian National Fascist Party.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   }
+  {
+    name: "Szeged Idea",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/nationalradicalism.png",
+    description: "The Szeged Idea (Hungarian: Szegedi gondolat) was an ideology of post WW1 Hungarians - especially the military officer and  Prime Minister of Hungary from 1932 - Gyula Gömbös. Heavily inspired by his visits to Fascist Italy, he promoted irredentist claims, declaring violence to be "an acceptable means of statecraft". Focused on Agrarianism and Corporatism, his Unity Party (Hungarian: Egységes Párt) recanted previous antipathy to Jews and called for an "unitary Hungarian nation with no class distinctions" and to expand the size and power of the Hungarian military; much to Hitler's dismay.",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
 ];
