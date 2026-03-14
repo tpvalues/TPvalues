@@ -21,8 +21,8 @@
       --positive: #4caf50;
       --negative: #ef5350;
       --neutral: #757575;
-      --logo-bg-normal: #f8f9fc;       /* greyish white */
-      --logo-bg-dark: #2d2d2d;         /* between black and white gray */
+      --logo-bg-normal: #f8f9fc;
+      --logo-bg-dark: #2d2d2d;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -83,56 +83,8 @@
       margin-bottom: 3rem;
     }
 
-    .chart-container {
-      margin: 2rem auto 4rem;
-      max-width: 680px;
-      background: #f8f9fc;
-      border-radius: 16px;
-      padding: 1.4rem;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
-      border: 1px solid #e2e8f0;
-    }
-
-    .chart-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      margin: 3rem 0;
-    }
-
-    .axis-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.6rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-    }
-
-    .axis-name {
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.8rem;
-    }
-
-    .axis-score {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin: 0.6rem 0;
-    }
-
-    .positive { color: var(--positive); }
-    .negative { color: var(--negative); }
-    .neutral  { color: var(--neutral); }
-
     .match-section {
-      margin: 4rem auto;
+      margin: 2rem auto 4rem;
       max-width: 680px;
       background: var(--card);
       border: 1px solid var(--border);
@@ -179,14 +131,63 @@
       font-size: 1.35rem;
       font-weight: 500;
       color: #94a3b8;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.8rem;
     }
 
     .party-desc {
       font-size: 1.15rem;
       line-height: 1.65;
       color: #cbd5e1;
+      margin-bottom: 2rem;
     }
+
+    .chart-container {
+      margin: 0 auto 4rem;
+      max-width: 680px;
+      background: #f8f9fc;
+      border-radius: 16px;
+      padding: 1.4rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+      border: 1px solid #e2e8f0;
+    }
+
+    .chart-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0;
+    }
+
+    .axis-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    }
+
+    .axis-name {
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .axis-score {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin: 0.6rem 0;
+    }
+
+    .positive { color: var(--positive); }
+    .negative { color: var(--negative); }
+    .neutral  { color: var(--neutral); }
 
     .restart-btn {
       display: inline-block;
@@ -221,12 +222,6 @@
     <h1>Your Results</h1>
     <p class="subtitle">Third Position Ideology Profile</p>
 
-    <div class="chart-container">
-      <img src="tpchart.png" alt="TP Values Compass Chart">
-    </div>
-
-    <div class="results-grid" id="resultsGrid"></div>
-
     <div class="match-section">
       <div class="match-title">Your Closest Ideological Match</div>
       <div id="logoContainer" class="party-logo-container normal-bg">
@@ -236,6 +231,12 @@
       <div id="matchPercent" class="match-percent"></div>
       <p id="matchDesc" class="party-desc">Your results are being compared...</p>
     </div>
+
+    <div class="chart-container">
+      <img src="tpchart.png" alt="TP Values Compass Chart">
+    </div>
+
+    <div class="results-grid" id="resultsGrid"></div>
 
     <a href="index.html" class="restart-btn">Take the Test Again</a>
   </div>
@@ -303,7 +304,7 @@
       percent = Math.max(0, Math.min(100, percent));
     }
 
-    // Display result
+    // Display
     if (closest) {
       const logoEl = document.getElementById("matchLogo");
       const container = document.getElementById("logoContainer");
