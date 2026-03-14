@@ -343,103 +343,103 @@ const ideologies = [
   },
   {
     name: "Rexist Party",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/rexism.png",
     description: "The Rexist Party was a political party active in Belgium from 1935 until 1945. It was deeply rooted in National Catholicism, calling for a national \"moral renewal\". The party name came from the phrase \"Christ the King\" (Latin: Christus Rex). It sough to achieve a Corporatist and Royalist Belgium, while also advocating for Belgian Unitarism. Modelled on Italian Fascism and Spanish Falangism, it rejected Capitalism, Liberalism and Marxism, idealising rural life and traditional family values instead. The party later called for \"Burgundian Nationalism\" - the Nationalism within the framework of a pan-German state.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Salazarism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/salazarism.png",
     description: "Salazarism is an ideology based on the \"Estado Novo\" regime of António de Oliveira Salazar, who ruled Portugal from 1933 to 1974. His rule; characterized by opposition to Communism, Socialism, Syndicalism, Anarchism and Liberalism, focused on economic stabilization of the country by a Corporatist economy with Distributist imputs. The regime was staunchly Reformist and keen on keeping Portugal from joining World War II. It focused on enforcing the rule by secret police activity and on paying off Portugal's public debt; all to focus on the group considered the most important - the family.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Sansepolcrismo",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/Sansepolcrismo.png",
     description: "Sansepolcrismo was an Italian movement that preceded Fascism, based on the rally organized by Mussolini at Piazza San Sepolcro in Milan on March 23, 1919, where he proclaimed the manifesto of the Fasci Italiani di Combattimento (English: Italian Fasces of Combat). The ideology advocated for a more Revolutionary Nationalism, combined with a National Syndicalist economy and Futurist ideals. Known for using paramilitary violence against its political opponents and calls for a Nationalist Revolution to institute a government of a new ruling class, one made up primarily by the veterans of WW1.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Spenglerianism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/spenglerianism.png",
     description: "Spenglerianism is a term used for the political and philosophical views of Oswald Spengler; a German polymath. In his books, he strongly criticized Materialism, Capitalism, Communism, Political Liberalism, Rationalism and Democracy; which he considered an Anglo-French remnant. His concept of a \"Prussian Socialism\" rebuked the Marxist approach, proposing a more Corporatist-like economic system, where the proletariat doesn't exploit the exploiters. He openly opposed labor strikes, trade unions and progressive taxation; simuntaniously celebrating private property and market competition.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Squadrismo",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/squadrismo.png",
     description: "The Squadrismo were the fascist militias that were organised outside the authority of the Italian state and led by local leaders called ras (a title given to Abyssinian headmen). The group was initially Mussolini loyalists but later they felt betrayed by his efforts to moderate the movement and consolidate power through traditional state institutions after 1921. The radical local leaders, or ras, believed Mussolini was abandoning the \"revolutionary\" roots of Fascism and compromising with the liberal establishment they sought to destroy. The group adhered to anarcho-Fascism and Fascist Syndicalism.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Strasserism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/strasser.png",
     description: "Strasserism was an ideology created by the Strasser Brothers (Otto & Gregor) as a splinter faction to Nazism following Hitler's decision to abandon points within the initial 25 point program of the NSDAP. Focused on the national rejuvination of the German nation, culture and the worker, They believed in the de-urbanisation and re-agrarianization, seeing the agrarian lifestyle more tied to it's culture and history. They advocated for a medieval guild economy based on Social Corporatism. They conceived the nation not as an instrument of power, but as a living organism, bound together by shared culture, labour and destiny.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Superfascism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/superfascism.png",
     description: "Superfascism is a term for the ideological theory of Italian philosopher and writer - Julius Evola. Derived from his admiration for Buddhism, Eastern Mysticism, Western Esotericism and the Occult, it preaches a doctrine of \"Magical Idealism\" that harshly rejects Modernism and consolidates the Hindu concept of Kali Yuga; humanity being stuck in a Dark Age of unleashed Materialistic appetites. The ideology also has a concept of racism of the body, soul, and spirit; hoping for the return of the \"celestial\" Aryan race. It invisions a deeply Spiritual Pagan empire based on hierarchy, order, discipline and obedience.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Syrian Social Nationalism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/syriannatsoc.png",
     description: "Syrian Social Nationalism was the ideology established by the Syrian Social Nationalist Party founded by Antoun Saadeh. It advocates the establishment of a Greater Syrian nation state spanning the Fertile Crescent, including present-day Syria, Lebanon, Jordan, Iraq, Kuwait, Palestine region, Cyprus, Sinai of Egypt, Hatay and Cilicia of Turkey, based on geographical boundaries and the common history people within the boundaries share. The movement itself was largely syncretic, incorporating Pan-Syrianism and a form of National Socialism as its ideological base.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Tatenokai",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/Tatenokai.png",
     description: "The Tatenokai (Japanese: 楯の会, 楯の會), otherwise known as Shield Society was a private militia in Japan dedicated to traditional Japanese values and veneration of the Emperor. It was founded and led by author Yukio Mishima. It was formed on the premise of preventing indirect aggression by proponents of foreign ideology seeking to destroy Japanese traditional culture, and protecting the dignity of the Emperor as a symbol of Japan's national identity. It was known for it's failed coup attempt on the Japanese Government on November 25, 1970.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Third International Theory",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/gaddafism.png",
     description: "The Third International Theory (Arabic: النظرية العالمية الثالثة) was the style of government/ideology proposed by Muammar Gaddafi on 15 April 1973 during his Zuwara speech. It combined elements of Arab Nationalism, Islamism, Nasserism, anti-Imperialism, Islamic Socialism, left-wing Populism, African Nationalism, pan-Africanism, pan-Arabism, and direct Democracy. It was proposed by Gaddafi as an alternative to Capitalism and Marxism–Leninism for Third World countries, based on the stated belief that both of these ideologies had been proven invalid.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Union of Bulgarian National Legions",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/bulgarianfascism.png",
     description: "The Union of Bulgarian National Legions (Bulgarian: Съюз на Българските Национални Легиони, Sayuz na Balgarskite Natsionalni Legioni) was a Bulgarian ultranationalist organization founded in 1932 by Hristo Lukov. The movement was initially anti-Monarchist but later become fond of the Bulgarian monarchy late WW2. he organization had an ideology close to Fascism, including creating a totalitarian one-party regime, a ban on the market economy and total control by the state over the economy and the society, anti-Semitism and hostility towards foreigners, anti-communism, etc.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Union of Dutch National Solidarists",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/verdinaso.png",
     description: "The Union of Dutch National Solidarists (Dutch: Verbond van Dietsche Nationaal-Solidaristen) was a political party active in Belgium and Netherlands between 1931 and 1941. They called their ideology National Solidarism. It was a mix of Integral Nationalism and Corporatism; influenced by Fascist Italy and Portugal's Estado Novo. They called for the reunification of Flanders with the Netherlands, imagining a corporative society ruled by the Belgian King. The party wished to reform society in an organic sense - growing gradually, naturally, with respect for its nature, history and tradition.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Valoisism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/proudhoncercle.png",
     description: "Valoisism is a term for the views of French journalist and politician Georges Valois, who led the first ever National Syndicalist movement called \"Cercle Proudhon\". Being very critical of Democracy, they preached a combination of Integralism and a national adaptation of Syndicalism, focusing on the revolt against \"bourgeois rule\". Though opposed to Conservatism, Valois allied himself with the French Right and was supportive of Orléanism; a Constitutional Monarchy. He was one of the first supporters of Italian Fascism, which he expressed great admiration for, despite his lighter approach to Socialism.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "VAPS Movement",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/vaps.png",
     description: "Union of Participants in the Estonian War of Independence (known as Vaps Movement) was an anti-Communist Estonian political organization, led by former military officers of the 1918–1920 Estonian War of Independence. The league rejected the German racial ideology and openly criticized the Nazi persecution of Jews and did not adopt a goal of territorial expansion, instead advocating for a more Authoritarian and Nationalist government and financial support for veterans. Despite being banned in 1935, the movement maintained good relations with Finnish fascist movements.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Yellow Socialism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/yellowsocialism.png",
     description: "Yellow Socialism; also known as Yellow Unionism, was an economic system proposed in 1902 in France by Pierre Biétry as an alternative to Marxism; critiqued by both Marx and Lenin for being too Reactionary and for its opposition to the war. It envisioned workers organizing unions which would operate in parallel with groups of businesses, much like Corporatism. Above this would be a strong Authoritarian State. The concept included Nationalism and was partly Antisemetic, characterized by opposition to immigraion; saying competition from immigrants reduced wages or took jobs from native-born workers.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Yugoslav People's Movement",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/zbor.png",
     description: "The Yugoslav National Movement (Serbo-Croatian: Југословенски народни покрет, Jugoslavenski narodni pokret), also known as the United Militant Labour Organization was a Yugoslav movement characterized by it's Fascism, corporatism and christian values and teachings. advocate the abandonment of individualism and parliamentary democracy founded by Dimitrije Ljotić. Ljotić called for Yugoslavia to unite around a single ruler and return to its religious and cultural traditions, embracing the teachings of Christianity, traditional values and Corporatism.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Yugoslav Radical Union",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/yugru.png",
     description: "The Yugoslav Radical Union (Serbian Cyrillic: Југословенска радикална заједница) was a political party who's agenda was based off of Yugoslav Fascism and Corporate Statism founded by Milan Stojadinović and Dragiša Cvetković. The party, whose agenda was based on fascism, was the dominant political movement. Stojadinović told Italian foreign minister Galeazzo Ciano that, although the party had initially been established as a moderate authoritarian movement, his intention was to model the party after the Italian National Fascist Party.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   }
