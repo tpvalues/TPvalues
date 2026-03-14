@@ -1,75 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css?family=Lexend:300,400,700|Lezend:400,700" rel="stylesheet">
-<link href='style.css' rel='stylesheet' type='text/css'>
-<title>TP values</title>
-<link rel="icon" type="x-icon" href="icon.png">
-<link rel="shortcut icon" type="x-icon" href="icon.png">
-<meta charset="utf-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TP Values — Third Position Ideology Test</title>
+  
+  <link rel="icon" type="image/x-icon" href="icon.png"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-</head>
-<body>
-<a href="https://tpvalues.github.io/TPvalues/" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-<h1>TP values</h1>
-<hr>
+  <style>
+    :root {
+      --bg: #0f121a;
+      --text: #e0e7ff;
+      --accent: #f472b6;
+      --accent-dark: #ec4899;
+      --card: #1e293b;
+      --border: #334155;
+    }
 
-<br>
-<div style="display: flex; justify-content: center; align-items: center; padding: 4rem 1rem;">
-  <button
-    onclick="location.href='quiz.html';"
-    style="
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Lexend', system-ui, sans-serif;
-      font-size: 1.8rem;          /* smaller than 36pt — feels more natural/minimal */
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.5rem;
+      letter-spacing: -1px;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 2rem 0;
+    }
+
+    .start-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 1rem;
+    }
+
+    .start-btn {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.9rem;
       font-weight: 600;
       color: white;
-      background: linear-gradient(to right, #ff6b6b, #ff8e53);
-      padding: 0.9rem 2.8rem;     /* tighter padding */
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      padding: 1rem 3rem;
       border: none;
       border-radius: 999px;
-      box-shadow: 0 6px 20px rgba(255,107,107,0.35);  /* softer shadow */
+      box-shadow: 0 10px 30px rgba(244, 114, 182, 0.25);
       cursor: pointer;
-      transition: all 0.22s ease;
-      letter-spacing: 0.5px;
-    "
-    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 30px rgba(255,107,107,0.5)'"
-    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(255,107,107,0.35)'"
-  >
-    Click here to start!
-  </button>
-</div>
-<hr>
-    
-<h2>What is Third Position Values?</h2>
-    <p>Third Position Values is a test that attempts to guess and specify your ideology in the broad term of Third Position. You will be presented by a statement, and then you will answer with your opinion on the statement, from <b>Strongly Agree</b> to <b>Strongly Disagree</b>, with each answer slightly affecting your scores. At the end of the quiz, your answers will be compared to the maximum possible for each value, thus giving you a percentage. Answer honestly!<br /><br />
-    There are <b><u><span id="numOfQuestions"></span></u></b> questions in the test.</p>
+      transition: all 0.25s ease;
+      letter-spacing: 0.4px;
+    }
 
-<h2><a id="anchor">What are the values?</a></h2>
-    <p>There are four axes; with the first two making a square compass and the remaining being independent:</p>
-     <div class="center">
-    <div class="axis_name quadcolumn">STATE - How much should the state intervene in the state economy?</div>
-    <div class="axis_name quadcolumn">OWNERSHIP - What should be owned by the collective and what could be private?</div>
-    <div class="axis_name quadcolumn">TRADITION - Should the future resemble the past, or become someting new?</div>
-    <div class="axis_name quadcolumn">FAITH - Should the state remain secular and is theism any good?</div>
-</div>
-    
-    <script type="application/javascript" src="questions.js"></script>
-    <script type="text/javascript">
-        document.getElementById("numOfQuestions").innerHTML = questions.length;
+    .start-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(244, 114, 182, 0.4);
+    }
 
-        window.onload = function() {
-            var background = new Image();
-            background.onload = function() {
-                var c = document.createElement("canvas");
-                c.width = 1850;
-                c.height = 1300;
-                var ctx = c.getContext("2d");
-                ctx.fillStyle = "#EEEEEE"
-                ctx.fillRect(0, 0, 1850, 1300);
-                ctx.drawImage(background, 0, 0);
+    h2 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin: 2.5rem 0 1rem;
+      text-align: center;
+    }
 
-                document.getElementById("banner").src = c.toDataURL();
-            }
-            background.src = "tpchart.png";
-        }
-    </script>
-</body>
+    p {
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+      color: #cbd5e1;
+    }
+
+    .strong {
+      font-weight: 600;
+      color: white;
+    }
+
+    .axes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .axis-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .axis-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .axis-name {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .axis-desc {
+      font-size: 1rem;
+      color: #94a3b8;
+    }
+
+    .github-corner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2.8rem; }
+      .start-btn { font-size: 1.6rem; padding: 0.9rem 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="https://tpvalues.github.io/TPvalues/" class="github-corner" aria-label="View source on GitHub">
+    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+    </svg>
+  </a>
+  <style>
+    .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}
+    @keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}
+    @media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+  </style>
+
+  <div class="container">
+
+    <header>
+      <h1>TP Values</h1>
+      <p style="font-size:1.3rem; color:#94a3b8; margin-top:0.5rem;">Third Position Ideology Test</p>
+    </header>
+
+    <hr>
+
+    <div class="start-section">
+      <button 
+        class="start-btn"
+        onclick="location.href='quiz.html';"
+      >
+        Click here to start!
+      </button>
     </div>
+
+    <hr>
+
+    <h2>What is Third Position Values?</h2>
+    <p>Third Position Values is a test that attempts to guess and specify your ideology in the broad term of <span class="strong">Third Position</span>. You will be presented with a statement, and then you will answer with your opinion on the statement, from <b>Strongly Agree</b> to <b>Strongly Disagree</b>, with each answer slightly affecting your scores. At the end of the quiz, your answers will be compared to the maximum possible for each value, thus giving you a percentage. <strong>Answer honestly!</strong></p>
+    
+    <p>There are <strong><span id="numOfQuestions">...</span></strong> questions in the test.</p>
+
+    <h2>What are the values?</h2>
+    <p>There are four axes; with the first two making a square compass and the remaining being independent:</p>
+
+    <div class="axes-grid">
+      <div class="axis-card">
+        <div class="axis-name">STATE</div>
+        <div class="axis-desc">How much should the state intervene in the economy?</div>
+      </div>
+      <div class="axis-card">
+        <div class="axis-name">OWNERSHIP</div>
+        <div class="axis-desc">What should be owned by the collective and what could be private?</div>
+      </div>
+      <div class="axis-card">
+        <div class="axis-name">TRADITION</div>
+        <div class="axis-desc">Should the future resemble the past, or become something new?</div>
+      </div>
+      <div class="axis-card">
+        <div class="axis-name">FAITH</div>
+        <div class="axis-desc">Should the state remain secular and is theism any good?</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="questions.js"></script>
+  <script>
+    document.getElementById("numOfQuestions").innerHTML = questions.length;
+  </script>
+
+</body>
+</html>
