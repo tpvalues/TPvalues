@@ -148,21 +148,13 @@
       padding: 1.4rem;
       box-shadow: 0 8px 28px rgba(0,0,0,0.4);
       border: 1px solid #e2e8f0;
-      position: relative;
-    }
-
-    .chart-image {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      display: block;
     }
 
     #banner {
       width: 100%;
       height: auto;
       border-radius: 12px;
-      display: none; /* hidden until canvas ready */
+      display: block;
     }
 
     .results-grid {
@@ -450,7 +442,7 @@
         c.height = background.height;
         const ctx = c.getContext("2d");
 
-        // Draw base chart
+        // Draw the base chart
         ctx.drawImage(background, 0, 0);
 
         // User scores
@@ -503,10 +495,9 @@
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        // Replace original image with dotted version
-        const banner = document.getElementById("banner");
-        banner.src = c.toDataURL("image/png");
-        banner.style.display = "block";
+        // Show canvas version
+        document.getElementById("banner").src = c.toDataURL("image/png");
+        document.getElementById("banner").style.display = "block";
       };
 
       background.src = "tpchart.png";
