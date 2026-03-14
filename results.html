@@ -80,11 +80,11 @@
     .subtitle {
       font-size: 1.4rem;
       color: #94a3b8;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .match-section {
-      margin: 2rem auto 4rem;
+      margin: 1rem auto 3rem;
       max-width: 680px;
       background: var(--card);
       border: 1px solid var(--border);
@@ -96,14 +96,14 @@
     .match-title {
       font-size: 2.2rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       color: #fff;
     }
 
     .party-logo-container {
       width: 160px;
       height: 160px;
-      margin: 1.5rem auto;
+      margin: 1.2rem auto;
       border: 3px solid var(--accent);
       border-radius: 16px;
       overflow: hidden;
@@ -124,21 +124,20 @@
       font-size: 2.1rem;
       font-weight: 700;
       color: var(--accent);
-      margin: 1rem 0 0.6rem;
+      margin: 0.8rem 0 0.4rem;
     }
 
     .match-percent {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 500;
       color: #94a3b8;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.5rem;
     }
 
     .party-desc {
       font-size: 1.15rem;
       line-height: 1.65;
       color: #cbd5e1;
-      margin-bottom: 2rem;
     }
 
     .chart-container {
@@ -149,12 +148,51 @@
       padding: 1.4rem;
       box-shadow: 0 8px 28px rgba(0,0,0,0.4);
       border: 1px solid #e2e8f0;
+      position: relative;
+      display: inline-block;
     }
 
     .chart-container img {
       width: 100%;
       height: auto;
       border-radius: 12px;
+      display: block;
+    }
+
+    .compass-dot {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: #ff8533;
+      border: 4px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255,133,51,0.9);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .trad-dot {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #4caf50;
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(76,175,80,0.8);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .faith-dot {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #ef5350;
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(239,83,80,0.8);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
     }
 
     .results-grid {
@@ -234,6 +272,15 @@
 
     <div class="chart-container">
       <img src="tpchart.png" alt="TP Values Compass Chart">
+
+      <!-- Main compass dot (State Interference + Ownership) -->
+      <div id="mainDot" class="compass-dot"></div>
+
+      <!-- Tradition bar dot -->
+      <div id="traditionDot" class="trad-dot"></div>
+
+      <!-- Faith bar dot -->
+      <div id="faithDot" class="faith-dot"></div>
     </div>
 
     <div class="results-grid" id="resultsGrid"></div>
@@ -272,7 +319,7 @@
       scoreEl.className = "axis-score";
       scoreEl.textContent = value >= 0 ? `+${value}` : value;
 
-      if (value > 15)  scoreEl.classList.add("positive");
+      if (value > 15) scoreEl.classList.add("positive");
       if (value < -15) scoreEl.classList.add("negative");
       if (Math.abs(value) <= 15) scoreEl.classList.add("neutral");
 
@@ -280,7 +327,7 @@
       grid.appendChild(card);
     });
 
-    // Find closest match (Euclidean distance)
+    // Find closest match
     let closest = null;
     let minDistance = Infinity;
 
@@ -304,7 +351,7 @@
       percent = Math.max(0, Math.min(100, percent));
     }
 
-    // Display
+    // Display closest match
     if (closest) {
       const logoEl = document.getElementById("matchLogo");
       const container = document.getElementById("logoContainer");
@@ -312,7 +359,6 @@
       logoEl.src = closest.img || "https://via.placeholder.com/160/333/ccc?text=No+Logo";
       logoEl.alt = closest.name + " logo";
 
-      // Special dark background for these four
       const special = ["Iron Guard", "National Synarchist Union", "National Radical Camp", "Sansepolcrismo"];
       if (special.includes(closest.name)) {
         container.classList.remove("normal-bg");
@@ -330,6 +376,36 @@
       document.getElementById("matchPercent").textContent = "";
       document.getElementById("matchDesc").textContent = "There was an issue matching your profile.";
     }
+
+    // ==================== DOT POSITIONING ON CHART ====================
+    // Based on your PNG: main square ~600x600 centered at ~300,250; side bars at ~680 and ~740
+
+    const stateScore = userScores.interference || 0;   // X: left=-100 → right=+100
+    const ownerScore = userScores.ownership || 0;      // Y: bottom=-100 → top=+100
+    const tradScore  = userScores.tradition || 0;
+    const faithScore = userScores.faith || 0;
+
+    // Main square dot
+    const mainDot = document.getElementById("mainDot");
+    const mainX = 300 + (stateScore / 100) * 300;
+    const mainY = 250 - (ownerScore / 100) * 300;      // invert Y (top = positive)
+    mainDot.style.left = mainX + "px";
+    mainDot.style.top  = mainY + "px";
+    mainDot.style.display = "block";
+
+    // Tradition bar dot
+    const traditionDot = document.getElementById("traditionDot");
+    const tradY = 250 - (tradScore / 100) * 220;       // bar height range ~440 px
+    traditionDot.style.left = "680px";
+    traditionDot.style.top  = tradY + "px";
+    traditionDot.style.display = "block";
+
+    // Faith bar dot
+    const faithDot = document.getElementById("faithDot");
+    const faithY = 250 - (faithScore / 100) * 220;
+    faithDot.style.left = "740px";
+    faithDot.style.top  = faithY + "px";
+    faithDot.style.display = "block";
   </script>
 
 </body>
