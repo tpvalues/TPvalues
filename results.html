@@ -162,7 +162,7 @@
       width: 100%;
       height: auto;
       border-radius: 12px;
-      display: none; /* only show canvas if needed */
+      display: none; /* hidden until canvas ready */
     }
 
     .results-grid {
@@ -321,8 +321,7 @@
     </div>
 
     <div class="chart-container">
-      <img class="chart-image" src="tpchart.png" alt="TP Values Compass Chart">
-      <img id="banner" src="" alt="Your Position on TP Values Chart" style="display:none;">
+      <img id="banner" src="" alt="Your Position on TP Values Chart">
     </div>
 
     <div class="results-grid" id="resultsGrid"></div>
@@ -441,7 +440,7 @@
       nextList.appendChild(item);
     }
 
-    // ==================== CANVAS DOT DRAWING (black dots) ====================
+    // ==================== CANVAS DOT DRAWING (black dots, single chart) ====================
     window.onload = function() {
       const background = new Image();
       background.crossOrigin = "anonymous";
@@ -451,7 +450,7 @@
         c.height = background.height;
         const ctx = c.getContext("2d");
 
-        // Draw the base chart
+        // Draw base chart
         ctx.drawImage(background, 0, 0);
 
         // User scores
@@ -504,9 +503,10 @@
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        // Show canvas version
-        document.getElementById("banner").src = c.toDataURL("image/png");
-        document.getElementById("banner").style.display = "block";
+        // Replace original image with dotted version
+        const banner = document.getElementById("banner");
+        banner.src = c.toDataURL("image/png");
+        banner.style.display = "block";
       };
 
       background.src = "tpchart.png";
