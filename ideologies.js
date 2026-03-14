@@ -199,79 +199,79 @@ const ideologies = [
   },
   {
     name: "Kataeb Party",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/kataeb.png",
     description: "The Katab Party, officially the Kataeb Party – Lebanese Social Democratic Party (Arabic: حزب الكتائب اللبنانية – الحزب الديمقراطي الاجتماعي اللبناني Ḥizb al-Katā'ib al-Lubnānīya), is a Lebanese nationalist and Maronite organization, sometimes dubbed as \"Falangism.\" It was founded by Pierre Gemayel. The party opposed the pan-Arabists who tried to take over Lebanon and also the French, whom they saw as trying to infiltrate their culture and impose themselves within Lebanon. Gemayel and the Kataeb Party advocated for an independent and sovereign Lebanon free of all foreign influence.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Kokkashugi",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/Kokkashugi.png",
     description: "Kokkashugi (国家主義), also known as Shōwa Statism, was the ruling ideology of the Empire of Japan, particularly during the first decades of the Shōwa era. Kokkashugi incorporated ultra-Nationalism, traditionalist Conservatism, militarism, Imperialism, and a Dirigisme-based economy, and is thus also referred to as Emperor-system Fascism. Kokkashugi was the base ideology of numerous factions and movements within Japan such as the Yuzonsha, Kodoha, Kokumin Domei and Tohokai. It was also incorporated into Ikki Kita's \"Kokutairon and Pure Socialism.\"",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Kokutairon",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/kokutairon.png",
     description: "Kokutairon (国体論) is a ideology based off of Ikki Kita's ideology and beliefs written in his treatise \"Kokutairon and Pure Socialism\" in 1906. Ikki Kita's ideology is described as \"Showa statism\". It is a sector of Fascism that was often ultra-Nationalist and militaristic in nature. It is categorised as a political syncretism, a political alignment that combines sectors from both left and right-wing politics and thus defies a singular identification. Kita often took a more Socialist and progressive-economic approach than the majority of Shōwa Nationalists.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Chiangism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/kuomitang.png",
     description: "The Three Principles of the People (Chinese: 三民主義), also known as Tridemism is a political philosophy developed by Sun Yat-sen as part of a philosophy to improve China during the Republican Era and later in Taiwan during the Dang Guo era. The three principles are often translated into and summarized as Nationalism, Democracy, and the livelihood of the people (or welfarism). This philosophy has been claimed as the cornerstone of the nation's policy as carried by the Kuomintang.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Lithuanian Nationalist Union",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/litnatunion.png",
     description: "The Lithuanian Nationalist Union (Lithuanian: Lietuvių tautininkų sąjunga), was the ruling political party in Lithuania from 1926 to 1940. Emerging from a military coup d'état, it's members were strongly anti-Communist, pushing for a Corporatist and a Catholic Lithuania. Throughout it's reign, the party became increasingly Radical and sympathetic to Italian Fascism but opposed Nazism, rejecting the German ultimatum regarding Klaipėda Region. It had a Youth wing and a Paramilitary wing called the Iron Wolfs, taking a part in the Fascist International in the 1934 Montreux conference of Fascist Italy.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Lusitanian Integralism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/lusitanianintegralism.png",
     description: "Lusitanian Integralism (Portuguese: Integralismo Lusitano) was a Portuguese integralist political movement founded in Coimbra in 1914 that advocated traditionalism but not conservatism. It was against Parliamentarism but favoured decentralization, National Syndicalism, the Catholic Church and the Monarchy. Its members included an amalgam of rightists, Monarchists, Catholics and Nationalists. The movement drew inspiration from the French Royalist movement Action française and it considered an Authoritarian, Nationalist and Corporatist monarchy to be ideal.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Lys Noir",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/lysnoir.png",
     description: "The Black Lily (French: Lys Noir) is an Anarcho-Monarchist movement which was founded by Rodolphe Crevelle in 2011. The Lys Noir promotes the return to a heavily decentralized agrarian Monarchy and the destruction of all forms of Modernism and modernity claiming that modern technology aims to enslave people. They also call for an a \"Euro-France\", essentially meaning that France should be politically neutral and unite with Flanders and Switzerland.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Metaxism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/metaxism.png",
     description: "Metaxism is an ideology based on the 4th of August Regime of Ioannis Metaxas, who ruled Greece from 1936 to 1941. The rule was Authoritarian, Monarchist, Nationalist, and anti-Communist; characterized by total rejection of Liberalism. The ideology called for the regeneration of the Greek nation, excluding local Albanians, Turks and Slavs from having Greek citizenship. It envisioned a Corporatist, culturally homogenous and Clericalist \"Third Hellenic Civilization\", with the Greek Orthodox Church as an integral aspect. It did not pursue Greek Irredentism, outright being anti-Imperialist and pacifist at times.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Nacionalismo",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/nacionalismo.png",
     description: "Nacionalismo is an Argentinian Nationalist movement that around 1910 grew out of the \"traditionalist\" position, which was based on a nostalgia for for feudal economic relations and a more \"organic\" social order. Nacionalismo was centred upon the support of order, hierarchy, a Corporative society, militant Catholicism, and the landed estates, combined with the hatred of Liberalism, leftism, Freemasonry, Feminism, Jews and foreigners. The movement was also irredentist, expressing its intentions to annex Uruguay, Paraguay, Chile and some southern and eastern parts of Bolivia, along with the Falkland Islands.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Nasjonal Samling",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/nasjonalsamling.png",
     description: "The National Gathering (Norwegian: Nasjonal Samling), was a Norwegian party active from 1933 to 1945. Characterized by a strong belief in Romantic Nationalism, it's Antisemitism and anti-Masonry, it invisioned a Corporatist Lutheran Norway, proud of its nordic ancestry. The party held a national agricultural policy to promote a class of large and small freehold farmers and to provide for the children and the disabled. It preached a foreign policy of seeking worldwide connections with related peoples in culture, race and interests; as long as the interests of the state preceded the interests of other parties.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Nasserism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/nasserism.png",
     description: "Nasserism (Arabic: التَّيَّار النَّاصِرِيّ, romanized: at-Tayyār an-Nāṣiriyy) is an Arab Nationalist and Arab Socialist political ideology based on the thinking of Gamal Abdel Nasser. Spanning the domestic and international spheres, it combines elements of Arab Socialism, Republicanism, Secularism, Nationalism, anti-Imperialism, developing world solidarity, Pan-Arabism, and international non-alignment. Nasserism symbolised \"the direction of liberation, Socialist transformation, the people's control of their own resources, and the Democracy of the peoples working forces.\"",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "National Fascist Party",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/classicalfascism.png",
     description: "The National Fascist Party (Italian: Partito Nazionale Fascista), was the original Fascist party of Italy, led by Benito Mussolini. It was rooted in Italian Nationalism, Italian irredentism and Georges Sorel's revolutionary Syndicalism, deeming it necessary for a nation to assert its superiority and strength and to avoid succumbing to decay. Fascists promoted a Corporatist economic system and collaboration between the classes. Despite its roots, it was opposed to both Marxist Socialism and Reactionary Conservatism. The party had great colonial ambitions, aiming to restore the Roman Empire.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "National Radical Camp",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/ONR.png",
     description: "The National Radical Camp (Polish: Obóz Narodowo-Radykalny), was an ultra-Nationalist political movement which existed in the pre-WW2 Poland. The members were staunchly against Capitalism, Marxism and the jewish influence and businesses in Poland. The ideology; called \"National Radicalism\", was a mix of of National Socialism and National Syndicalism. It promoted Polish Irredentism and a Chauvinistic form of Nationalism. Heavily inspired by Italian Fascism and Falangism, they rejected Democracy, instead calling for a Corporatist state and elimination of National minorities from public life.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
