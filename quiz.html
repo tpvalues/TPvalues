@@ -182,11 +182,11 @@
     </div>
 
     <div id="answers">
-      <button id="btn-strong-agree"   class="answer-btn" onclick="answer(1)">Strongly Agree</button>
-      <button id="btn-agree"          class="answer-btn" onclick="answer(0.5)">Agree</button>
+      <button id="btn-strong-agree"   class="answer-btn" onclick="answer(2)">Strongly Agree</button>
+      <button id="btn-agree"          class="answer-btn" onclick="answer(1)">Agree</button>
       <button id="btn-neutral"        class="answer-btn" onclick="answer(0)">Neutral / Unsure</button>
-      <button id="btn-disagree"       class="answer-btn" onclick="answer(-0.5)">Disagree</button>
-      <button id="btn-strong-disagree"class="answer-btn" onclick="answer(-1)">Strongly Disagree</button>
+      <button id="btn-disagree"       class="answer-btn" onclick="answer(-1)">Disagree</button>
+      <button id="btn-strong-disagree"class="answer-btn" onclick="answer(-2)">Strongly Disagree</button>
     </div>
 
     <button id="btn-back" onclick="goBack()">Back</button>
@@ -227,11 +227,11 @@
     function highlightSelected(value) {
       clearHighlight();
       let btnId;
-      if (value === 1)    btnId = "btn-strong-agree";
-      else if (value === 0.5)  btnId = "btn-agree";
-      else if (value === 0)    btnId = "btn-neutral";
-      else if (value === -0.5) btnId = "btn-disagree";
-      else if (value === -1)   btnId = "btn-strong-disagree";
+      if (value === 2)    btnId = "btn-strong-agree";
+      else if (value === 1)  btnId = "btn-agree";
+      else if (value === 0)  btnId = "btn-neutral";
+      else if (value === -1) btnId = "btn-disagree";
+      else if (value === -2) btnId = "btn-strong-disagree";
 
       if (btnId) {
         document.getElementById(btnId).style.boxShadow = "0 0 0 4px rgba(255, 255, 255, 0.25)";
