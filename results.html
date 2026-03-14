@@ -377,33 +377,35 @@
       document.getElementById("matchDesc").textContent = "There was an issue matching your profile.";
     }
 
-    // ==================== DOT POSITIONING ON CHART ====================
-    // Based on your PNG: main square ~600x600 centered at ~300,250; side bars at ~680 and ~740
+    // ==================== DOT POSITIONING ON YOUR CHART ====================
+    // Calibrated to your PNG: main square center ≈ (380, 280), half-size ≈ 340 px
+    // Tradition bar center X ≈ 700 px, Faith bar center X ≈ 760 px
+    // Vertical bars half-height ≈ 240 px (from top = +100 to bottom = -100)
 
     const stateScore = userScores.interference || 0;   // X: left=-100 → right=+100
     const ownerScore = userScores.ownership || 0;      // Y: bottom=-100 → top=+100
     const tradScore  = userScores.tradition || 0;
     const faithScore = userScores.faith || 0;
 
-    // Main square dot
+    // Main compass dot
     const mainDot = document.getElementById("mainDot");
-    const mainX = 300 + (stateScore / 100) * 300;
-    const mainY = 250 - (ownerScore / 100) * 300;      // invert Y (top = positive)
+    const mainX = 380 + (stateScore / 100) * 340;      // center 380, half 340
+    const mainY = 280 - (ownerScore / 100) * 340;      // Y inverted (top = positive)
     mainDot.style.left = mainX + "px";
     mainDot.style.top  = mainY + "px";
     mainDot.style.display = "block";
 
-    // Tradition bar dot
+    // Tradition bar dot (orange bar)
     const traditionDot = document.getElementById("traditionDot");
-    const tradY = 250 - (tradScore / 100) * 220;       // bar height range ~440 px
-    traditionDot.style.left = "680px";
+    const tradY = 280 - (tradScore / 100) * 240;       // center Y 280, half-height 240
+    traditionDot.style.left = "700px";
     traditionDot.style.top  = tradY + "px";
     traditionDot.style.display = "block";
 
-    // Faith bar dot
+    // Faith bar dot (green bar)
     const faithDot = document.getElementById("faithDot");
-    const faithY = 250 - (faithScore / 100) * 220;
-    faithDot.style.left = "740px";
+    const faithY = 280 - (faithScore / 100) * 240;
+    faithDot.style.left = "760px";
     faithDot.style.top  = faithY + "px";
     faithDot.style.display = "block";
   </script>
