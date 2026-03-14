@@ -1,23 +1,328 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Results</title>
-<link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TP Values — Your Results</title>
 
+  <link rel="icon" type="image/png" href="tplogo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f121a;
+      --text: #e0e7ff;
+      --card: #1e293b;
+      --border: #334155;
+      --accent: #ff8533;
+      --positive: #4caf50;
+      --negative: #ef5350;
+      --neutral: #757575;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Lexend', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 5rem 1rem 3rem;
+    }
+
+    .brand-fixed {
+      position: fixed;
+      top: 20px; left: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(15,18,26,0.7);
+      padding: 8px 14px 8px 8px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+    }
+
+    .brand-fixed img {
+      width: 56px; height: 56px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+      white-space: nowrap;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: white;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      color: #94a3b8;
+      margin-bottom: 3rem;
+    }
+
+    .chart-container {
+      margin: 2rem auto 4rem;
+      max-width: 680px;
+      background: #f8f9fc;
+      border-radius: 16px;
+      padding: 1.4rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+      border: 1px solid #e2e8f0;
+    }
+
+    .chart-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0;
+    }
+
+    .axis-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    }
+
+    .axis-name {
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .axis-score {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin: 0.6rem 0;
+    }
+
+    .positive { color: var(--positive); }
+    .negative { color: var(--negative); }
+    .neutral  { color: var(--neutral); }
+
+    .match-section {
+      margin: 4rem auto;
+      max-width: 680px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .match-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .party-logo {
+      width: 160px;
+      height: 160px;
+      border-radius: 16px;
+      object-fit: contain;
+      margin: 1.5rem auto;
+      border: 3px solid var(--accent);
+      background: #111;
+      display: block;
+    }
+
+    .party-name {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1rem 0 1rem;
+    }
+
+    .party-desc {
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: #cbd5e1;
+    }
+
+    .restart-btn {
+      display: inline-block;
+      margin-top: 3.5rem;
+      padding: 1rem 2.8rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(90deg, var(--accent), #e06c00);
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 24px rgba(255,133,51,0.3);
+    }
+
+    .restart-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(255,133,51,0.5);
+    }
+  </style>
+</head>
 <body>
 
-<h1>Results</h1>
+  <div class="brand-fixed">
+    <img src="tplogo.png" alt="TP Values Logo">
+    <span class="brand-text">TP Values</span>
+  </div>
 
-<canvas id="compass" width="500" height="500"></canvas>
+  <div class="container">
+    <h1>Your Results</h1>
+    <p class="subtitle">Third Position Ideology Profile</p>
 
-<h2>Side Axes</h2>
+    <div class="chart-container">
+      <img src="tpchart.png" alt="TP Values Compass Chart">
+    </div>
 
-<p>Tradition: <span id="traditionScore"></span>%</p>
-<p>Faith: <span id="faithScore"></span>%</p>
+    <div class="results-grid" id="resultsGrid"></div>
 
-<script src="results.js"></script>
+    <div class="match-section">
+      <div class="match-title">Your Closest Ideological Match</div>
+      <img id="matchLogo" src="" alt="Ideology Logo" class="party-logo">
+      <div id="matchName" class="party-name">Loading...</div>
+      <p id="matchDesc" class="party-desc">Analyzing your profile...</p>
+    </div>
+
+    <a href="index.html" class="restart-btn">Take the Test Again</a>
+  </div>
+
+  <!-- Paste your ~70 ideologies array here or load from ideologies.js -->
+  <script>
+    const ideologies = [
+      {
+        name: "Jonsism",
+        logo: "logos/JONS.png",
+        description: "Strong national economic coordination, rejection of liberal capitalism and Marxism, organic hierarchy, cultural traditionalism.",
+        scores: { interference: 70, ownership: 45, tradition: 80, faith: 65 }
+      },
+      {
+        name: "Distributism",
+        logo: "logos/distributism.png",
+        description: "Widespread ownership of productive property, subsidiarity, anti-monopoly, often Catholic-inspired social philosophy.",
+        scores: { interference: 25, ownership: -75, tradition: 80, faith: 85 }
+      },
+      {
+        name: "Strasserism",
+        logo: "logos/strasser.png",
+        description: "Anti-capitalist revolutionary nationalism, strong worker focus, opposition to both finance capital and Marxist internationalism.",
+        scores: { interference: 80, ownership: 85, tradition: 45, faith: 35 }
+      },
+      {
+        name: "Classical Fascism",
+        logo: "logos/classicalfascism.png",
+        description: "Authoritarian state fused with strong religious (usually Catholic) authority, corporatist economy, traditionalist morality.",
+        scores: { interference: 85, ownership: 30, tradition: 90, faith: 95 }
+      },
+      {
+        name: "Falangism",
+        logo: "logos/falangism.png",
+        description: "Spanish national-syndicalist tradition – one nation, one state, one movement, Catholic values, anti-liberal and anti-communist.",
+        scores: { interference: 75, ownership: 40, tradition: 85, faith: 80 }
+      },
+      // Add your remaining ~65 entries here in the same format
+      // Example placeholder for the last one:
+      {
+        name: "Peronism (left tendency)",
+        logo: "logos/peronism-left.png",
+        description: "Populist national developmentalism, strong welfare state, labor-centered corporatism, pragmatic approach to tradition.",
+        scores: { interference: 70, ownership: 60, tradition: 50, faith: 55 }
+      }
+      // ... continue until you have all 70
+    ];
+
+    const saved = localStorage.getItem("scores");
+    if (!saved) {
+      window.location.href = "index.html";
+    }
+    const userScores = JSON.parse(saved);
+
+    const axisDisplay = {
+      interference: "State Interference",
+      ownership:    "Ownership Structure",
+      tradition:    "Tradition vs Futurism",
+      faith:        "Faith / Secularism"
+    };
+
+    const grid = document.getElementById("resultsGrid");
+    Object.entries(userScores).forEach(([key, value]) => {
+      const card = document.createElement("div");
+      card.className = "axis-card";
+
+      const name = document.createElement("div");
+      name.className = "axis-name";
+      name.textContent = axisDisplay[key] || key;
+
+      const scoreEl = document.createElement("div");
+      scoreEl.className = "axis-score";
+      scoreEl.textContent = value >= 0 ? `+${value}` : value;
+
+      if (value > 15)  scoreEl.classList.add("positive");
+      if (value < -15) scoreEl.classList.add("negative");
+      if (Math.abs(value) <= 15) scoreEl.classList.add("neutral");
+
+      card.append(name, scoreEl);
+      grid.appendChild(card);
+    });
+
+    let closest = null;
+    let minDistance = Infinity;
+
+    ideologies.forEach(ideology => {
+      let dist = 0;
+      Object.keys(userScores).forEach(axis => {
+        const diff = userScores[axis] - (ideology.scores[axis] || 0);
+        dist += diff * diff;
+      });
+      if (dist < minDistance) {
+        minDistance = dist;
+        closest = ideology;
+      }
+    });
+
+    if (closest) {
+      document.getElementById("matchLogo").src = closest.logo;
+      document.getElementById("matchLogo").alt = closest.name + " logo";
+      document.getElementById("matchName").textContent = closest.name;
+      document.getElementById("matchDesc").textContent = closest.description;
+    } else {
+      document.getElementById("matchName").textContent = "No match found";
+      document.getElementById("matchDesc").textContent = "There was an issue matching your profile.";
+    }
+
+  </script>
 
 </body>
 </html>
