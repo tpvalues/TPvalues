@@ -148,13 +148,21 @@
       padding: 1.4rem;
       box-shadow: 0 8px 28px rgba(0,0,0,0.4);
       border: 1px solid #e2e8f0;
+      position: relative;
+    }
+
+    .chart-image {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
     }
 
     #banner {
       width: 100%;
       height: auto;
       border-radius: 12px;
-      display: block;
+      display: none; /* hidden until canvas is ready */
     }
 
     .results-grid {
@@ -209,86 +217,6 @@
       transform: translateY(-3px);
       box-shadow: 0 14px 36px rgba(255,133,51,0.5);
     }
-
-    /* === Compact next matches section === */
-    .next-matches {
-      margin: 4rem auto;
-      max-width: 680px;
-      background: rgba(30, 41, 59, 0.6);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-
-    .next-title {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #94a3b8;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .next-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .next-item {
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid #444;
-      border-radius: 12px;
-      padding: 1rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .next-item:hover {
-      background: rgba(50, 65, 90, 0.8);
-      border-color: var(--accent);
-    }
-
-    .next-logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      object-fit: contain;
-      background: var(--logo-bg-normal);
-      flex-shrink: 0;
-    }
-
-    .next-info {
-      flex: 1;
-    }
-
-    .next-name {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #cbd5e1;
-    }
-
-    .next-percent {
-      font-size: 1rem;
-      color: #94a3b8;
-    }
-
-    .next-desc {
-      font-size: 0.95rem;
-      color: #94a3b8;
-      line-height: 1.4;
-      margin-top: 0.6rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    .next-item.expanded .next-desc {
-      max-height: 200px; /* adjust as needed */
-    }
   </style>
 </head>
 <body>
@@ -313,16 +241,11 @@
     </div>
 
     <div class="chart-container">
+      <img class="chart-image" src="tpchart.png" alt="TP Values Compass Chart">
       <img id="banner" src="" alt="Your Position on TP Values Chart">
     </div>
 
     <div class="results-grid" id="resultsGrid"></div>
-
-    <!-- Next 3 matches (compact) -->
-    <div class="next-matches">
-      <div class="next-title">Other Close Matches</div>
-      <div id="nextList" class="next-list"></div>
-    </div>
 
     <a href="index.html" class="restart-btn">Take the Test Again</a>
   </div>
@@ -360,26 +283,28 @@
       grid.appendChild(card);
     });
 
-    // Find all matches sorted by distance
-    const matches = [];
+    // Find closest match
+    let closest = null;
+    let minDistance = Infinity;
     ideologies.forEach(ideology => {
       let dist = 0;
       Object.keys(userScores).forEach(axis => {
         const diff = userScores[axis] - (ideology.scores[axis] || 0);
         dist += diff * diff;
       });
-      const sqrtDist = Math.sqrt(dist);
-      matches.push({ ideology, dist: sqrtDist });
+      if (dist < minDistance) {
+        minDistance = dist;
+        closest = ideology;
+      }
     });
 
-    // Sort by distance (smallest first)
-    matches.sort((a, b) => a.dist - b.dist);
+    let percent = 0;
+    if (closest) {
+      const maxDist = Math.sqrt(4 * 200 * 200);
+      percent = Math.round(100 - (Math.sqrt(minDistance) / maxDist) * 100);
+      percent = Math.max(0, Math.min(100, percent));
+    }
 
-    // Calculate max theoretical distance for % (same as before)
-    const maxDist = Math.sqrt(4 * 200 * 200);
-
-    // Top match
-    const closest = matches[0]?.ideology;
     if (closest) {
       const logoEl = document.getElementById("matchLogo");
       const container = document.getElementById("logoContainer");
@@ -393,50 +318,80 @@
         container.classList.add("normal-bg");
       }
       document.getElementById("matchName").textContent = closest.name;
-      const percent = Math.round(100 - (matches[0].dist / maxDist) * 100);
       document.getElementById("matchPercent").textContent = `${percent}% compatibility`;
       document.getElementById("matchDesc").textContent = closest.description;
     }
 
-    // Next 3 matches (compact, expandable)
-    const nextList = document.getElementById("nextList");
-    for (let i = 1; i <= 3 && i < matches.length; i++) {
-      const { ideology, dist } = matches[i];
-      const percent = Math.round(100 - (dist / maxDist) * 100);
+    // ==================== CANVAS DOT DRAWING (black dots) ====================
+    window.onload = function() {
+      const background = new Image();
+      background.crossOrigin = "anonymous";
+      background.onload = function() {
+        const c = document.createElement("canvas");
+        c.width = background.width;
+        c.height = background.height;
+        const ctx = c.getContext("2d");
 
-      const item = document.createElement("div");
-      item.className = "next-item";
+        // Draw the base chart
+        ctx.drawImage(background, 0, 0);
 
-      const logo = document.createElement("img");
-      logo.className = "next-logo";
-      logo.src = ideology.img || "https://via.placeholder.com/48/444/aaa?text=?";
-      logo.alt = ideology.name;
+        // User scores
+        const state = userScores.interference || 0;
+        const owner = userScores.ownership || 0;
+        const trad  = userScores.tradition || 0;
+        const faith = userScores.faith || 0;
 
-      const info = document.createElement("div");
-      info.className = "next-info";
+        // Black dot style
+        const dotColor = "#000000";
+        const dotStroke = "#ffffff";
+        const dotStrokeWidth = 4;
 
-      const name = document.createElement("div");
-      name.className = "next-name";
-      name.textContent = ideology.name;
+        // Main square dot
+        const cx = 600;
+        const cy = 600;
+        const half = 520;
+        const dotX = cx + (state / 100) * half;
+        const dotY = cy - (owner / 100) * half;
 
-      const pct = document.createElement("div");
-      pct.className = "next-percent";
-      pct.textContent = `${percent}% compatibility`;
+        ctx.beginPath();
+        ctx.arc(dotX, dotY, 25, 0, 2 * Math.PI);
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
+        ctx.stroke();
 
-      const desc = document.createElement("div");
-      desc.className = "next-desc";
-      desc.textContent = ideology.description;
+        // Tradition vertical dot
+        const tradX = 1315;
+        const tradYPos = 600 - (trad / 100) * half;
 
-      info.append(name, pct, desc);
-      item.append(logo, info);
+        ctx.beginPath();
+        ctx.arc(tradX, tradYPos, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
+        ctx.stroke();
 
-      // Expand/collapse on click
-      item.onclick = () => {
-        item.classList.toggle("expanded");
+        // Faith vertical dot
+        const faithX = 1515;
+        const faithYPos = 600 - (faith / 100) * half;
+
+        ctx.beginPath();
+        ctx.arc(faithX, faithYPos, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
+        ctx.stroke();
+
+        // Show the canvas version
+        document.getElementById("banner").src = c.toDataURL("image/png");
+        document.getElementById("banner").style.display = "block";
       };
 
-      nextList.appendChild(item);
-    }
+      background.src = "tpchart.png";
+    };
   </script>
 
 </body>
