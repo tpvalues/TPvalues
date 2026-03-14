@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TP Values — Third Position Ideology Test</title>
   
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="icon.png"/>
   
-  <!-- Google Fonts: Lexend -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +19,7 @@
       --accent-dark: #ec4899;
       --card: #1e293b;
       --border: #334155;
-      --chart-bg: #f8f9fc;       /* lighter grey-white for chart card */
+      --chart-bg: #f8f9fc;
     }
 
     * {
@@ -72,23 +70,24 @@
 
     .chart-section {
       text-align: center;
-      margin: 2rem 0 4rem;
-      padding: 1.5rem;
+      margin: 2rem auto 4rem;
+      padding: 1.2rem;
       background: var(--chart-bg);
       border: 1px solid #e2e8f0;
       border-radius: 16px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      width: fit-content;
+      display: block;
     }
 
     .chart-section img {
-      max-width: 75%;                /* smaller than before */
+      max-width: 75%;
       width: 100%;
-      max-width: 680px;              /* hard cap so it doesn't get too wide on large screens */
+      max-width: 680px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.25);
       display: block;
-      margin: 0 auto;
     }
 
     .start-section {
@@ -183,14 +182,13 @@
       h1 { font-size: 2.8rem; }
       .start-btn { font-size: 1.6rem; padding: 0.9rem 2.5rem; }
       .axes-grid { grid-template-columns: 1fr; }
-      .chart-section { padding: 1rem; }
+      .chart-section { padding: 1rem; margin: 1.5rem auto 3rem; }
       .chart-section img { max-width: 90%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- GitHub corner ribbon -->
   <a href="https://tpvalues.github.io/TPvalues/" class="github-corner" aria-label="View source on GitHub">
     <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
       <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -211,7 +209,6 @@
       <p class="subtitle">Third Position Ideology Test</p>
     </header>
 
-    <!-- Chart section – lighter background, smaller image -->
     <div class="chart-section">
       <img src="tpchart.png" alt="TP Values Chart — Third Position Axes">
     </div>
@@ -256,7 +253,6 @@
 
   </div>
 
-  <!-- Questions script -->
   <script src="questions.js"></script>
   <script>
     document.getElementById("numOfQuestions").innerHTML = questions.length;
