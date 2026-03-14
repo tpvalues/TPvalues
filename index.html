@@ -36,24 +36,37 @@
       min-height: 100vh;
     }
 
-    .logo-fixed {
+    .brand-fixed {
       position: fixed;
       top: 20px;
       left: 20px;
-      width: 80px;
-      height: 80px;
       z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(15, 18, 26, 0.7);
+      padding: 8px 14px 8px 8px;
       border-radius: 12px;
-      overflow: hidden;
       box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
       transition: all 0.3s ease;
     }
 
-    .logo-fixed img {
-      width: 100%;
-      height: 100%;
+    .brand-fixed img {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
       object-fit: cover;
       display: block;
+    }
+
+    .brand-text {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+      white-space: nowrap;
     }
 
     .container {
@@ -204,19 +217,27 @@
       .axes-grid { grid-template-columns: 1fr; }
       .chart-section { padding: 1rem; margin: 1.5rem auto 3rem; }
       .chart-section img { max-width: 90%; }
-      .logo-fixed {
-        width: 64px;
-        height: 64px;
+      .brand-fixed {
         top: 16px;
         left: 16px;
+        padding: 6px 12px 6px 6px;
+        gap: 10px;
+      }
+      .brand-fixed img {
+        width: 48px;
+        height: 48px;
+      }
+      .brand-text {
+        font-size: 1.3rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="logo-fixed">
+  <div class="brand-fixed">
     <img src="tplogo.png" alt="TP Values Logo">
+    <span class="brand-text">TP Values</span>
   </div>
 
   <a href="https://tpvalues.github.io/TPvalues/" class="github-corner" aria-label="View source on GitHub">
