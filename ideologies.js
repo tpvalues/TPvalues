@@ -79,7 +79,7 @@ const ideologies = [
   },
   {
     name: "Ethnocacerism",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/Ethnocacerism.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ethnocacerism.png",
     description: "Ethnocacerism (Spanish: Movimiento etnocacerista, also sometimes referred to as the Movimiento Nacionalista Peruano) is a Peruvian Ethnic Nationalist movement that seeks to establish a dictatorship of the proletariat led by the country's Indigenous communities and their descendants. The ethnocacerist movement has been described as having Fascist traits, with Vice calling it \"an idiosyncratic mix of economic Populism, and Xenophobia. Especially towards Peru's southern neighbor Chile and the mythologizing of the supposed racial superiority of 'copper skinned' Andeans.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
@@ -103,7 +103,7 @@ const ideologies = [
   },
   {
     name: "Fiumanism",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/Fiumanism.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/fiumanism.png",
     description: "Fiumanism is an ideology named after Gabriele D'Annunzio; an Italian poet who seized and ruled the city of Fiume from 1919 to 1920. Romanticist, futurist and very symbolic in origin, it envisioned a nation of \"superior individuals\" like poets, \"heroes\" and \"supermen\"; adopting the concept of an Ubermensch from Nietzschean philosophy. It declared music a \"religious and social institution\" and taught locals yoga and karate. Both the movement's ideas and his aesthetics were an influence upon Italian Fascism. Fiume became a corporatist state, combining Sorelian National Syndicalist and Corporatist doctrines.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
@@ -193,7 +193,7 @@ const ideologies = [
   },
   {
     name: "JONSism",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/JONS.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/jons.png",
     description: "The Councils of National-Syndicalist Offensive (Spanish: Juntas de Ofensiva Nacional-Sindicalista, JONS) was a Nationalist and National Syndicalist movement in 1930s Spain. It was founded by Onesimo Redondo and Ramiro Ledesma Ramos. In Spain the National Syndicalist thought was inspired by Integralism and ideas of Action Française. JONS, whose leadership was the Central Executive Triumvirate, began as a small organization, primarily amongst students in Madrid as well as workers and peasants in and around Valladolid. Its followers were called jonsistas.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
@@ -205,7 +205,7 @@ const ideologies = [
   },
   {
     name: "Kokkashugi",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/Kokkashugi.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/kokkashugi.png",
     description: "Kokkashugi (国家主義), also known as Shōwa Statism, was the ruling ideology of the Empire of Japan, particularly during the first decades of the Shōwa era. Kokkashugi incorporated ultra-Nationalism, traditionalist Conservatism, militarism, Imperialism, and a Dirigisme-based economy, and is thus also referred to as Emperor-system Fascism. Kokkashugi was the base ideology of numerous factions and movements within Japan such as the Yuzonsha, Kodoha, Kokumin Domei and Tohokai. It was also incorporated into Ikki Kita's \"Kokutairon and Pure Socialism.\"",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
@@ -271,7 +271,7 @@ const ideologies = [
   },
   {
     name: "National Radical Camp",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ONR.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/onr.png",
     description: "The National Radical Camp (Polish: Obóz Narodowo-Radykalny), was an ultra-Nationalist political movement which existed in the pre-WW2 Poland. The members were staunchly against Capitalism, Marxism and the jewish influence and businesses in Poland. The ideology; called \"National Radicalism\", was a mix of of National Socialism and National Syndicalism. It promoted Polish Irredentism and a Chauvinistic form of Nationalism. Heavily inspired by Italian Fascism and Falangism, they rejected Democracy, instead calling for a Corporatist state and elimination of National minorities from public life.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
@@ -337,7 +337,7 @@ const ideologies = [
   },
   {
     name: "Poujadism",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/Poujadism.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/poujadism.png",
     description: "Poujadism is a political ideology and movement named after Pierre Poujade. On 29 November 1953, Pierre Poujade created the Union de Défense des Commerçants et Artisans (Defense Union of Shopkeepers and Craftsmen) to organize tax protests. He articulated the economic interests and grievances of shopkeepers and other proprietor-managers of small businesses facing economic and social change. Poujadism was opposed to industrialization, urbanization, and American-style modernization, which were perceived as a threat to the identity of rural France.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
@@ -355,7 +355,7 @@ const ideologies = [
   },
   {
     name: "Sansepolcrismo",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/Sansepolcrismo.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/sansepolcrismo.png",
     description: "Sansepolcrismo was an Italian movement that preceded Fascism, based on the rally organized by Mussolini at Piazza San Sepolcro in Milan on March 23, 1919, where he proclaimed the manifesto of the Fasci Italiani di Combattimento (English: Italian Fasces of Combat). The ideology advocated for a more Revolutionary Nationalism, combined with a National Syndicalist economy and Futurist ideals. Known for using paramilitary violence against its political opponents and calls for a Nationalist Revolution to institute a government of a new ruling class, one made up primarily by the veterans of WW1.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
@@ -391,7 +391,7 @@ const ideologies = [
   },
   {
     name: "Tatenokai",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/Tatenokai.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/tatenokai.png",
     description: "The Tatenokai (Japanese: 楯の会, 楯の會), otherwise known as Shield Society was a private militia in Japan dedicated to traditional Japanese values and veneration of the Emperor. It was founded and led by author Yukio Mishima. It was formed on the premise of preventing indirect aggression by proponents of foreign ideology seeking to destroy Japanese traditional culture, and protecting the dignity of the Emperor as a symbol of Japan's national identity. It was known for it's failed coup attempt on the Japanese Government on November 25, 1970.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
