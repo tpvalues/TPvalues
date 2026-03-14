@@ -103,7 +103,7 @@ const ideologies = [
   },
   {
     name: "Fiumanism",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/fiumanism.png",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/Fiumanism.png",
     description: "Fiumanism is an ideology named after Gabriele D'Annunzio; an Italian poet who seized and ruled the city of Fiume from 1919 to 1920. Romanticist, futurist and very symbolic in origin, it envisioned a nation of \"superior individuals\" like poets, \"heroes\" and \"supermen\"; adopting the concept of an Ubermensch from Nietzschean philosophy. It declared music a \"religious and social institution\" and taught locals yoga and karate. Both the movement's ideas and his aesthetics were an influence upon Italian Fascism. Fiume became a corporatist state, combining Sorelian National Syndicalist and Corporatist doctrines.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
