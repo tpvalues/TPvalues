@@ -157,12 +157,6 @@
       display: block;
     }
 
-    .hint {
-      font-size: 1.05rem;
-      color: #94a3b8;
-      margin: 0.5rem 0 2rem;
-    }
-
     .results-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -240,7 +234,6 @@
 
     <div class="chart-container">
       <img id="banner" src="" alt="Your Position on TP Values Chart">
-      <p class="hint">Hint: right-click the chart and "Save image as" to download with your dot!</p>
     </div>
 
     <div class="results-grid" id="resultsGrid"></div>
@@ -320,7 +313,7 @@
       document.getElementById("matchDesc").textContent = closest.description;
     }
 
-    // ==================== CANVAS DOT DRAWING ====================
+    // ==================== CANVAS DOT DRAWING (all black dots) ====================
     window.onload = function() {
       const background = new Image();
       background.crossOrigin = "anonymous";
@@ -339,56 +332,49 @@
         const trad  = userScores.tradition || 0;
         const faith = userScores.faith || 0;
 
-        // === Main square dot ===
-        // Center: (600, 600)
-        // Range: X 80 to 1120 → width 1040 → half 520
-        // Y 1120 to 80 → height 1040 → half 520 (Y inverted)
+        // Black dot style
+        const dotColor = "#000000";
+        const dotStroke = "#ffffff";
+        const dotStrokeWidth = 4;
+
+        // Main square dot
         const cx = 600;
         const cy = 600;
         const half = 520;
-
         const dotX = cx + (state / 100) * half;
-        const dotY = cy - (owner / 100) * half;   // invert Y
+        const dotY = cy - (owner / 100) * half;
 
         ctx.beginPath();
         ctx.arc(dotX, dotY, 25, 0, 2 * Math.PI);
-        ctx.fillStyle = "#ff8533";
+        ctx.fillStyle = dotColor;
         ctx.fill();
-        ctx.lineWidth = 4;
-        ctx.strokeStyle = "white";
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        // === Tradition vertical dot ===
-        // Center X: 1315, Y: 600
-        // Y range same: 1120 bottom (-100) → 80 top (+100)
+        // Tradition vertical dot
         const tradX = 1315;
-        const tradYPos = 600 - (trad / 100) * half;   // same half-height
+        const tradYPos = 600 - (trad / 100) * half;
 
         ctx.beginPath();
         ctx.arc(tradX, tradYPos, 20, 0, 2 * Math.PI);
-        ctx.fillStyle = "#4caf50";
+        ctx.fillStyle = dotColor;
         ctx.fill();
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "white";
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        // === Faith vertical dot ===
+        // Faith vertical dot
         const faithX = 1515;
         const faithYPos = 600 - (faith / 100) * half;
 
         ctx.beginPath();
         ctx.arc(faithX, faithYPos, 20, 0, 2 * Math.PI);
-        ctx.fillStyle = "#ef5350";
+        ctx.fillStyle = dotColor;
         ctx.fill();
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "white";
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
         ctx.stroke();
-
-        // Optional label
-        ctx.font = "bold 30px Lexend, sans-serif";
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.fillText("Your Position", cx, cy - half - 40);
 
         // Output to img
         document.getElementById("banner").src = c.toDataURL("image/png");
