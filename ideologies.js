@@ -7,19 +7,19 @@ const ideologies = [
   },
   {
     name: "All-Russian Fascist Party",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/russianfascism.png",
     description: "The All-Russian Fascist Party (Russian: Всероссийская фашистская партия); later Russian Fascist Union, was a movement by Russian Émigré based in Manchukuo. It was staunchly anti-Communist and developed close ties to Imperial Japan after it's invasion of Manchuria; starting a Women's and a Youth wing. The programme of the party sough to establish a Corporatist Fascist state in Russia, commited to the Russian Orthodox Church. It called for class co-operation instead of class conflict, with some leaders even calling for the restoration of the Monarchy. It advocated Russian Irredentism and ultra-Nationalism.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Ba'ath Party",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/baath.png",
     description: "The Arab Socialist Ba'ath Party (Arabic: حزب البعث العربي الاشتراكي, romanized: Ḥizb al-Ba‘th al-‘Arabī al-Ishtirākī) was a political party founded in Syria by Michel Aflaq, Salah al-Din al-Bitar, and associates of Zaki al-Arsuzi. The party espoused Ba'athism, which is an ideology mixing Arab Nationalist, pan-Arab, Arab Socialist, and anti-Imperialist interests. Ba'athism calls for the unification of the Arab world into a single state. Its motto, \"Unity, Freedom, Socialism\", refers to Arab unity and freedom from non-Arab control and interference as well as supporting socialism, while rejecting the Marxist class-struggle.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
     name: "Balli Kombëtar",
-    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/",
+    img: "https://raw.githubusercontent.com/tpvalues/TPvalues/main/logos/ballikombetar.png",
     description: "The Balli Kombëtar (English: National Front) was an Albanian Nationalist and anti-Communist resistance movement during the Second World War. Midhat Frashëri, one of its leaders believed that Albanian provinces under the Ottoman Empire were unfairly partitioned during World War I amongst Yugoslavia and Greece, essentially advocating for a greater Albania. It's irredentism focused on making Albanians free from foreign influence, while also calling out anti-patriots, traitors, lackeys, troublemakers, speculators and spies. The Balli Kombëtar had both a strong fascist wing and a strong agrarian wing.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
