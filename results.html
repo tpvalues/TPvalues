@@ -162,7 +162,7 @@
       width: 100%;
       height: auto;
       border-radius: 12px;
-      display: none; /* hidden until canvas ready */
+      display: none;
     }
 
     .results-grid {
@@ -218,7 +218,6 @@
       box-shadow: 0 14px 36px rgba(255,133,51,0.5);
     }
 
-/* Compact next matches */
 .next-matches {
   margin: 4rem auto;
   max-width: 680px;
@@ -251,7 +250,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
-  align-items: flex-start; /* changed from center to top-align for long texts */
+  align-items: flex-start;
   gap: 1rem;
 }
 
@@ -289,13 +288,13 @@
   color: #94a3b8;
   line-height: 1.5;
   margin-top: 0.8rem;
-  max-height: 0;               /* collapsed by default */
+  max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, margin-top 0.4s ease;
 }
 
 .next-item.expanded .next-desc {
-  max-height: 1000px;          /* very large value so it can expand fully */
+  max-height: 1000px;
   margin-top: 0.8rem;
 }
   </style>
@@ -338,12 +337,11 @@
   <script src="ideologies.js"></script>
 
   <script>
-    // Load user scores
+   
     const saved = localStorage.getItem("scores");
     if (!saved) window.location.href = "index.html";
     const userScores = JSON.parse(saved);
 
-    // Show axis results
     const axisDisplay = {
       interference: "Less / More State Interference",
       ownership: "Collective / Private Ownership",
@@ -368,7 +366,6 @@
       grid.appendChild(card);
     });
 
-    // Find all matches sorted by distance
     const matches = [];
     ideologies.forEach(ideology => {
       let dist = 0;
@@ -384,7 +381,6 @@
 
     const maxDist = Math.sqrt(4 * 200 * 200);
 
-    // Top match
     const closest = matches[0]?.ideology;
     if (closest) {
       const logoEl = document.getElementById("matchLogo");
@@ -404,7 +400,6 @@
       document.getElementById("matchDesc").textContent = closest.description;
     }
 
-    // Next 3 matches (compact, expandable)
     const nextList = document.getElementById("nextList");
     for (let i = 1; i <= 3 && i < matches.length; i++) {
       const { ideology, dist } = matches[i];
@@ -441,7 +436,6 @@
       nextList.appendChild(item);
     }
 
-    // ==================== CANVAS DOT DRAWING (black dots, single chart) ====================
     window.onload = function() {
       const background = new Image();
       background.crossOrigin = "anonymous";
@@ -451,21 +445,17 @@
         c.height = background.height;
         const ctx = c.getContext("2d");
 
-        // Draw base chart
         ctx.drawImage(background, 0, 0);
 
-        // User scores
         const state = userScores.interference || 0;
         const owner = userScores.ownership || 0;
         const trad  = userScores.tradition || 0;
         const faith = userScores.faith || 0;
 
-        // Black dot style
         const dotColor = "#000000";
         const dotStroke = "#ffffff";
-        const dotStrokeWidth = 4;
+        const dotStrokeWidth = 2;
 
-        // Main square dot
         const cx = 600;
         const cy = 600;
         const half = 520;
@@ -480,7 +470,6 @@
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        // Tradition vertical dot
         const tradX = 1315;
         const tradYPos = 600 - (trad / 100) * half;
 
@@ -492,7 +481,6 @@
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        // Faith vertical dot
         const faithX = 1515;
         const faithYPos = 600 - (faith / 100) * half;
 
@@ -504,7 +492,6 @@
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        // Replace original image with dotted version
         const banner = document.getElementById("banner");
         banner.src = c.toDataURL("image/png");
         banner.style.display = "block";
