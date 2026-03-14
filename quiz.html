@@ -1,29 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Quiz</title>
-<link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TP Values — Quiz</title>
 
+  <link rel="icon" type="image/png" href="tplogo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f121a;
+      --text: #e0e7ff;
+      --card: #1e293b;
+      --border: #334155;
+      --accent: #ff8533;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lexend', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .quiz-container {
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h2#questionText {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
+      line-height: 1.4;
+      color: #e0e7ff;
+    }
+
+    #answers {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin: 0 auto 2.5rem;
+      max-width: 480px;
+    }
+
+    .answer-btn {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: white;
+      padding: 1.1rem 2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      letter-spacing: 0.4px;
+    }
+
+    .answer-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+    }
+
+    .answer-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Colors matching your screenshot */
+    #btn-strong-agree   { background: #2e7d32; } /* dark green   */
+    #btn-agree          { background: #4caf50; } /* green        */
+    #btn-neutral        { background: #757575; } /* gray         */
+    #btn-disagree       { background: #ef5350; } /* soft red     */
+    #btn-strong-disagree{ background: #d32f2f; } /* dark red     */
+
+    #btn-back {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #cbd5e1;
+      background: transparent;
+      border: 1px solid #444;
+      padding: 0.9rem 2.2rem;
+      border-radius: 999px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #btn-back:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: #666;
+    }
+
+    #progress {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      margin-top: 1.5rem;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      h2#questionText {
+        font-size: 1.65rem;
+      }
+      .answer-btn {
+        font-size: 1.2rem;
+        padding: 1rem 1.6rem;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<h2 id="questionText"></h2>
+  <div class="quiz-container">
+    <h2 id="questionText"></h2>
 
-<div id="answers">
+    <div id="answers">
+      <button id="btn-strong-agree"   class="answer-btn" onclick="answer(1)">Strongly Agree</button>
+      <button id="btn-agree"          class="answer-btn" onclick="answer(0.5)">Agree</button>
+      <button id="btn-neutral"        class="answer-btn" onclick="answer(0)">Neutral / Unsure</button>
+      <button id="btn-disagree"       class="answer-btn" onclick="answer(-0.5)">Disagree</button>
+      <button id="btn-strong-disagree"class="answer-btn" onclick="answer(-1)">Strongly Disagree</button>
+    </div>
 
-<button onclick="answer(1)">Strongly Agree</button>
-<button onclick="answer(0.5)">Agree</button>
-<button onclick="answer(0)">Neutral</button>
-<button onclick="answer(-0.5)">Disagree</button>
-<button onclick="answer(-1)">Strongly Disagree</button>
+    <button id="btn-back" onclick="history.back()">Back</button>
 
-</div>
+    <p id="progress"></p>
+  </div>
 
-<p id="progress"></p>
-
-<script src="questions.js"></script>
-<script src="quiz.js"></script>
+  <script src="questions.js"></script>
+  <script src="quiz.js"></script>
 
 </body>
 </html>
