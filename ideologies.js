@@ -69,7 +69,7 @@ const ideologies = [
     name: "Distributism",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/distributism.png",
     description: "Distributism is an economic theory of English Christian and political writers G. K. Chesterton and Hilaire Belloc, that was later utilized in various ideologies. Based upon Catholic social teaching principles, it viewed both Laissez-faire Capitalism and State Socialism as equally flawed and exploitative, instead calling the right to property fundamental, promoting traditional and agrarian values and calling the family the centrepiece of society. It called for the Redistribution of wealth and productive assets, taxation of excessive property ownership, and small-business subsidization.",
-    scores: { interference: +28, ownership: +45, tradition: +40, faith: +45 }
+    scores: { interference: 28, ownership: 45, tradition: 40, faith: 45 }
   },
   {
     name: "Ecofascism",
@@ -93,7 +93,7 @@ const ideologies = [
     name: "Falange Española",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/falangaesp.png",
     description: "The Spanish Phalanx (Falange Española), was a National Syndicalist political organization active in pre-WW2 Spain. It's ideology; called Falangism, preached National Catholicism, Traditionalism and Reactionary sentiments. It called for a Pan-Hispanic union of Spain with Hispanic America. They openly opposed Bolshevism, Marxism, Capitalism and Freemasonry; deeming them harmful or a social injustice. The Falange were militarist, wanting Spain to be independent and of great status in the world. They turned very Insurrectionist, playing an important role in the events leading up to the Spanish Civil War.",
-    scores: { interference: +22, ownership: -12, tradition: +38, faith: +40 }
+    scores: { interference: 22, ownership: -12, tradition: 38, faith: 40 }
   },
   {
     name: "Fatherland Front",
@@ -279,7 +279,7 @@ const ideologies = [
     name: "National Radical Camp",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/onr.png",
     description: "The National Radical Camp (Polish: Obóz Narodowo-Radykalny), was an ultra-Nationalist political movement which existed in the pre-WW2 Poland. The members were staunchly against Capitalism, Marxism and the jewish influence and businesses in Poland. The ideology; called \"National Radicalism\", was a mix of of National Socialism and National Syndicalism. It promoted Polish Irredentism and a Chauvinistic form of Nationalism. Heavily inspired by Italian Fascism and Falangism, they rejected Democracy, instead calling for a Corporatist state and elimination of National minorities from public life.",
-    scores: { interference: -38, ownership: -18, tradition: +42, faith: +35 }
+    scores: { interference: -38, ownership: -18, tradition: 42, faith: 35 }
   },
   {
     name: "National Synarchist Union",
