@@ -270,6 +270,12 @@ const ideologies = [
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
+    name: "National Party",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/nationalparty.png",
+    description: "The National Party (Polish: Stronnictwo Narodowe), was a Polish nationalist political party active in the Interwar period. The main goal of the party was the construction of a Catholic Polish State, through combining the principles of Catholicism and Nationalism. The party advocated a hierarchical organisation of society and the transformation of the political system by increasing the role of the Polish National elite within the country. The party program had a lot Distributist influence and stood againts Germans, Communists and Masonry.",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
     name: "National Radical Camp",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/onr.png",
     description: "The National Radical Camp (Polish: Obóz Narodowo-Radykalny), was an ultra-Nationalist political movement which existed in the pre-WW2 Poland. The members were staunchly against Capitalism, Marxism and the jewish influence and businesses in Poland. The ideology; called \"National Radicalism\", was a mix of of National Socialism and National Syndicalism. It promoted Polish Irredentism and a Chauvinistic form of Nationalism. Heavily inspired by Italian Fascism and Falangism, they rejected Democracy, instead calling for a Corporatist state and elimination of National minorities from public life.",
