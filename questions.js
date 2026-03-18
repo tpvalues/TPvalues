@@ -1,32 +1,33 @@
+// questions.js
 const questions = [
-  // ==================== INTERFERENCE (State) - 25 questions ====================
-  { text: "Workplaces should be run directly by the people who work in them.", axis: "interference", direction: 1 },
-  { text: "Top national leadership should have final control over economic goals.", axis: "interference", direction: -1 },
-  { text: "The economy should be managed through cooperation between the state, workers, and employers.", axis: "interference", direction: -1 },
-  { text: "Economic self-sufficiency is more important than global trade.", axis: "interference", direction: -1 },
-  { text: "The state should settle disputes between different economic groups.", axis: "interference", direction: -1 },
-  { text: "Trades and regions should be free to develop in their own way.", axis: "interference", direction: 1 },
-  { text: "Local economies work better without tight central control.", axis: "interference", direction: 1 },
-  { text: "National plans should guide the direction of the economy.", axis: "interference", direction: -1 },
-  { text: "Strong state oversight is needed to keep the economy stable.", axis: "interference", direction: -1 },
-  { text: "People in each trade should choose their own leaders.", axis: "interference", direction: 1 },
-  { text: "The government is the only force that can properly regulate large institutions.", axis: "interference", direction: -1 },
-  { text: "Economic decisions should be made by those directly involved.", axis: "interference", direction: 1 },
-  { text: "Local groups should be free to adapt their economies to their own needs.", axis: "interference", direction: 1 },
-  { text: "The state should exist mainly to serve society, not control it.", axis: "interference", direction: 1 },
-  { text: "Small businesses and family ownership should form the base of the economy.", axis: "interference", direction: 1 },
-  { text: "Large state systems are often inefficient and should be limited.", axis: "interference", direction: 1 },
-  { text: "Local groups should handle most everyday economic decisions.", axis: "interference", direction: 1 },
-  { text: "Some regions should control their own economic systems.", axis: "interference", direction: 1 },
-  { text: "A decentralized economy works better than a centralized one.", axis: "interference", direction: 1 },
-  { text: "Social support should come from communities rather than the state.", axis: "interference", direction: 1 },
-  { text: "Wages should be set or guided by national rules.", axis: "interference", direction: -1 },
-  { text: "Economic life should be built around strong local communities.", axis: "interference", direction: 1 },
-  { text: "Trades should be free to organize themselves without state control.", axis: "interference", direction: 1 },
-  { text: "Worker groups need state supervision to function properly.", axis: "interference", direction: -1 },
-  { text: "National goals should come before local interests.", axis: "interference", direction: -1 },
+  // STATE / Interference (25 questions) - corrected
+  { text: "Total workplace democracy is desirable.", axis: "interference", direction: 1 },
+  { text: "The highest leadership must have final control over all production goals.", axis: "interference", direction: -1 },
+  { text: "Tripartite cooperation between the state, employees and employers is essential for the economy.", axis: "interference", direction: -1 },
+  { text: "The DPRK has a foreign policy that we should emulate.", axis: "interference", direction: -1 },
+  { text: "All within the state, nothing outside the state, nothing against the state.", axis: "interference", direction: -1 },
+  { text: "Different trades and regions should develop their own economic traditions.", axis: "interference", direction: 1 },
+  { text: "The nation can only prosper if the capital city controls the economic direction.", axis: "interference", direction: -1 },
+  { text: "All major economic resources should be directed from a single central command.", axis: "interference", direction: -1 },
+  { text: "State surveillance is an essential tool.", axis: "interference", direction: -1 },
+  { text: "People in each trade or area should choose their own leaders for economic matters.", axis: "interference", direction: 1 },
+  { text: "The government is the only entity that can fairly and effectively regulate institutions and organizations.", axis: "interference", direction: -1 },
+  { text: "The best economy relies on cooperation.", axis: "interference", direction: 1 },
+  { text: "Local and trade-based groups should have the freedom to adapt to their own conditions.", axis: "interference", direction: 1 },
+  { text: "The state ought to be a means to an end.", axis: "interference", direction: 1 },
+  { text: "Family farms and small workshops should be the backbone of the economy.", axis: "interference", direction: 1 },
+  { text: "Large state bureaucracies and administrations are wasteful/evil and should be minimized or abolished whenever possible.", axis: "interference", direction: 1 },
+  { text: "Local groups of workers and owners should handle most day-to-day economic matters themselves.", axis: "interference", direction: 1 },
+  { text: "Some regions deserve autonomy.", axis: "interference", direction: 1 },
+  { text: "A federal union is more desirable than a unitary state.", axis: "interference", direction: 1 },
+  { text: "The welfare state should be abolished and replaced with voluntary charitable organizations.", axis: "interference", direction: 1 },
+  { text: "Wage amounts should not be delegated solely to employers and should be handled or regulated by the state or community.", axis: "interference", direction: -1 },
+  { text: "My ideal society would consist of tightly knit communities.", axis: "interference", direction: 1 },
+  { text: "Different regions and trades should be free to organize production in their own way.", axis: "interference", direction: 1 },
+  { text: "Worker guilds or syndicates cannot work without a state.", axis: "interference", direction: -1 },
+  { text: "The state should not care what two consenting adults do in their bedroom.", axis: "interference", direction: 1 },
 
-  // ==================== OWNERSHIP - 25 questions ====================
+  // OWNERSHIP (25 questions) - corrected
   { text: "All material wealth should be held collectively.", axis: "ownership", direction: -1 },
   { text: "The right to property is fundamental.", axis: "ownership", direction: 1 },
   { text: "There is nothing wrong with permitting small businesses.", axis: "ownership", direction: 1 },
@@ -53,7 +54,7 @@ const questions = [
   { text: "Economic independence is difficult when all property belongs to the collective.", axis: "ownership", direction: 1 },
   { text: "Distributism is an achievable economic system.", axis: "ownership", direction: 1 },
 
-  // ==================== TRADITION - 25 questions ====================
+  // TRADITION (25 questions) - corrected
   { text: "Empire-building and conquering can be virtuous.", axis: "tradition", direction: -1 },
   { text: "War imposes the stamp of nobility upon the people who have the courage to make it.", axis: "tradition", direction: -1 },
   { text: "Cultural adaptation to foreign ideas and values is necessary for societies to thrive in the modern world.", axis: "tradition", direction: -1 },
@@ -80,7 +81,7 @@ const questions = [
   { text: "There is now a worrying fusion of information and entertainment.", axis: "tradition", direction: 1 },
   { text: "The most important thing for children to learn is to accept discipline.", axis: "tradition", direction: 1 },
 
-  // ==================== FAITH - 25 questions ====================
+  // FAITH (25 questions) - corrected
   { text: "There is such a thing as inalienable rights.", axis: "faith", direction: 1 },
   { text: "All religions should be treated equally before the state.", axis: "faith", direction: -1 },
   { text: "Religious values should not influence governance.", axis: "faith", direction: -1 },
@@ -119,4 +120,5 @@ function shuffle(array) {
   return array;
 }
 
+// Shuffle once on load
 shuffle(questions);
