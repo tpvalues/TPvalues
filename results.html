@@ -501,7 +501,7 @@
         const dotY = cy - (owner / 50) * half;
 
         ctx.beginPath();
-        ctx.arc(dotX, dotY, 5, 0, 2 * Math.PI);
+        ctx.arc(dotX, dotY, 10, 0, 2 * Math.PI);
         ctx.fillStyle = dotColor;
         ctx.fill();
         ctx.lineWidth = dotStrokeWidth;
@@ -509,10 +509,10 @@
         ctx.stroke();
 
         const tradX = 1315;
-        const tradYPos = 520 - (trad / 50) * half;
+        const tradYPos = 500 - (trad / 50) * half;
 
         ctx.beginPath();
-        ctx.arc(tradX, tradYPos, 5, 0, 2 * Math.PI);
+        ctx.arc(tradX, tradYPos, 10, 0, 2 * Math.PI);
         ctx.fillStyle = dotColor;
         ctx.fill();
         ctx.lineWidth = dotStrokeWidth;
@@ -520,10 +520,10 @@
         ctx.stroke();
 
         const faithX = 1515;
-        const faithYPos = 520 - (faith / 50) * half;
+        const faithYPos = 500 - (faith / 50) * half;
 
         ctx.beginPath();
-        ctx.arc(faithX, faithYPos, 20, 0, 2 * Math.PI);
+        ctx.arc(faithX, faithYPos, 10, 0, 2 * Math.PI);
         ctx.fillStyle = dotColor;
         ctx.fill();
         ctx.lineWidth = dotStrokeWidth;
