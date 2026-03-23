@@ -414,7 +414,9 @@
 
     matches.sort((a, b) => a.dist - b.dist);
 
-    const maxDist = Math.sqrt(4 * 200 * 200);
+    // FIXED maxDist for -50 to +50 range (100 max diff per axis × 4 axes)
+    const maxDist = Math.sqrt(4 * 100 * 100); // = 200
+    console.log("DEBUG: maxDist is now", maxDist); // remove this line later
 
     // Top match
     const closest = matches[0]?.ideology;
@@ -441,35 +443,26 @@
     for (let i = 1; i <= 3 && i < matches.length; i++) {
       const { ideology, dist } = matches[i];
       const percent = Math.round(100 - (dist / maxDist) * 100);
-
       const item = document.createElement("div");
       item.className = "next-item";
-
       const logo = document.createElement("img");
       logo.className = "next-logo";
       logo.src = ideology.img || "https://via.placeholder.com/48/444/aaa?text=?";
       logo.alt = ideology.name;
-
       const info = document.createElement("div");
       info.className = "next-info";
-
       const name = document.createElement("div");
       name.className = "next-name";
       name.textContent = ideology.name;
-
       const pct = document.createElement("div");
       pct.className = "next-percent";
       pct.textContent = `${percent}% compatibility`;
-
       const desc = document.createElement("div");
       desc.className = "next-desc";
       desc.textContent = ideology.description;
-
       info.append(name, pct, desc);
       item.append(logo, info);
-
       item.onclick = () => item.classList.toggle("expanded");
-
       nextList.appendChild(item);
     }
 
@@ -492,38 +485,38 @@
 
         const dotColor = "#000000";
         const dotStroke = "#ffffff";
-        const dotStrokeWidth = 2;
+        const dotStrokeWidth = 4;
 
         const cx = 600;
         const cy = 600;
-        const half = 510;
+        const half = 520;
         const dotX = cx + (state / 50) * half;
         const dotY = cy - (owner / 50) * half;
 
         ctx.beginPath();
-        ctx.arc(dotX, dotY, 10, 0, 2 * Math.PI);
+        ctx.arc(dotX, dotY, 25, 0, 2 * Math.PI);
         ctx.fillStyle = dotColor;
         ctx.fill();
         ctx.lineWidth = dotStrokeWidth;
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        const tradX = 1317;
+        const tradX = 1315;
         const tradYPos = 600 - (trad / 50) * half;
 
         ctx.beginPath();
-        ctx.arc(tradX, tradYPos, 10, 0, 2 * Math.PI);
+        ctx.arc(tradX, tradYPos, 20, 0, 2 * Math.PI);
         ctx.fillStyle = dotColor;
         ctx.fill();
         ctx.lineWidth = dotStrokeWidth;
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        const faithX = 1517;
+        const faithX = 1515;
         const faithYPos = 600 - (faith / 50) * half;
 
         ctx.beginPath();
-        ctx.arc(faithX, faithYPos, 10, 0, 2 * Math.PI);
+        ctx.arc(faithX, faithYPos, 20, 0, 2 * Math.PI);
         ctx.fillStyle = dotColor;
         ctx.fill();
         ctx.lineWidth = dotStrokeWidth;
@@ -536,8 +529,9 @@
       background.src = "tpchart.png";
     };
 
+    // ==================== MUSIC INTRO FEATURE ====================
     if (closest) {
-    const audioMap = {
+      const audioMap = {
         "Ailtirí na hAiséirghe": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ailtiri-na-haiseirghe.mp3",
         "All-Russian Fascist Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/all-russian-fascist-party.mp3",
         "Ba'ath Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/baath-party.mp3",
@@ -621,11 +615,14 @@
         audio.src = audioSrc;
         audio.volume = 0.4;
 
+        // Attempt autoplay
         audio.play().catch(() => {});
 
+        // Show mute button
         const muteBtn = document.getElementById("musicMute");
         muteBtn.style.display = "flex";
 
+        // Toggle mute
         muteBtn.onclick = () => {
           if (audio.muted) {
             audio.muted = false;
@@ -638,6 +635,7 @@
           }
         };
 
+        // Stop on page unload
         window.onbeforeunload = () => audio.pause();
       }
     }
