@@ -387,7 +387,7 @@ const ideologies = [
     name: "Superfascism",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/superfascism.png",
     description: "Superfascism is a term for the ideological theory of Italian philosopher and writer - Julius Evola. Derived from his admiration for Buddhism, Eastern Mysticism, Western Esotericism and the Occult, it preaches a doctrine of \"Magical Idealism\" that harshly rejects Modernism and consolidates the Hindu concept of Kali Yuga; humanity being stuck in a Dark Age of unleashed Materialistic appetites. The ideology also has a concept of racism of the body, soul, and spirit; hoping for the return of the \"celestial\" Aryan race. It invisions a deeply Spiritual Pagan empire based on hierarchy, order, discipline and obedience.",
-    scores: { interference: -15, ownership: 23, tradition: 50, faith: 35 }
+    scores: { interference: -15, ownership: 23, tradition: 50, faith: 23 }
   },
   {
     name: "Syrian Social Nationalism",
