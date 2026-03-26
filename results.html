@@ -356,7 +356,7 @@
       matches.push({ ideology, dist: sqrtDist });
     });
     matches.sort((a, b) => a.dist - b.dist);
-    const maxDist = Math.sqrt(4 * 100 * 100); // FIXED: correct for -50 to +50 range
+    const maxDist = 135;
     // Top match
     const closest = matches[0]?.ideology;
     if (closest) {
