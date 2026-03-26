@@ -181,7 +181,6 @@
       transform: translateY(-3px);
       box-shadow: 0 14px 36px rgba(255,133,51,0.5);
     }
-    /* Music mute button */
     #musicMute {
       position: fixed;
       top: 20px;
@@ -210,7 +209,6 @@
       background: rgba(60, 20, 20, 0.8);
       color: #ff5555;
     }
-    /* Compact next matches */
     .next-matches {
       margin: 4rem auto;
       max-width: 680px;
@@ -358,7 +356,7 @@
       const selected = matches[index];
       const closest = selected.ideology;
 
-      // Update main match display
+      // Update main match
       const logoEl = document.getElementById("matchLogo");
       const container = document.getElementById("logoContainer");
       logoEl.src = closest.img || "https://via.placeholder.com/160/333/ccc?text=No+Logo";
@@ -464,7 +462,7 @@
         audio.play().catch(() => {});
       }
 
-      // Scroll smoothly to top
+      // Scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -497,13 +495,13 @@
       info.append(name, pct);
       item.append(logo, info);
 
-      // Click to switch main match
+      // Click handler - update main and scroll
       item.onclick = () => updateMainMatch(i);
 
       nextList.appendChild(item);
     }
 
-    // Canvas dot drawing (unchanged)
+    // Canvas dot drawing (your original)
     window.onload = function() {
       const background = new Image();
       background.crossOrigin = "anonymous";
