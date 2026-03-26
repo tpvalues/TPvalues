@@ -495,7 +495,7 @@
       info.append(name, pct);
       item.append(logo, info);
 
-      // Click handler - update main and scroll
+      // Click to switch main match
       item.onclick = () => updateMainMatch(i);
 
       nextList.appendChild(item);
@@ -563,6 +563,7 @@
     // Music mute button
     const muteBtn = document.getElementById("musicMute");
     const audio = document.getElementById("introAudio");
+    muteBtn.style.display = "flex"; // force show
     muteBtn.onclick = () => {
       if (audio.muted) {
         audio.muted = false;
