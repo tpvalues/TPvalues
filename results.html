@@ -322,12 +322,14 @@
     if (!saved) window.location.href = "index.html";
     const userScores = JSON.parse(saved);
     // Show axis results
-    const axisDisplay = {
+const axisDisplay = {
       interference: "Less / More State Interference",
       ownership: "Collective / Private Ownership",
       tradition: "Tradition / Future",
       faith: "Faith / Secularism"
     };
+
+    // Show axis results
     const grid = document.getElementById("resultsGrid");
     Object.entries(userScores).forEach(([key, value]) => {
       const card = document.createElement("div");
@@ -344,7 +346,8 @@
       card.append(name, scoreEl);
       grid.appendChild(card);
     });
-    // Find all matches sorted by distance
+
+    // Calculate matches
     const matches = [];
     ideologies.forEach(ideology => {
       let dist = 0;
@@ -355,14 +358,21 @@
       const sqrtDist = Math.sqrt(dist);
       matches.push({ ideology, dist: sqrtDist });
     });
+
     matches.sort((a, b) => a.dist - b.dist);
-    const maxDist = 135;
-    // Top match
-    const closest = matches[0]?.ideology;
-    if (closest) {
+
+    const maxDist = Math.sqrt(4 * 100 * 100); // Correct for -50 to +50
+
+    // Function to update the main match
+    function updateMainMatch(index) {
+      const selected = matches[index];
+      const closest = selected.ideology;
+
+      // Update logo
       const logoEl = document.getElementById("matchLogo");
       const container = document.getElementById("logoContainer");
       logoEl.src = closest.img || "https://via.placeholder.com/160/333/ccc?text=No+Logo";
+
       const special = ["Iron Guard", "National Synarchist Union", "National Radical Camp", "Sansepolcrismo"];
       if (special.includes(closest.name)) {
         container.classList.remove("normal-bg");
@@ -371,22 +381,41 @@
         container.classList.remove("dark-bg");
         container.classList.add("normal-bg");
       }
+
       document.getElementById("matchName").textContent = closest.name;
-      const percent = Math.round(100 - (matches[0].dist / maxDist) * 100);
+      const percent = Math.round(100 - (selected.dist / maxDist) * 100);
       document.getElementById("matchPercent").textContent = `${percent}% compatibility`;
       document.getElementById("matchDesc").textContent = closest.description;
+
+      // Play song
+      const audioMap = { /* your full audioMap here - keep it as you had it */ 
+        // ... (paste your full audioMap from previous version)
+      };
+      const audioSrc = audioMap[closest.name];
+      if (audioSrc) {
+        const audio = document.getElementById("introAudio");
+        audio.src = audioSrc;
+        audio.volume = 0.4;
+        audio.play().catch(() => {});
+      }
     }
-    // Next 3 matches (compact, auto-expanding)
+
+    // Initial top match
+    updateMainMatch(0);
+
+    // Next 3 matches - now clickable to become main
     const nextList = document.getElementById("nextList");
     for (let i = 1; i <= 3 && i < matches.length; i++) {
       const { ideology, dist } = matches[i];
       const percent = Math.round(100 - (dist / maxDist) * 100);
+
       const item = document.createElement("div");
       item.className = "next-item";
       const logo = document.createElement("img");
       logo.className = "next-logo";
       logo.src = ideology.img || "https://via.placeholder.com/48/444/aaa?text=?";
       logo.alt = ideology.name;
+
       const info = document.createElement("div");
       info.className = "next-info";
       const name = document.createElement("div");
@@ -395,15 +424,17 @@
       const pct = document.createElement("div");
       pct.className = "next-percent";
       pct.textContent = `${percent}% compatibility`;
-      const desc = document.createElement("div");
-      desc.className = "next-desc";
-      desc.textContent = ideology.description;
-      info.append(name, pct, desc);
+
+      info.append(name, pct);
       item.append(logo, info);
-      item.onclick = () => item.classList.toggle("expanded");
+
+      // Click to make it the main match
+      item.onclick = () => updateMainMatch(i);
+
       nextList.appendChild(item);
     }
-    // ==================== CANVAS DOT DRAWING ====================
+
+    // Canvas dot drawing
     window.onload = function() {
       const background = new Image();
       background.crossOrigin = "anonymous";
