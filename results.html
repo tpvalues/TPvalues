@@ -311,11 +311,16 @@
     const saved = localStorage.getItem("scores");
     if (!saved) window.location.href = "index.html";
     const userScores = JSON.parse(saved);
-
+// CAP ALL SCORES AT -50 / +50
+    Object.keys(userScores).forEach(key => {
+      if (userScores[key] > 50) userScores[key] = 50;
+      if (userScores[key] < -50) userScores[key] = -50;
+    });
+    
     const axisDisplay = {
       interference: "Less / More State Interference",
       ownership: "Collective / Private Ownership",
-      tradition: "Tradition / Future",
+      tradition: "Reactionary / Futurist",
       faith: "Faith / Secularism"
     };
 
@@ -564,7 +569,7 @@
       nextList.appendChild(item);
     }
 
-    // Canvas dot drawing (your original)
+       // Canvas dot drawing with capped values
     window.onload = function() {
       const background = new Image();
       background.crossOrigin = "anonymous";
@@ -575,10 +580,11 @@
         const ctx = c.getContext("2d");
         ctx.drawImage(background, 0, 0);
 
-        const state = userScores.interference || 0;
-        const owner = userScores.ownership || 0;
-        const trad = userScores.tradition || 0;
-        const faith = userScores.faith || 0;
+        // CAPPED VALUES FOR THE CHART
+        const state = Math.max(-50, Math.min(50, userScores.interference || 0));
+        const owner = Math.max(-50, Math.min(50, userScores.ownership || 0));
+        const trad  = Math.max(-50, Math.min(50, userScores.tradition || 0));
+        const faith = Math.max(-50, Math.min(50, userScores.faith || 0));
 
         const dotColor = "#000000";
         const dotStroke = "#ffffff";
@@ -589,7 +595,6 @@
 
         const dotX = cx + (state / 50) * half;
         const dotY = cy - (owner / 50) * half;
-
         ctx.beginPath();
         ctx.arc(dotX, dotY, 10, 0, 2 * Math.PI);
         ctx.fillStyle = dotColor;
