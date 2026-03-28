@@ -343,7 +343,7 @@
 
 let currentMatches = [];
 
-    const THRESHOLD = 8;   // change to 5-10 if needed (higher = stricter quadrant lock)
+    const THRESHOLD = 12;   // stricter — change to 10 or 15 if needed
 
     const userInter = userScores.interference || 0;
     const userOwn   = userScores.ownership || 0;
@@ -356,35 +356,33 @@ let currentMatches = [];
 
       Object.keys(userScores).forEach(axis => {
         let weight = 1.0;
-        if (axis === 'tradition' || axis === 'faith') weight = 0.5;   // keep your half weight
+        if (axis === 'tradition' || axis === 'faith') weight = 0.5;
 
         const diff = userScores[axis] - (ideology.scores[axis] || 0);
         dist += weight * (diff * diff);
       });
 
-      const sqrtDist = Math.sqrt(dist);
+      let sqrtDist = Math.sqrt(dist);
 
-      // If user is deep in a quadrant, only show ideologies from the SAME quadrant
-      if (!isInQuadrant) {
-        // near center → show global ranking
-        currentMatches.push({ ideology, dist: sqrtDist });
-      } else {
+      // Extra penalty if in different quadrant
+      if (isInQuadrant) {
         const ideoInter = ideology.scores.interference || 0;
         const ideoOwn   = ideology.scores.ownership || 0;
 
-        const sameQuadrant =
-          (userInter > 0) === (ideoInter > 0) &&
-          (userOwn   > 0) === (ideoOwn   > 0);
+        const sameSignInter = (userInter > 0) === (ideoInter > 0);
+        const sameSignOwn   = (userOwn   > 0) === (ideoOwn   > 0);
 
-        if (sameQuadrant) {
-          currentMatches.push({ ideology, dist: sqrtDist });
+        if (!sameSignInter || !sameSignOwn) {
+          sqrtDist += 25;   // penalty for crossing quadrant — adjust 20-35 if needed
         }
       }
+
+      currentMatches.push({ ideology, dist: sqrtDist });
     });
 
     currentMatches.sort((a, b) => a.dist - b.dist);
 
-    const maxDist = 110;   // keep this because of the 0.5 weighting
+    const maxDist = 110.
     
     // Function to update main match and play song
     function updateMainMatch(index) {
