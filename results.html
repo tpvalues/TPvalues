@@ -341,21 +341,22 @@
       grid.appendChild(card);
     });
 
-    let currentMatches = [];
+   let currentMatches = [];
     ideologies.forEach(ideology => {
       let dist = 0;
       Object.keys(userScores).forEach(axis => {
+        let weight = 1.0;                    // full weight for economic axes
+        if (axis === 'tradition' || axis === 'faith') weight = 0.5;   // half weight for last 2 axes
         const diff = userScores[axis] - (ideology.scores[axis] || 0);
-        dist += diff * diff;
+        dist += weight * (diff * diff);
       });
       const sqrtDist = Math.sqrt(dist);
       currentMatches.push({ ideology, dist: sqrtDist });
     });
-
     currentMatches.sort((a, b) => a.dist - b.dist);
 
-    const maxDist = 110;
-
+    const maxDist = 173;
+    
     // Function to update main match and play song
     function updateMainMatch(index) {
       const selected = currentMatches[index];
