@@ -543,24 +543,29 @@
     renderNextMatches();
 
     // ===== CANVAS (SIMPLE & RELIABLE) =====
-    window.onload = function() {
+window.onload = function() {
       const banner = document.getElementById("banner");
       const background = new Image();
 
       background.onload = function() {
+        const bottomHeight = 320;
         const c = document.createElement("canvas");
-        c.width = background.width;
-        c.height = background.height;
+        c.width = background.width;          // 1600
+        c.height = background.height + bottomHeight; // 1200 + 320
         const ctx = c.getContext("2d");
 
+        // 1. Draw the chart
         ctx.drawImage(background, 0, 0);
 
+        // 2. Draw the three dots
         const state = Math.max(-50, Math.min(50, userScores.interference || 0));
         const owner = Math.max(-50, Math.min(50, userScores.ownership || 0));
         const trad  = Math.max(-50, Math.min(50, userScores.tradition || 0));
         const faith = Math.max(-50, Math.min(50, userScores.faith || 0));
 
-        const cx = 600, cy = 600, half = 510;
+        const cx = 600;
+        const cy = 600;
+        const half = 510;
 
         // Main square
         ctx.beginPath();
@@ -589,17 +594,71 @@
         ctx.strokeStyle = "#fff";
         ctx.stroke();
 
+        // 3. Bottom panel
+        const panelY = background.height;
+        ctx.fillStyle = "#0f121a";
+        ctx.fillRect(0, panelY, c.width, bottomHeight);
+
+        // Title
+        ctx.fillStyle = "#e0e7ff";
+        ctx.font = "bold 32px system-ui, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 42);
+
+        // 4. Draw the top 4 (names + % for now – logos are attempted)
+        const top4 = currentMatches.slice(0, 4);
+        const cardW = 340;
+        const gap = 40;
+        const startX = (c.width - (4 * cardW + 3 * gap)) / 2;
+        const cardY = panelY + 70;
+
+        top4.forEach((m, i) => {
+          const x = startX + i * (cardW + gap);
+
+          // Card background
+          ctx.fillStyle = "#1e293b";
+          roundRect(ctx, x, cardY, cardW, 220, 14);
+          ctx.fill();
+
+          // Name
+          ctx.fillStyle = "#ff8533";
+          ctx.font = "bold 20px system-ui, sans-serif";
+          ctx.textAlign = "center";
+          let name = m.ideology.name || "Unknown";
+          if (name.length > 22) name = name.substring(0, 20) + "…";
+          ctx.fillText(name, x + cardW / 2, cardY + 110);
+
+          // Percentage
+          const percent = Math.round(100 - (m.dist / maxDist) * 100);
+          ctx.fillStyle = "#94a3b8";
+          ctx.font = "18px system-ui, sans-serif";
+          ctx.fillText(percent + "% compatibility", x + cardW / 2, cardY + 145);
+        });
+
+        // Output the image
         banner.src = c.toDataURL("image/png");
       };
 
       background.onerror = function() {
         console.error("tpchart.png failed to load");
-        banner.alt = "Chart image failed to load – make sure tpchart.png is in the same folder";
+        banner.alt = "Chart failed to load";
       };
 
-      // NO crossOrigin
       background.src = "tpchart.png";
     };
+
+    // Helper
+    function roundRect(ctx, x, y, w, h, r) {
+      if (w < 2 * r) r = w / 2;
+      if (h < 2 * r) r = h / 2;
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
 
     // ===== MUTE BUTTON =====
     const muteBtn = document.getElementById("musicMute");
