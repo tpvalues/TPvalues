@@ -548,7 +548,7 @@ window.onload = function() {
       const background = new Image();
 
       background.onload = function() {
-        const bottomHeight = 360;
+        const bottomHeight = 370;
         const c = document.createElement("canvas");
         c.width = background.width;
         c.height = background.height + bottomHeight;
@@ -563,7 +563,9 @@ window.onload = function() {
         const trad  = Math.max(-50, Math.min(50, userScores.tradition || 0));
         const faith = Math.max(-50, Math.min(50, userScores.faith || 0));
 
-        const cx = 600, cy = 600, half = 510;
+        const cx = 600;
+        const cy = 600;
+        const half = 510;
 
         // Main square
         ctx.beginPath();
@@ -574,7 +576,7 @@ window.onload = function() {
         ctx.strokeStyle = "#fff";
         ctx.stroke();
 
-        // Tradition (you can still tweak this number)
+        // Tradition (frozen)
         ctx.beginPath();
         ctx.arc(1280, 600 - (trad / 50) * half, 12, 0, 2 * Math.PI);
         ctx.fillStyle = "#000";
@@ -583,7 +585,7 @@ window.onload = function() {
         ctx.strokeStyle = "#fff";
         ctx.stroke();
 
-        // Faith (you can still tweak this number)
+        // Faith (frozen)
         ctx.beginPath();
         ctx.arc(1470, 600 - (faith / 50) * half, 12, 0, 2 * Math.PI);
         ctx.fillStyle = "#000";
@@ -594,60 +596,62 @@ window.onload = function() {
 
         // ===== WHITE BOTTOM SECTION =====
         const panelY = background.height;
-        ctx.fillStyle = "#f8f9fc";               // light like the chart
+        ctx.fillStyle = "#f8f9fc";
         ctx.fillRect(0, panelY, c.width, bottomHeight);
 
         // Title
         ctx.fillStyle = "#111827";
         ctx.font = "bold 32px system-ui, sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 42);
+        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 40);
 
-        // Top 4
         const top4 = currentMatches.slice(0, 4);
-        const logos = new Array(4);
+        const logos = [null, null, null, null];
         let loaded = 0;
 
-        function drawCards() {
+        function finish() {
           const cardW = 340;
           const gap = 35;
           const totalW = 4 * cardW + 3 * gap;
           const startX = (c.width - totalW) / 2;
           const cardY = panelY + 65;
-          const logoSize = 90;
+          const logoSize = 95;
 
           top4.forEach((m, i) => {
             const x = startX + i * (cardW + gap);
 
-            // Card
+            // White card
             ctx.fillStyle = "#ffffff";
-            ctx.strokeStyle = "#e2e8f0";
+            ctx.strokeStyle = "#cbd5e1";
             ctx.lineWidth = 2;
-            roundRect(ctx, x, cardY, cardW, 260, 14);
+            roundRect(ctx, x, cardY, cardW, 270, 14);
             ctx.fill();
             ctx.stroke();
 
-            // Logo background
+            // Logo area
             const logoX = x + (cardW - logoSize) / 2;
-            const logoY = cardY + 20;
+            const logoY = cardY + 18;
+
             ctx.fillStyle = "#f1f5f9";
-            roundRect(ctx, logoX - 4, logoY - 4, logoSize + 8, logoSize + 8, 10);
+            roundRect(ctx, logoX - 5, logoY - 5, logoSize + 10, logoSize + 10, 10);
             ctx.fill();
 
-            // Logo
             if (logos[i]) {
               try {
                 const img = logos[i];
                 const scale = Math.min(logoSize / img.width, logoSize / img.height);
                 const w = img.width * scale;
                 const h = img.height * scale;
-                ctx.drawImage(img, logoX + (logoSize - w) / 2, logoY + (logoSize - h) / 2, w, h);
+                ctx.drawImage(img,
+                  logoX + (logoSize - w) / 2,
+                  logoY + (logoSize - h) / 2,
+                  w, h);
               } catch (e) {}
             }
 
             // Rank
             ctx.fillStyle = "#64748b";
-            ctx.font = "bold 16px system-ui, sans-serif";
+            ctx.font = "bold 15px system-ui, sans-serif";
             ctx.textAlign = "center";
             ctx.fillText("#" + (i + 1), x + cardW / 2, cardY + 135);
 
@@ -656,40 +660,38 @@ window.onload = function() {
             ctx.font = "bold 18px system-ui, sans-serif";
             let name = m.ideology.name || "Unknown";
             if (name.length > 22) name = name.substring(0, 20) + "…";
-            ctx.fillText(name, x + cardW / 2, cardY + 165);
+            ctx.fillText(name, x + cardW / 2, cardY + 170);
 
             // Percentage
             const percent = Math.round(100 - (m.dist / maxDist) * 100);
             ctx.fillStyle = "#334155";
             ctx.font = "16px system-ui, sans-serif";
-            ctx.fillText(percent + "% match", x + cardW / 2, cardY + 195);
+            ctx.fillText(percent + "% match", x + cardW / 2, cardY + 200);
           });
 
-          // Final output
           banner.src = c.toDataURL("image/png");
         }
 
         // Load logos
-        if (top4.length === 0) {
-          drawCards();
-          return;
-        }
-
         top4.forEach((m, i) => {
           const img = new Image();
-          img.onload = () => {
+          img.onload = function() {
             logos[i] = img;
             loaded++;
-            if (loaded === top4.length) drawCards();
+            if (loaded === top4.length) finish();
           };
-          img.onerror = () => {
+          img.onerror = function() {
             logos[i] = null;
             loaded++;
-            if (loaded === top4.length) drawCards();
+            if (loaded === top4.length) finish();
           };
-          // Do not set crossOrigin – safer for many GitHub raw images
           img.src = m.ideology.img || "";
         });
+
+        // Safety timeout in case some logos hang
+        setTimeout(function() {
+          if (loaded < top4.length) finish();
+        }, 2500);
       };
 
       background.onerror = function() {
