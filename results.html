@@ -382,7 +382,7 @@ let currentMatches = [];
 
     currentMatches.sort((a, b) => a.dist - b.dist);
 
-    const maxDist = 75.
+    const maxDist = 75;
     
     // Function to update main match and play song
     function updateMainMatch(index) {
@@ -602,15 +602,15 @@ let currentMatches = [];
       const background = new Image();
       background.crossOrigin = "anonymous";
       background.onload = function() {
-        const bottomHeight = 360;
         const c = document.createElement("canvas");
         c.width = background.width;
-        c.height = background.height + bottomHeight;
+        c.height = background.height;
         const ctx = c.getContext("2d");
 
-        // ===== 1. Draw chart + dots first =====
+        // Draw the chart
         ctx.drawImage(background, 0, 0);
 
+        // Capped scores
         const state = Math.max(-50, Math.min(50, userScores.interference || 0));
         const owner = Math.max(-50, Math.min(50, userScores.ownership || 0));
         const trad  = Math.max(-50, Math.min(50, userScores.tradition || 0));
@@ -619,130 +619,40 @@ let currentMatches = [];
         const dotColor = "#000000";
         const dotStroke = "#ffffff";
         const dotStrokeWidth = 2;
-        const cx = 600, cy = 600, half = 510;
+        const cx = 600;
+        const cy = 600;
+        const half = 510;
 
         // Main square
         ctx.beginPath();
         ctx.arc(cx + (state / 50) * half, cy - (owner / 50) * half, 10, 0, 2 * Math.PI);
-        ctx.fillStyle = dotColor; ctx.fill();
-        ctx.lineWidth = dotStrokeWidth; ctx.strokeStyle = dotStroke; ctx.stroke();
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
+        ctx.stroke();
 
         // Tradition
         ctx.beginPath();
         ctx.arc(1317, 600 - (trad / 50) * half, 10, 0, 2 * Math.PI);
-        ctx.fillStyle = dotColor; ctx.fill();
-        ctx.lineWidth = dotStrokeWidth; ctx.strokeStyle = dotStroke; ctx.stroke();
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
+        ctx.stroke();
 
         // Faith
         ctx.beginPath();
         ctx.arc(1517, 600 - (faith / 50) * half, 10, 0, 2 * Math.PI);
-        ctx.fillStyle = dotColor; ctx.fill();
-        ctx.lineWidth = dotStrokeWidth; ctx.strokeStyle = dotStroke; ctx.stroke();
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+        ctx.lineWidth = dotStrokeWidth;
+        ctx.strokeStyle = dotStroke;
+        ctx.stroke();
 
-        // ===== 2. Draw bottom panel =====
-        const panelY = background.height;
-        ctx.fillStyle = "#0f121a";
-        ctx.fillRect(0, panelY, c.width, bottomHeight);
-
-        ctx.fillStyle = "#e0e7ff";
-        ctx.font = "bold 34px system-ui, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 45);
-
-        // Set the chart version first (so something always shows)
-        try {
-          document.getElementById("banner").src = c.toDataURL("image/png");
-        } catch (e) {
-          console.warn("Initial toDataURL failed", e);
-        }
-
-        // ===== 3. Try to load logos and redraw with cards =====
-        const top4 = (currentMatches || []).slice(0, 4);
-        if (top4.length === 0) return;
-
-        const logos = new Array(top4.length);
-        let loadedCount = 0;
-
-        function tryFinish() {
-          // Draw the 4 cards
-          const gap = 32;
-          const cardW = Math.floor((c.width - gap * 5) / 4);
-          const startX = gap;
-          const cardY = panelY + 75;
-          const cardH = 255;
-          const logoSize = 105;
-
-          const special = ["Iron Guard", "National Synarchist Union", "National Radical Camp", "Sansepolcrismo"];
-
-          top4.forEach((m, i) => {
-            const x = startX + i * (cardW + gap);
-
-            // Card
-            ctx.fillStyle = "#1e293b";
-            roundRect(ctx, x, cardY, cardW, cardH, 16);
-            ctx.fill();
-
-            // Logo background
-            const logoX = x + (cardW - logoSize) / 2;
-            const logoY = cardY + 20;
-            ctx.fillStyle = special.includes(m.ideology.name) ? "#2d2d2d" : "#f8f9fc";
-            roundRect(ctx, logoX - 5, logoY - 5, logoSize + 10, logoSize + 10, 10);
-            ctx.fill();
-
-            // Logo (if available)
-            if (logos[i]) {
-              try {
-                const img = logos[i];
-                const scale = Math.min(logoSize / img.width, logoSize / img.height);
-                const w = img.width * scale;
-                const h = img.height * scale;
-                ctx.drawImage(img, logoX + (logoSize - w) / 2, logoY + (logoSize - h) / 2, w, h);
-              } catch (err) {
-                // ignore individual logo draw errors
-              }
-            }
-
-            // Name
-            ctx.fillStyle = "#ff8533";
-            ctx.font = "bold 19px system-ui, sans-serif";
-            ctx.textAlign = "center";
-            let name = m.ideology.name || "Unknown";
-            if (name.length > 23) name = name.substring(0, 21) + "…";
-            ctx.fillText(name, x + cardW / 2, cardY + 160);
-
-            // Percent
-            const percent = Math.round(100 - (m.dist / maxDist) * 100);
-            ctx.fillStyle = "#94a3b8";
-            ctx.font = "17px system-ui, sans-serif";
-            ctx.fillText(percent + "% compatibility", x + cardW / 2, cardY + 190);
-          });
-
-          // Try to update the banner with the full version
-          try {
-            document.getElementById("banner").src = c.toDataURL("image/png");
-          } catch (e) {
-            console.warn("Could not include logos in downloadable image (CORS). Chart still works.");
-            // Banner already has the clean chart version from earlier
-          }
-        }
-
-        top4.forEach((m, i) => {
-          const img = new Image();
-          // Do NOT set crossOrigin here — this prevents tainting in many cases
-          img.onload = () => {
-            logos[i] = img;
-            loadedCount++;
-            if (loadedCount === top4.length) tryFinish();
-          };
-          img.onerror = () => {
-            logos[i] = null;
-            loadedCount++;
-            if (loadedCount === top4.length) tryFinish();
-          };
-          img.src = m.ideology.img || "";
-        });
+        // Output
+        document.getElementById("banner").src = c.toDataURL("image/png");
       };
-
       background.onerror = function() {
         console.error("Failed to load tpchart.png");
       };
