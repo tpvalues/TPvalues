@@ -602,13 +602,16 @@ let currentMatches = [];
       const background = new Image();
       background.crossOrigin = "anonymous";
       background.onload = function() {
+        const bottomHeight = 360;
         const c = document.createElement("canvas");
         c.width = background.width;
-        c.height = background.height;
+        c.height = background.height + bottomHeight;
         const ctx = c.getContext("2d");
+
+        // 1. Draw the original chart
         ctx.drawImage(background, 0, 0);
 
-        // CAPPED VALUES FOR THE CHART
+        // 2. Draw the three dots (capped scores)
         const state = Math.max(-50, Math.min(50, userScores.interference || 0));
         const owner = Math.max(-50, Math.min(50, userScores.ownership || 0));
         const trad  = Math.max(-50, Math.min(50, userScores.tradition || 0));
@@ -621,6 +624,7 @@ let currentMatches = [];
         const cy = 600;
         const half = 510;
 
+        // Main square
         const dotX = cx + (state / 50) * half;
         const dotY = cy - (owner / 50) * half;
         ctx.beginPath();
@@ -631,7 +635,8 @@ let currentMatches = [];
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        const tradX = 1294;
+        // Tradition
+        const tradX = 1317;
         const tradYPos = 600 - (trad / 50) * half;
         ctx.beginPath();
         ctx.arc(tradX, tradYPos, 10, 0, 2 * Math.PI);
@@ -641,7 +646,8 @@ let currentMatches = [];
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        const faithX = 1494;
+        // Faith
+        const faithX = 1517;
         const faithYPos = 600 - (faith / 50) * half;
         ctx.beginPath();
         ctx.arc(faithX, faithYPos, 10, 0, 2 * Math.PI);
@@ -651,10 +657,116 @@ let currentMatches = [];
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        document.getElementById("banner").src = c.toDataURL("image/png");
+        // 3. Bottom panel background
+        const panelY = background.height;
+        ctx.fillStyle = "#0f121a";
+        ctx.fillRect(0, panelY, c.width, bottomHeight);
+
+        // Title
+        ctx.fillStyle = "#e0e7ff";
+        ctx.font = "bold 36px system-ui, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 48);
+
+        // 4. Load top 4 logos and draw cards
+        const top4 = currentMatches.slice(0, 4);
+        const logos = new Array(top4.length);
+        let loaded = 0;
+
+        function finish() {
+          const gap = 36;
+          const cardW = Math.floor((c.width - gap * 5) / 4);
+          const startX = gap;
+          const cardY = panelY + 80;
+          const cardH = 250;
+          const logoSize = 110;
+
+          const special = ["Iron Guard", "National Synarchist Union", "National Radical Camp", "Sansepolcrismo"];
+
+          top4.forEach((m, i) => {
+            const x = startX + i * (cardW + gap);
+
+            // Card background
+            ctx.fillStyle = "#1e293b";
+            roundRect(ctx, x, cardY, cardW, cardH, 18);
+            ctx.fill();
+
+            // Logo background
+            const logoX = x + (cardW - logoSize) / 2;
+            const logoY = cardY + 22;
+            ctx.fillStyle = special.includes(m.ideology.name) ? "#2d2d2d" : "#f8f9fc";
+            roundRect(ctx, logoX - 6, logoY - 6, logoSize + 12, logoSize + 12, 12);
+            ctx.fill();
+
+            // Logo
+            if (logos[i]) {
+              // keep aspect ratio (contain)
+              const img = logos[i];
+              const scale = Math.min(logoSize / img.width, logoSize / img.height);
+              const w = img.width * scale;
+              const h = img.height * scale;
+              const ox = logoX + (logoSize - w) / 2;
+              const oy = logoY + (logoSize - h) / 2;
+              ctx.drawImage(img, ox, oy, w, h);
+            }
+
+            // Name
+            ctx.fillStyle = "#ff8533";
+            ctx.font = "bold 20px system-ui, sans-serif";
+            ctx.textAlign = "center";
+            let name = m.ideology.name || "Unknown";
+            if (name.length > 24) name = name.substring(0, 22) + "…";
+            ctx.fillText(name, x + cardW / 2, cardY + 165);
+
+            // Percentage
+            const percent = Math.round(100 - (m.dist / maxDist) * 100);
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "18px system-ui, sans-serif";
+            ctx.fillText(percent + "% compatibility", x + cardW / 2, cardY + 195);
+          });
+
+          // Final output
+          document.getElementById("banner").src = c.toDataURL("image/png");
+        }
+
+        if (top4.length === 0) {
+          finish();
+          return;
+        }
+
+        top4.forEach((m, i) => {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.onload = () => {
+            logos[i] = img;
+            loaded++;
+            if (loaded === top4.length) finish();
+          };
+          img.onerror = () => {
+            logos[i] = null;
+            loaded++;
+            if (loaded === top4.length) finish();
+          };
+          img.src = m.ideology.img || "";
+        });
       };
-      background.src = "tpvchart.png";
+      background.src = "tpchart.png";
     };
+
+    // Helper for rounded rectangles
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
 
     // Music mute button
     const muteBtn = document.getElementById("musicMute");
