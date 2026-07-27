@@ -543,12 +543,13 @@
     renderNextMatches();
 
     // ===== CANVAS (SIMPLE & RELIABLE) =====
-window.onload = function() {
+// ===== CANVAS – more space between logo and name =====
+    window.onload = function() {
       const banner = document.getElementById("banner");
       const background = new Image();
 
       background.onload = function() {
-        const bottomHeight = 430;
+        const bottomHeight = 460;
         const c = document.createElement("canvas");
         c.width = background.width;
         c.height = background.height + bottomHeight;
@@ -638,7 +639,7 @@ window.onload = function() {
           const totalW = 4 * cardW + 3 * gap;
           const startX = (c.width - totalW) / 2;
           const cardY = panelY + 55;
-          const logoSize = 150;               // bigger logos
+          const logoSize = 150;
 
           top4.forEach((m, i) => {
             const x = startX + i * (cardW + gap);
@@ -647,7 +648,7 @@ window.onload = function() {
             ctx.fillStyle = "#ffffff";
             ctx.strokeStyle = "#cbd5e1";
             ctx.lineWidth = 2;
-            roundRect(ctx, x, cardY, cardW, 330, 14);
+            roundRect(ctx, x, cardY, cardW, 360, 14);
             ctx.fill();
             ctx.stroke();
 
@@ -672,22 +673,22 @@ window.onload = function() {
               } catch (e) {}
             }
 
-            // Name – 36px and moved lower
+            // Name – 36px, pushed much lower
             ctx.fillStyle = "#0f172a";
             ctx.font = "bold 36px system-ui, sans-serif";
             ctx.textAlign = "center";
             const name = m.ideology.name || "Unknown";
             const lines = wrapText(name, cardW - 30);
-            const nameStartY = cardY + 195;   // pushed down
+            const nameStartY = cardY + 230;   // much lower
             lines.forEach((line, idx) => {
-              ctx.fillText(line, x + cardW / 2, nameStartY + idx * 40);
+              ctx.fillText(line, x + cardW / 2, nameStartY + idx * 42);
             });
 
             // Percentage
             const percent = Math.round(100 - (m.dist / maxDist) * 100);
             ctx.fillStyle = "#334155";
             ctx.font = "18px system-ui, sans-serif";
-            ctx.fillText(percent + "% match", x + cardW / 2, cardY + 295);
+            ctx.fillText(percent + "% match", x + cardW / 2, cardY + 330);
           });
 
           banner.src = c.toDataURL("image/png");
