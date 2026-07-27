@@ -548,7 +548,7 @@ window.onload = function() {
       const background = new Image();
 
       background.onload = function() {
-        const bottomHeight = 420;
+        const bottomHeight = 400;
         const c = document.createElement("canvas");
         c.width = background.width;
         c.height = background.height + bottomHeight;
@@ -601,7 +601,7 @@ window.onload = function() {
         ctx.fillStyle = "#111827";
         ctx.font = "bold 32px system-ui, sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 40);
+        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 38);
 
         // Helper – wrap text
         function wrapText(text, maxWidth) {
@@ -621,12 +621,11 @@ window.onload = function() {
           return lines;
         }
 
-        // Helper – get local logo path from the full URL
+        // Helper – local logo path
         function getLocalLogo(imgUrl) {
           if (!imgUrl) return null;
           const parts = imgUrl.split("/");
-          const filename = parts[parts.length - 1];
-          return "logos/" + filename;
+          return "logos/" + parts[parts.length - 1];
         }
 
         const top4 = currentMatches.slice(0, 4);
@@ -638,8 +637,8 @@ window.onload = function() {
           const gap = 35;
           const totalW = 4 * cardW + 3 * gap;
           const startX = (c.width - totalW) / 2;
-          const cardY = panelY + 65;
-          const logoSize = 120;
+          const cardY = panelY + 60;
+          const logoSize = 130;
 
           top4.forEach((m, i) => {
             const x = startX + i * (cardW + gap);
@@ -648,15 +647,15 @@ window.onload = function() {
             ctx.fillStyle = "#ffffff";
             ctx.strokeStyle = "#cbd5e1";
             ctx.lineWidth = 2;
-            roundRect(ctx, x, cardY, cardW, 310, 14);
+            roundRect(ctx, x, cardY, cardW, 300, 14);
             ctx.fill();
             ctx.stroke();
 
-            // Logo background
+            // Logo background – pure white
             const logoX = x + (cardW - logoSize) / 2;
-            const logoY = cardY + 20;
-            ctx.fillStyle = "#f1f5f9";
-            roundRect(ctx, logoX - 6, logoY - 6, logoSize + 12, logoSize + 12, 12);
+            const logoY = cardY + 18;
+            ctx.fillStyle = "#ffffff";
+            roundRect(ctx, logoX - 4, logoY - 4, logoSize + 8, logoSize + 8, 10);
             ctx.fill();
 
             // Logo
@@ -673,22 +672,22 @@ window.onload = function() {
               } catch (e) {}
             }
 
-            // Name (wrapped)
+            // Name (larger + wrapped)
             ctx.fillStyle = "#0f172a";
-            ctx.font = "bold 18px system-ui, sans-serif";
+            ctx.font = "bold 20px system-ui, sans-serif";
             ctx.textAlign = "center";
             const name = m.ideology.name || "Unknown";
             const lines = wrapText(name, cardW - 30);
-            const nameStartY = cardY + 170;
+            const nameStartY = cardY + 175;
             lines.forEach((line, idx) => {
-              ctx.fillText(line, x + cardW / 2, nameStartY + idx * 24);
+              ctx.fillText(line, x + cardW / 2, nameStartY + idx * 26);
             });
 
-            // Percentage
+            // Percentage – closer to the name
             const percent = Math.round(100 - (m.dist / maxDist) * 100);
             ctx.fillStyle = "#334155";
             ctx.font = "17px system-ui, sans-serif";
-            ctx.fillText(percent + "% match", x + cardW / 2, cardY + 270);
+            ctx.fillText(percent + "% match", x + cardW / 2, cardY + 255);
           });
 
           banner.src = c.toDataURL("image/png");
