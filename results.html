@@ -600,14 +600,13 @@ let currentMatches = [];
        // Canvas dot drawing with capped values
    window.onload = function() {
       const background = new Image();
-      background.crossOrigin = "anonymous";
       background.onload = function() {
         const c = document.createElement("canvas");
         c.width = background.width;
         c.height = background.height;
         const ctx = c.getContext("2d");
 
-        // Draw the chart
+        // Draw chart
         ctx.drawImage(background, 0, 0);
 
         // Capped scores
@@ -650,12 +649,15 @@ let currentMatches = [];
         ctx.strokeStyle = dotStroke;
         ctx.stroke();
 
-        // Output
+        // Output to the page
         document.getElementById("banner").src = c.toDataURL("image/png");
       };
+
       background.onerror = function() {
-        console.error("Failed to load tpchart.png");
+        console.error("Could not load tpchart.png – check the file path");
+        document.getElementById("banner").alt = "Chart failed to load (tpchart.png missing?)";
       };
+
       background.src = "tpchart.png";
     };
 
