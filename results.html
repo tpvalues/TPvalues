@@ -548,13 +548,13 @@ window.onload = function() {
       const background = new Image();
 
       background.onload = function() {
-        const bottomHeight = 340;
+        const bottomHeight = 420;
         const c = document.createElement("canvas");
         c.width = background.width;
         c.height = background.height + bottomHeight;
         const ctx = c.getContext("2d");
 
-        // Draw the chart
+        // Draw chart
         ctx.drawImage(background, 0, 0);
 
         // Scores
@@ -563,9 +563,7 @@ window.onload = function() {
         const trad  = Math.max(-50, Math.min(50, userScores.tradition || 0));
         const faith = Math.max(-50, Math.min(50, userScores.faith || 0));
 
-        const cx = 600;
-        const cy = 600;
-        const half = 510;
+        const cx = 600, cy = 600, half = 510;
 
         // Main square
         ctx.beginPath();
@@ -603,49 +601,120 @@ window.onload = function() {
         ctx.fillStyle = "#111827";
         ctx.font = "bold 32px system-ui, sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 42);
+        ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 40);
 
-        // Top 4 cards (no logos)
+        // Helper – wrap text
+        function wrapText(text, maxWidth) {
+          const words = text.split(" ");
+          const lines = [];
+          let current = "";
+          words.forEach(word => {
+            const test = current ? current + " " + word : word;
+            if (ctx.measureText(test).width > maxWidth && current) {
+              lines.push(current);
+              current = word;
+            } else {
+              current = test;
+            }
+          });
+          if (current) lines.push(current);
+          return lines;
+        }
+
+        // Helper – get local logo path from the full URL
+        function getLocalLogo(imgUrl) {
+          if (!imgUrl) return null;
+          const parts = imgUrl.split("/");
+          const filename = parts[parts.length - 1];
+          return "logos/" + filename;
+        }
+
         const top4 = currentMatches.slice(0, 4);
-        const cardW = 340;
-        const gap = 35;
-        const totalW = 4 * cardW + 3 * gap;
-        const startX = (c.width - totalW) / 2;
-        const cardY = panelY + 70;
+        const logos = [null, null, null, null];
+        let loaded = 0;
 
+        function finish() {
+          const cardW = 340;
+          const gap = 35;
+          const totalW = 4 * cardW + 3 * gap;
+          const startX = (c.width - totalW) / 2;
+          const cardY = panelY + 65;
+          const logoSize = 120;
+
+          top4.forEach((m, i) => {
+            const x = startX + i * (cardW + gap);
+
+            // Card
+            ctx.fillStyle = "#ffffff";
+            ctx.strokeStyle = "#cbd5e1";
+            ctx.lineWidth = 2;
+            roundRect(ctx, x, cardY, cardW, 310, 14);
+            ctx.fill();
+            ctx.stroke();
+
+            // Logo background
+            const logoX = x + (cardW - logoSize) / 2;
+            const logoY = cardY + 20;
+            ctx.fillStyle = "#f1f5f9";
+            roundRect(ctx, logoX - 6, logoY - 6, logoSize + 12, logoSize + 12, 12);
+            ctx.fill();
+
+            // Logo
+            if (logos[i]) {
+              try {
+                const img = logos[i];
+                const scale = Math.min(logoSize / img.width, logoSize / img.height);
+                const w = img.width * scale;
+                const h = img.height * scale;
+                ctx.drawImage(img,
+                  logoX + (logoSize - w) / 2,
+                  logoY + (logoSize - h) / 2,
+                  w, h);
+              } catch (e) {}
+            }
+
+            // Name (wrapped)
+            ctx.fillStyle = "#0f172a";
+            ctx.font = "bold 18px system-ui, sans-serif";
+            ctx.textAlign = "center";
+            const name = m.ideology.name || "Unknown";
+            const lines = wrapText(name, cardW - 30);
+            const nameStartY = cardY + 170;
+            lines.forEach((line, idx) => {
+              ctx.fillText(line, x + cardW / 2, nameStartY + idx * 24);
+            });
+
+            // Percentage
+            const percent = Math.round(100 - (m.dist / maxDist) * 100);
+            ctx.fillStyle = "#334155";
+            ctx.font = "17px system-ui, sans-serif";
+            ctx.fillText(percent + "% match", x + cardW / 2, cardY + 270);
+          });
+
+          banner.src = c.toDataURL("image/png");
+        }
+
+        // Load local logos
         top4.forEach((m, i) => {
-          const x = startX + i * (cardW + gap);
-
-          // Card
-          ctx.fillStyle = "#ffffff";
-          ctx.strokeStyle = "#cbd5e1";
-          ctx.lineWidth = 2;
-          roundRect(ctx, x, cardY, cardW, 230, 14);
-          ctx.fill();
-          ctx.stroke();
-
-          // Rank
-          ctx.fillStyle = "#64748b";
-          ctx.font = "bold 16px system-ui, sans-serif";
-          ctx.textAlign = "center";
-          ctx.fillText("#" + (i + 1), x + cardW / 2, cardY + 45);
-
-          // Name
-          ctx.fillStyle = "#0f172a";
-          ctx.font = "bold 20px system-ui, sans-serif";
-          let name = m.ideology.name || "Unknown";
-          if (name.length > 22) name = name.substring(0, 20) + "…";
-          ctx.fillText(name, x + cardW / 2, cardY + 110);
-
-          // Percentage
-          const percent = Math.round(100 - (m.dist / maxDist) * 100);
-          ctx.fillStyle = "#334155";
-          ctx.font = "18px system-ui, sans-serif";
-          ctx.fillText(percent + "% match", x + cardW / 2, cardY + 155);
+          const localPath = getLocalLogo(m.ideology.img);
+          const img = new Image();
+          img.onload = function() {
+            logos[i] = img;
+            loaded++;
+            if (loaded === top4.length) finish();
+          };
+          img.onerror = function() {
+            logos[i] = null;
+            loaded++;
+            if (loaded === top4.length) finish();
+          };
+          img.src = localPath || "";
         });
 
-        // Output the image
-        banner.src = c.toDataURL("image/png");
+        // Safety timeout
+        setTimeout(function() {
+          if (loaded < top4.length) finish();
+        }, 3000);
       };
 
       background.onerror = function() {
