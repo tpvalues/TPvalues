@@ -445,7 +445,7 @@ const ideologies = [
   },
   {
     name: "Szeged Idea",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/nationalradicalism.png",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/szegedidea.png",
     description: "The Szeged Idea (Hungarian: Szegedi gondolat) was an ideology of post WW1 Hungarians - especially the military officer and Prime Minister of Hungary from 1932 - Gyula Gömbös. Heavily inspired by his visits to Fascist Italy, he promoted irredentist claims, declaring violence to be \"an acceptable means of statecraft\". Focused on Agrarianism and Corporatism, his Unity Party (Hungarian: Egységes Párt) recanted previous antipathy to Jews and called for an \"unitary Hungarian nation with no class distinctions\" and to expand the size and power of the Hungarian military; much to Hitler's dismay.",
     scores: { interference: -19, ownership: -14, tradition: 38, faith: 29 }
   },
