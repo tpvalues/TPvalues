@@ -358,7 +358,7 @@
       let dist = 0;
       Object.keys(userScores).forEach(axis => {
         let weight = 1.0;
-        if (axis === "tradition" || axis === "faith") weight = 0.25;
+        if (axis === "tradition" || axis === "faith") weight = 0.75;
         const diff = userScores[axis] - (ideology.scores[axis] || 0);
         dist += weight * (diff * diff);
       });
@@ -390,14 +390,8 @@
       const container = document.getElementById("logoContainer");
       logoEl.src = closest.img || "https://via.placeholder.com/160/333/ccc?text=No+Logo";
 
-      const special = ["Iron Guard", "National Synarchist Union", "National Radical Camp", "Sansepolcrismo"];
-      if (special.includes(closest.name)) {
-        container.classList.remove("normal-bg");
-        container.classList.add("dark-bg");
-      } else {
-        container.classList.remove("dark-bg");
-        container.classList.add("normal-bg");
-      }
+      container.classList.remove("dark-bg");
+      container.classList.add("normal-bg");
 
       document.getElementById("matchName").textContent = closest.name;
       const percent = Math.round(100 - (selected.dist / maxDist) * 100);
