@@ -410,7 +410,7 @@ const ideologies = [
   {
     name: "Union of Bulgarian National Legions",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/bulgarianfascism.png",
-    description: "The Union of Bulgarian National Legions (Bulgarian: Съюз на Българските Национални Легиони, Sayuz na Balgarskite Natsionalni Legioni) was a Bulgarian ultranationalist organization founded in 1932 by Hristo Lukov. The movement was initially anti-Monarchist but later become fond of the Bulgarian monarchy late WW2. he organization had an ideology close to Fascism, including creating a totalitarian one-party regime, a ban on the market economy and total control by the state over the economy and the society, anti-Semitism and hostility towards foreigners, anti-communism, etc.",
+    description: "The Union of Bulgarian National Legions (Bulgarian: Съюз на Българските Национални Легиони, Sayuz na Balgarskite Natsionalni Legioni) was a Bulgarian ultranationalist organization founded in 1932 by Hristo Lukov. The movement was initially anti-Monarchist but later became fond of the Bulgarian monarchy in late WW2. The organization had an ideology close to Fascism, including creating a totalitarian one-party regime, a ban on the market economy and total control by the state over the economy and the society, anti-Semitism and hostility towards foreigners, anti-communism, etc.",
     scores: { interference: -25, ownership: -30, tradition: 35, faith: 27 }
   },
   {
