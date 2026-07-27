@@ -268,7 +268,6 @@
   </style>
 </head>
 <body>
-
   <button id="musicMute" title="Mute / Unmute Intro">🔊</button>
 
   <div class="brand-fixed">
@@ -294,12 +293,12 @@
       <img id="banner" src="" alt="Your Position on TP Values Chart">
     </div>
 
-    <audio id="introAudio" preload="auto" loop="false"></audio>
+    <audio id="introAudio" preload="auto"></audio>
 
     <div class="results-grid" id="resultsGrid"></div>
 
     <div class="next-matches">
-      <div class="next-title">Other Close Matches (Click to expand)</div>
+      <div class="next-title">Other Close Matches (Click to switch)</div>
       <div id="nextList" class="next-list"></div>
     </div>
 
@@ -308,15 +307,18 @@
 
   <script src="ideologies.js"></script>
   <script>
+    // ===== LOAD SCORES =====
     const saved = localStorage.getItem("scores");
     if (!saved) window.location.href = "index.html";
-    const userScores = JSON.parse(saved);
-// CAP ALL SCORES AT -50 / +50
+    let userScores = JSON.parse(saved);
+
+    // Cap scores
     Object.keys(userScores).forEach(key => {
       if (userScores[key] > 50) userScores[key] = 50;
       if (userScores[key] < -50) userScores[key] = -50;
     });
-    
+
+    // ===== AXIS CARDS =====
     const axisDisplay = {
       interference: "Less / More State Interference",
       ownership: "Collective / Private Ownership",
@@ -328,52 +330,48 @@
     Object.entries(userScores).forEach(([key, value]) => {
       const card = document.createElement("div");
       card.className = "axis-card";
+
       const name = document.createElement("div");
       name.className = "axis-name";
       name.textContent = axisDisplay[key] || key;
+
       const scoreEl = document.createElement("div");
       scoreEl.className = "axis-score";
       scoreEl.textContent = value >= 0 ? `+${value}` : value;
+
       if (value > 15) scoreEl.classList.add("positive");
-      if (value < -15) scoreEl.classList.add("negative");
-      if (Math.abs(value) <= 15) scoreEl.classList.add("neutral");
+      else if (value < -15) scoreEl.classList.add("negative");
+      else scoreEl.classList.add("neutral");
+
       card.append(name, scoreEl);
       grid.appendChild(card);
     });
 
-let currentMatches = [];
-
-    const THRESHOLD = 1;   // stricter — change to 10 or 15 if needed
-
+    // ===== MATCHING =====
+    let currentMatches = [];
+    const THRESHOLD = 1;
     const userInter = userScores.interference || 0;
-    const userOwn   = userScores.ownership || 0;
-
-    // Are we clearly in one economic quadrant?
+    const userOwn = userScores.ownership || 0;
     const isInQuadrant = Math.abs(userInter) > THRESHOLD && Math.abs(userOwn) > THRESHOLD;
 
     ideologies.forEach(ideology => {
       let dist = 0;
-
       Object.keys(userScores).forEach(axis => {
         let weight = 1.0;
-        if (axis === 'tradition' || axis === 'faith') weight = 0.25;
-
+        if (axis === "tradition" || axis === "faith") weight = 0.25;
         const diff = userScores[axis] - (ideology.scores[axis] || 0);
         dist += weight * (diff * diff);
       });
 
       let sqrtDist = Math.sqrt(dist);
 
-      // Extra penalty if in different quadrant
       if (isInQuadrant) {
         const ideoInter = ideology.scores.interference || 0;
-        const ideoOwn   = ideology.scores.ownership || 0;
-
+        const ideoOwn = ideology.scores.ownership || 0;
         const sameSignInter = (userInter > 0) === (ideoInter > 0);
-        const sameSignOwn   = (userOwn   > 0) === (ideoOwn   > 0);
-
+        const sameSignOwn = (userOwn > 0) === (ideoOwn > 0);
         if (!sameSignInter || !sameSignOwn) {
-          sqrtDist += 35;   // penalty for crossing quadrant — adjust 20-35 if needed
+          sqrtDist += 35;
         }
       }
 
@@ -381,15 +379,13 @@ let currentMatches = [];
     });
 
     currentMatches.sort((a, b) => a.dist - b.dist);
-
     const maxDist = 75;
-    
-    // Function to update main match and play song
+
+    // ===== UPDATE MAIN MATCH =====
     function updateMainMatch(index) {
       const selected = currentMatches[index];
       const closest = selected.ideology;
 
-      // Update main match
       const logoEl = document.getElementById("matchLogo");
       const container = document.getElementById("logoContainer");
       logoEl.src = closest.img || "https://via.placeholder.com/160/333/ccc?text=No+Logo";
@@ -405,10 +401,10 @@ let currentMatches = [];
 
       document.getElementById("matchName").textContent = closest.name;
       const percent = Math.round(100 - (selected.dist / maxDist) * 100);
-      document.getElementById("matchPercent").textContent = `${percent}% compatibility`;
+      document.getElementById("matchPercent").textContent = percent + "% compatibility";
       document.getElementById("matchDesc").textContent = closest.description;
 
-      // Play song
+      // Audio
       const audioMap = {
         "Ailtirí na hAiséirghe": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ailtiri-na-haiseirghe.mp3",
         "All-Russian Fascist Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/all-russian-fascist-party.mp3",
@@ -495,196 +491,123 @@ let currentMatches = [];
         audio.play().catch(() => {});
       }
 
-      // Scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    // Initial top match
+    // Initial match
     updateMainMatch(0);
 
-    // Next 3 matches - clickable to switch with top
+    // ===== NEXT MATCHES =====
     const nextList = document.getElementById("nextList");
-    for (let i = 1; i <= 3 && i < currentMatches.length; i++) {
-      const { ideology, dist } = currentMatches[i];
-      const percent = Math.round(100 - (dist / maxDist) * 100);
 
-      const item = document.createElement("div");
-      item.className = "next-item";
-      item.dataset.index = i;
+    function renderNextMatches() {
+      nextList.innerHTML = "";
+      for (let i = 1; i <= 3 && i < currentMatches.length; i++) {
+        const { ideology, dist } = currentMatches[i];
+        const percent = Math.round(100 - (dist / maxDist) * 100);
 
-      const logo = document.createElement("img");
-      logo.className = "next-logo";
-      logo.src = ideology.img || "https://via.placeholder.com/48/444/aaa?text=?";
-      logo.alt = ideology.name;
+        const item = document.createElement("div");
+        item.className = "next-item";
+        item.dataset.index = i;
 
-      const info = document.createElement("div");
-      info.className = "next-info";
-      const name = document.createElement("div");
-      name.className = "next-name";
-      name.textContent = ideology.name;
-      const pct = document.createElement("div");
-      pct.className = "next-percent";
-      pct.textContent = `${percent}% compatibility`;
+        const logo = document.createElement("img");
+        logo.className = "next-logo";
+        logo.src = ideology.img || "https://via.placeholder.com/48/444/aaa?text=?";
+        logo.alt = ideology.name;
 
-      info.append(name, pct);
-      item.append(logo, info);
+        const info = document.createElement("div");
+        info.className = "next-info";
 
-      // Click to switch with top match
-      item.onclick = () => {
-        const clickedIndex = parseInt(item.dataset.index);
-        // Swap in the array
-        [currentMatches[0], currentMatches[clickedIndex]] = [currentMatches[clickedIndex], currentMatches[0]];
-        // Re-render next list
-        nextList.innerHTML = '';
-        for (let j = 1; j <= 3 && j < currentMatches.length; j++) {
-          const { ideology, dist } = currentMatches[j];
-          const percent = Math.round(100 - (dist / maxDist) * 100);
-          const newItem = document.createElement("div");
-          newItem.className = "next-item";
-          newItem.dataset.index = j;
-          const newLogo = document.createElement("img");
-          newLogo.className = "next-logo";
-          newLogo.src = ideology.img || "https://via.placeholder.com/48/444/aaa?text=?";
-          const newInfo = document.createElement("div");
-          newInfo.className = "next-info";
-          const newName = document.createElement("div");
-          newName.className = "next-name";
-          newName.textContent = ideology.name;
-          const newPct = document.createElement("div");
-          newPct.className = "next-percent";
-          newPct.textContent = `${percent}% compatibility`;
-          newInfo.append(newName, newPct);
-          newItem.append(newLogo, newInfo);
-          newItem.onclick = () => {
-            const newClickedIndex = parseInt(newItem.dataset.index);
-            [currentMatches[0], currentMatches[newClickedIndex]] = [currentMatches[newClickedIndex], currentMatches[0]];
-            nextList.innerHTML = '';
-            for (let k = 1; k <= 3 && k < currentMatches.length; k++) {
-              const { ideology, dist } = currentMatches[k];
-              const p = Math.round(100 - (dist / maxDist) * 100);
-              const tempItem = document.createElement("div");
-              tempItem.className = "next-item";
-              tempItem.dataset.index = k;
-              const tempLogo = document.createElement("img");
-              tempLogo.className = "next-logo";
-              tempLogo.src = ideology.img || "https://via.placeholder.com/48/444/aaa?text=?";
-              const tempInfo = document.createElement("div");
-              tempInfo.className = "next-info";
-              const tempName = document.createElement("div");
-              tempName.className = "next-name";
-              tempName.textContent = ideology.name;
-              const tempPct = document.createElement("div");
-              tempPct.className = "next-percent";
-              tempPct.textContent = `${p}% compatibility`;
-              tempInfo.append(tempName, tempPct);
-              tempItem.append(tempLogo, tempInfo);
-              tempItem.onclick = () => {
-                const idx = parseInt(tempItem.dataset.index);
-                [currentMatches[0], currentMatches[idx]] = [currentMatches[idx], currentMatches[0]];
-                nextList.innerHTML = '';
-                // re-render loop would go here, but to keep it simple we'll reload the page after swap
-                location.reload();
-              };
-              nextList.appendChild(tempItem);
-            }
-            updateMainMatch(0);
-          };
-          nextList.appendChild(newItem);
-        }
-        updateMainMatch(0);
-      };
+        const name = document.createElement("div");
+        name.className = "next-name";
+        name.textContent = ideology.name;
 
-      nextList.appendChild(item);
+        const pct = document.createElement("div");
+        pct.className = "next-percent";
+        pct.textContent = percent + "% compatibility";
+
+        info.append(name, pct);
+        item.append(logo, info);
+
+        item.onclick = () => {
+          const clickedIndex = parseInt(item.dataset.index);
+          [currentMatches[0], currentMatches[clickedIndex]] = [currentMatches[clickedIndex], currentMatches[0]];
+          renderNextMatches();
+          updateMainMatch(0);
+        };
+
+        nextList.appendChild(item);
+      }
     }
 
-       // Canvas dot drawing with capped values
-   window.onload = function() {
+    renderNextMatches();
+
+    // ===== CANVAS (SIMPLE & RELIABLE) =====
+    window.onload = function() {
+      const banner = document.getElementById("banner");
       const background = new Image();
+
       background.onload = function() {
         const c = document.createElement("canvas");
         c.width = background.width;
         c.height = background.height;
         const ctx = c.getContext("2d");
 
-        // Draw chart
         ctx.drawImage(background, 0, 0);
 
-        // Capped scores
         const state = Math.max(-50, Math.min(50, userScores.interference || 0));
         const owner = Math.max(-50, Math.min(50, userScores.ownership || 0));
         const trad  = Math.max(-50, Math.min(50, userScores.tradition || 0));
         const faith = Math.max(-50, Math.min(50, userScores.faith || 0));
 
-        const dotColor = "#000000";
-        const dotStroke = "#ffffff";
-        const dotStrokeWidth = 2;
-        const cx = 600;
-        const cy = 600;
-        const half = 510;
+        const cx = 600, cy = 600, half = 510;
 
         // Main square
         ctx.beginPath();
-        ctx.arc(cx + (state / 50) * half, cy - (owner / 50) * half, 10, 0, 2 * Math.PI);
-        ctx.fillStyle = dotColor;
+        ctx.arc(cx + (state / 50) * half, cy - (owner / 50) * half, 12, 0, 2 * Math.PI);
+        ctx.fillStyle = "#000";
         ctx.fill();
-        ctx.lineWidth = dotStrokeWidth;
-        ctx.strokeStyle = dotStroke;
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#fff";
         ctx.stroke();
 
         // Tradition
         ctx.beginPath();
-        ctx.arc(1317, 600 - (trad / 50) * half, 10, 0, 2 * Math.PI);
-        ctx.fillStyle = dotColor;
+        ctx.arc(1317, 600 - (trad / 50) * half, 12, 0, 2 * Math.PI);
+        ctx.fillStyle = "#000";
         ctx.fill();
-        ctx.lineWidth = dotStrokeWidth;
-        ctx.strokeStyle = dotStroke;
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#fff";
         ctx.stroke();
 
         // Faith
         ctx.beginPath();
-        ctx.arc(1517, 600 - (faith / 50) * half, 10, 0, 2 * Math.PI);
-        ctx.fillStyle = dotColor;
+        ctx.arc(1517, 600 - (faith / 50) * half, 12, 0, 2 * Math.PI);
+        ctx.fillStyle = "#000";
         ctx.fill();
-        ctx.lineWidth = dotStrokeWidth;
-        ctx.strokeStyle = dotStroke;
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#fff";
         ctx.stroke();
 
-        // Output to the page
-        document.getElementById("banner").src = c.toDataURL("image/png");
+        banner.src = c.toDataURL("image/png");
       };
 
       background.onerror = function() {
-        console.error("Could not load tpchart.png – check the file path");
-        document.getElementById("banner").alt = "Chart failed to load (tpchart.png missing?)";
+        console.error("tpchart.png failed to load");
+        banner.alt = "Chart image failed to load – make sure tpchart.png is in the same folder";
       };
 
+      // NO crossOrigin
       background.src = "tpchart.png";
     };
 
-    function roundRect(ctx, x, y, w, h, r) {
-      if (w < 2 * r) r = w / 2;
-      if (h < 2 * r) r = h / 2;
-      ctx.beginPath();
-      ctx.moveTo(x + r, y);
-      ctx.arcTo(x + w, y, x + w, y + h, r);
-      ctx.arcTo(x + w, y + h, x, y + h, r);
-      ctx.arcTo(x, y + h, x, y, r);
-      ctx.arcTo(x, y, x + w, y, r);
-      ctx.closePath();
-    }
-
-    // Music mute button
+    // ===== MUTE BUTTON =====
     const muteBtn = document.getElementById("musicMute");
     const audio = document.getElementById("introAudio");
     muteBtn.style.display = "flex";
     muteBtn.onclick = () => {
-      if (audio.muted) {
-        audio.muted = false;
-        muteBtn.innerHTML = "🔊";
-      } else {
-        audio.muted = true;
-        muteBtn.innerHTML = "🔇";
-      }
+      audio.muted = !audio.muted;
+      muteBtn.innerHTML = audio.muted ? "🔇" : "🔊";
     };
   </script>
 </body>
