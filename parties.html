@@ -47,7 +47,6 @@
       color: white;
       font-size: 1.5rem;
       font-weight: 700;
-      letter-spacing: -0.5px;
     }
     .container {
       max-width: 1100px;
@@ -79,16 +78,14 @@
       text-align: center;
       transition: transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
-      position: relative;
     }
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 28px rgba(0,0,0,0.4);
     }
     .card.expanded {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.4);
       border-color: var(--accent);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.4);
     }
     .logo-box {
       width: 120px;
@@ -122,7 +119,6 @@
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      transition: all 0.25s ease;
     }
     .card.expanded .desc {
       -webkit-line-clamp: unset;
@@ -136,11 +132,12 @@
       text-decoration: none;
       font-weight: 500;
     }
-    .back-link:hover {
-      text-decoration: underline;
+    .error {
+      text-align: center;
+      color: #f87171;
+      margin-top: 3rem;
+      font-size: 1.2rem;
     }
-
-    /* GitHub corner */
     .github-corner {
       position: absolute;
       top: 0;
@@ -155,20 +152,11 @@
       20%, 60% { transform: rotate(-25deg); }
       40%, 80% { transform: rotate(10deg); }
     }
-    @media (max-width: 500px) {
-      .github-corner:hover .octo-arm {
-        animation: none;
-      }
-      .github-corner .octo-arm {
-        animation: octocat-wave 560ms ease-in-out;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <!-- GitHub corner -->
-  <a href="https://github.com/tpvalues/TPvalues" class="github-corner" target="_blank" rel="noopener noreferrer" aria-label="View source on GitHub">
+  <a href="https://github.com/tpvalues/TPvalues" class="github-corner" target="_blank" rel="noopener noreferrer">
     <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
       <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
       <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
@@ -186,6 +174,7 @@
     <p class="subtitle">Every movement currently in the test</p>
 
     <div class="grid" id="grid"></div>
+    <div id="error" class="error" style="display:none;"></div>
 
     <a href="index.html" class="back-link">← Back to the test</a>
   </div>
@@ -193,35 +182,59 @@
   <script src="ideologies.js"></script>
   <script>
     const grid = document.getElementById("grid");
-    const sorted = [...ideologies].sort((a, b) => a.name.localeCompare(b.name));
+    const errorBox = document.getElementById("error");
 
-    sorted.forEach(ideo => {
-      const card = document.createElement("div");
-      card.className = "card";
+    // Check if ideologies loaded
+    if (typeof ideologies === "undefined" || !Array.isArray(ideologies)) {
+      errorBox.style.display = "block";
+      errorBox.textContent = "Error: ideologies.js did not load correctly. Make sure the file is in the same folder and named exactly \"ideologies.js\".";
+    } else {
+      const sorted = [...ideologies].sort((a, b) => a.name.localeCompare(b.name));
 
-      const logoBox = document.createElement("div");
-      logoBox.className = "logo-box";
+      sorted.forEach(ideo => {
+        const card = document.createElement("div");
+        card.className = "card";
 
-      const img = document.createElement("img");
-      img.src = ideo.img || "";
-      img.alt = ideo.name;
-      img.onerror = () => {
-        img.style.display = "none";
-        logoBox.textContent = "?";
-        logoBox.style.color = "#64748b";
-        logoBox.style.fontSize = "2rem";
-      };
-      logoBox.appendChild(img);
+        const logoBox = document.createElement("div");
+        logoBox.className = "logo-box";
 
-      const name = document.createElement("div");
-      name.className = "name";
-      name.textContent = ideo.name;
+        const img = document.createElement("img");
+        img.src = ideo.img || "";
+        img.alt = ideo.name;
+        img.onerror = () => {
+          img.style.display = "none";
+          logoBox.textContent = "?";
+          logoBox.style.color = "#64748b";
+          logoBox.style.fontSize = "2rem";
+        };
+        logoBox.appendChild(img);
 
-      const desc = document.createElement("div");
-      desc.className = "desc";
-      desc.textContent = ideo.description || "";
+        const name = document.createElement("div");
+        name.className = "name";
+        name.textContent = ideo.name;
 
-      card.append(logoBox, name, desc);
+        const desc = document.createElement("div");
+        desc.className = "desc";
+        desc.textContent = ideo.description || "";
 
-      // Toggle expand on click
-      card.addEventListener("click", (e) =>
+        card.append(logoBox, name, desc);
+
+        card.addEventListener("click", (e) => {
+          e.stopPropagation();
+          document.querySelectorAll(".card.expanded").forEach(c => {
+            if (c !== card) c.classList.remove("expanded");
+          });
+          card.classList.toggle("expanded");
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    // Click outside to close
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".card.expanded").forEach(c => c.classList.remove("expanded"));
+    });
+  </script>
+</body>
+</html>
