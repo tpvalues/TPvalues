@@ -65,20 +65,22 @@
       margin-bottom: 3rem;
       font-size: 1.2rem;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.8rem;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.6rem;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
+   .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+  align-items: start;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.6rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  height: fit-content;
+}
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 28px rgba(0,0,0,0.4);
