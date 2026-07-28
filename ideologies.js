@@ -15,55 +15,55 @@ const ideologies = [
     name: "Ragnarok Circle",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ragnarok.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
     {
     name: "National Socialist Workers' Party",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/NSPR.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Ratniks",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ratniks.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "National Social Movement",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/nationalsocial.png",
     description: "The National Social Movement (Bulgarian: Национално социално движение) was a Bulgarian organisation led by Aleksandar Tsankov in the 1930s. It promoted authoritarian nationalism, corporatism and anti-communism, preaching its own idea of 'social nationalism' which for Tsankov involved support of a national workers' syndicate against class struggle. In opposition to other Bulgarian parties, it rejected racialism; Tsankov giving aid to jewish families during WW2.",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Papadopoulism",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/papadopoulism.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Ustaše",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ustase.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Political Circle 'Zveno'",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/zveno.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "New Swedish Movement",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/newswedishmovement.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Swedish Socialist Gathering",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/SSS.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Army Comrades Association",
@@ -75,25 +75,25 @@ const ideologies = [
     name: "Ecuadorian Nationalist Revolutionary Action",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ecuadornatsynd.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Bolivian Socialist Falange",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/bolsocfal.png",
     description: "The Bolivian Socialist Falange (Spanish: Falange Socialista Boliviana) is a Falangism-inspired party founded in 1937 by Óscar Únzaga de la Vega. It combines nationalism, corporatism, and an 'heterodox' form of socialism focused on 'human solidarity' with a strong emphasis on Catholic values. After WW2, the party's stance evolved from an adherence to Spanish falangism to a more moderate form of statism; with the leaders adopting a strong anti-communist stance, with its leaders being particularly critical of Cuba's Fidel Castro following his emergence in the 50's.",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Authentic Party",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/authenticparty.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "Revolutionary National Syndicalist Movement",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/revnatsynd.png",
     description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
   },
   {
     name: "All-Russian Fascist Party",
