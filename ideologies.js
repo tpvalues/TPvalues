@@ -5,6 +5,96 @@ const ideologies = [
     description: "The Architects of the Resurrection (Irish: Ailtirí na hAiséirghe), was a Fascist political party in Ireland, founded by Gearóid Ó Cuinneagáin in March 1942. Focused on the revival of the Irish language, they sought to create a one-party Corporatist state rejecting Liberal Democracy, jews and freemasons. The party promoted strong Irish Nationalism and even Pan-Celtism, supporting Welsh independence movements and showing open hostility to the partition of Ireland. Despite strong Nationalism and inspiration from the Papal Encyclicals, the party was tolerant of Protestantism, using Christian rather than Catholic terminology.",
     scores: { interference: -15, ownership: 5, tradition: 37, faith: 29 }
   },
+    {
+    name: "Zadruga",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/zadruga.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+    {
+    name: "Ragnarok Circle",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ragnarok.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+    {
+    name: "National Socialist Workers' Party",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/NSPR.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Ratniks",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ratniks.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "National Social Movement",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/nationalsocial.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Papadopoulism",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/papadopoulism.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Ustaše",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ustase.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Political Circle 'Zveno'",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/zveno.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "New Swedish Movement",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/newswedishmovement.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Swedish Socialist Gathering",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/SSS.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Army Comrades Association",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/blueshirts.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Ecuadorian Nationalist Revolutionary Action",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ecuadornatsynd.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Bolivian Socialist Falange",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/bolsocfal.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Authentic Party",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/authenticparty.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
+  {
+    name: "Revolutionary National Syndicalist Movement",
+    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/revnatsynd.png",
+    description: "WORK IN PROGRESS",
+    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+  },
   {
     name: "All-Russian Fascist Party",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/russianfascism.png",
