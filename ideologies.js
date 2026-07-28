@@ -8,8 +8,8 @@ const ideologies = [
     {
     name: "Zadruga",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/zadruga.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    description: "Zadruga was a Polish nationalist and anti-clerical movement founded by Jan Stachniuk in the interwar period. It rejected both liberalism and Marxism, calling instead for a form of national collectivism rooted in Pagan Slavic traditions. The movement advocated strong state direction of the economy, cultural revolution and the revival of Paganism; aimed against Western individualism. It sought the creation of a new Polish identity based on discipline, hierarchy and communal values.",
+    scores: { interference: -22, ownership: -28, tradition: -15, faith: -35 }
   },
     {
     name: "Ragnarok Circle",
@@ -32,7 +32,7 @@ const ideologies = [
   {
     name: "National Social Movement",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/nationalsocial.png",
-    description: "WORK IN PROGRESS",
+    description: "The National Social Movement (Bulgarian: Национално социално движение) was a Bulgarian organisation led by Aleksandar Tsankov in the 1930s. It promoted authoritarian nationalism, corporatism and anti-communism, preaching its own idea of 'social nationalism' which for Tsankov involved support of a national workers' syndicate against class struggle. In opposition to other Bulgarian parties, it rejected racialism; Tsankov giving aid to jewish families during WW2.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
@@ -68,8 +68,8 @@ const ideologies = [
   {
     name: "Army Comrades Association",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/blueshirts.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
+    description: "The Army Comrades Association (ACA), better known as the Blueshirts (Irish: Na Léinte Gorma), was an Irish para-fascist organisation founded in 1932 by Eoin O'Duffy. It was strongly anti-communist, corporatist, and nationalist, drawing inspiration from Mussolini’s Italy and the Catholic social teachings of the time. The movement opposed the Fianna Fáil government, organised large rallies, and later formed part of Fine Gael before O'Duffy split to form the more radical National Corporate Party.",
+    scores: { interference: -18, ownership: 12, tradition: 32, faith: 38 }
   },
   {
     name: "Ecuadorian Nationalist Revolutionary Action",
@@ -80,7 +80,7 @@ const ideologies = [
   {
     name: "Bolivian Socialist Falange",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/bolsocfal.png",
-    description: "WORK IN PROGRESS",
+    description: "The Bolivian Socialist Falange (Spanish: Falange Socialista Boliviana) is a Falangism-inspired party founded in 1937 by Óscar Únzaga de la Vega. It combines nationalism, corporatism, and an 'heterodox' form of socialism focused on "human solidarity" with a strong emphasis on Catholic values. After WW2, the party's stance evolved from an adherence to Spanish falangism to a more moderate form of statism; with the leaders adopting a strong anti-communist stance, with its leaders being particularly critical of Cuba's Fidel Castro following his emergence in the 50's.",
     scores: { interference: 0, ownership: 0, tradition: 0, faith: 0 }
   },
   {
