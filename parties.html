@@ -65,22 +65,22 @@
       margin-bottom: 3rem;
       font-size: 1.2rem;
     }
-   .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.8rem;
-  align-items: start;
-}
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.6rem;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-  height: fit-content;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+      align-items: start;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.6rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      height: fit-content;
+    }
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 28px rgba(0,0,0,0.4);
@@ -154,9 +154,35 @@
       20%, 60% { transform: rotate(-25deg); }
       40%, 80% { transform: rotate(10deg); }
     }
+    #musicMute {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: 48px;
+      height: 48px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid #444;
+      border-radius: 12px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: all 0.2s;
+    }
+    #musicMute:hover {
+      background: rgba(50, 65, 90, 0.9);
+      transform: translateX(-50%) scale(1.05);
+    }
   </style>
 </head>
 <body>
+  <button id="musicMute" title="Mute / Unmute">🔊</button>
+  <audio id="partyAudio" preload="auto"></audio>
 
   <a href="https://github.com/tpvalues/TPvalues" class="github-corner" target="_blank" rel="noopener noreferrer">
     <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
@@ -174,10 +200,8 @@
   <div class="container">
     <h1>All Ideologies</h1>
     <p class="subtitle">Every movement currently in the test</p>
-
     <div class="grid" id="grid"></div>
     <div id="error" class="error" style="display:none;"></div>
-
     <a href="index.html" class="back-link">← Back to the test</a>
   </div>
 
@@ -185,8 +209,102 @@
   <script>
     const grid = document.getElementById("grid");
     const errorBox = document.getElementById("error");
+    const muteBtn = document.getElementById("musicMute");
+    const audio = document.getElementById("partyAudio");
 
-    // Check if ideologies loaded
+    const audioMap = {
+      "Ailtirí na hAiséirghe": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ailtiri-na-haiseirghe.mp3",
+      "Army Comrades Association": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/blueshirts.mp3",
+      "Authentic Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/authenticparty.mp3",
+      "Bolivian Socialist Falange": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/bolsocfal.mp3",
+      "Ecuadorian Nationalist Revolutionary Action": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ecuadornatsynd.mp3",
+      "National Social Movement": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/nationalsocial.mp3",
+      "National Socialist Workers' Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/NSPR.mp3",
+      "New Swedish Movement": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/newswedishmovement.mp3",
+      "Papadopoulism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/papadopoulism.mp3",
+      "Political Circle 'Zveno'": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/zveno.mp3",
+      "Ragnarok Circle": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ragnarok.mp3",
+      "Ratniks": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ratniks.mp3",
+      "Revolutionary National Syndicalist Movement": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/revnatsynd.mp3",
+      "Swedish Socialist Gathering": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/SSS.mp3",
+      "Ustaše": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ustase.mp3",
+      "Zadruga": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/zadruga.mp3",
+      "All-Russian Fascist Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/all-russian-fascist-party.mp3",
+      "Ba'ath Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/baath-party.mp3",
+      "Balli Kombëtar": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/balli-kombetar.mp3",
+      "Bowdenism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/bowdenism.mp3",
+      "Brazilian Integralist Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/brazilian-integralist-party.mp3",
+      "Brazilian Labour Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/brazilian-labour-party.mp3",
+      "Breton National Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/breton-national-party.mp3",
+      "British Union of Fascists": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/british-union-of-fascists.mp3",
+      "Crusade of Romanianism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/crusade-of-romanianism.mp3",
+      "Czech National Socialist Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/czech-national-socialist-party.mp3",
+      "Distributism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/distributism.mp3",
+      "Ecofascism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ecofascism.mp3",
+      "Ethnocacerism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ethnocacerism.mp3",
+      "Euskadi Carlism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/euskadi-carlism.mp3",
+      "Falange Española": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/falange-espanola.mp3",
+      "Fatherland Front": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/fatherland-front.mp3",
+      "Fiumanism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/fiumanism.mp3",
+      "Francist Movement": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/francist-movement.mp3",
+      "Action Française": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/action-francaise.mp3",
+      "French Popular Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/french-popular-party.mp3",
+      "French Renewal": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/french-renewal.mp3",
+      "French Social Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/french-social-party.mp3",
+      "Futurism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/futurism.mp3",
+      "Gajdism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/gajdism.mp3",
+      "Georgism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/georgism.mp3",
+      "Golden Square": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/golden-square.mp3",
+      "Guild Socialism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/guild-socialism.mp3",
+      "Hlinka's Slovak People's Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/hlinkas-slovak-peoples-party.mp3",
+      "Hungarism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/hungarism.mp3",
+      "Ilminism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ilminism.mp3",
+      "Iron Guard": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/iron-guard.mp3",
+      "JONSism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/jonsism.mp3",
+      "Kataeb Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/kataeb-party.mp3",
+      "Kokkashugi": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/kokkashugi.mp3",
+      "Kokutairon": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/kokutairon.mp3",
+      "Chiangism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/chiangism.mp3",
+      "Lithuanian Nationalist Union": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/lithuanian-nationalist-union.mp3",
+      "Lusitanian Integralism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/lusitanian-integralism.mp3",
+      "Lys Noir": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/lys-noir.mp3",
+      "Metaxism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/metaxism.mp3",
+      "Nacionalismo": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/nacionalismo.mp3",
+      "Nasjonal Samling": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/nasjonal-samling.mp3",
+      "Nasserism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/nasserism.mp3",
+      "National Fascist Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/national-fascist-party.mp3",
+      "National Radical Camp": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/national-radical-camp.mp3",
+      "National Synarchist Union": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/national-synarchist-union.mp3",
+      "National Syndicalist Movement": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/national-syndicalist-movement.mp3",
+      "Neosocialism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/neosocialism.mp3",
+      "Nouvelle Droite": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/nouvelle-droite.mp3",
+      "Party of National Socialists": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/party-of-national-socialists.mp3",
+      "Patriot Front": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/patriot-front.mp3",
+      "Patriotic People's Movement": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/patriotic-peoples-movement.mp3",
+      "Peronism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/peronism.mp3",
+      "Petainism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/petainism.mp3",
+      "Phibunism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/phibunism.mp3",
+      "Poujadism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/poujadism.mp3",
+      "Rexist Party": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/rexist-party.mp3",
+      "Salazarism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/salazarism.mp3",
+      "Sansepolcrismo": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/sansepolcrismo.mp3",
+      "Spenglerianism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/spenglerianism.mp3",
+      "Squadrismo": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/squadrismo.mp3",
+      "Strasserism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/strasserism.mp3",
+      "Superfascism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/superfascism.mp3",
+      "Syrian Social Nationalism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/syrian-social-nationalism.mp3",
+      "Szeged Idea": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/szeged-idea.mp3",
+      "Tatenokai": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/tatenokai.mp3",
+      "Third International Theory": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/third-international-theory.mp3",
+      "Union of Bulgarian National Legions": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/union-of-bulgarian-national-legions.mp3",
+      "Union of Dutch National Solidarists": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/union-of-dutch-national-solidarists.mp3",
+      "Valoisism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/valoisism.mp3",
+      "VAPS Movement": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/vaps-movement.mp3",
+      "Yellow Socialism": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/yellow-socialism.mp3",
+      "Yugoslav People's Movement": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/yugoslav-peoples-movement.mp3",
+      "Yugoslav Radical Union": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/yugoslav-radical-union.mp3"
+    };
+
     if (typeof ideologies === "undefined" || !Array.isArray(ideologies)) {
       errorBox.style.display = "block";
       errorBox.textContent = "Error: ideologies.js did not load correctly. Make sure the file is in the same folder and named exactly \"ideologies.js\".";
@@ -199,7 +317,6 @@
 
         const logoBox = document.createElement("div");
         logoBox.className = "logo-box";
-
         const img = document.createElement("img");
         img.src = ideo.img || "";
         img.alt = ideo.name;
@@ -223,17 +340,34 @@
 
         card.addEventListener("click", (e) => {
           e.stopPropagation();
+
+          // Expand / collapse
           document.querySelectorAll(".card.expanded").forEach(c => {
             if (c !== card) c.classList.remove("expanded");
           });
           card.classList.toggle("expanded");
+
+          // Play audio
+          const src = audioMap[ideo.name];
+          if (src) {
+            audio.src = src;
+            audio.volume = 0.4;
+            audio.play().catch(() => {});
+            muteBtn.style.display = "flex";
+          }
         });
 
         grid.appendChild(card);
       });
     }
 
-    // Click outside to close
+    // Mute button
+    muteBtn.onclick = () => {
+      audio.muted = !audio.muted;
+      muteBtn.innerHTML = audio.muted ? "🔇" : "🔊";
+    };
+
+    // Click outside to close expanded cards
     document.addEventListener("click", () => {
       document.querySelectorAll(".card.expanded").forEach(c => c.classList.remove("expanded"));
     });
