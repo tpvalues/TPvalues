@@ -339,23 +339,38 @@
         card.append(logoBox, name, desc);
 
         card.addEventListener("click", (e) => {
-          e.stopPropagation();
+  e.stopPropagation();
 
-          // Expand / collapse
-          document.querySelectorAll(".card.expanded").forEach(c => {
-            if (c !== card) c.classList.remove("expanded");
-          });
-          card.classList.toggle("expanded");
+  const isExpanding = !card.classList.contains("expanded");
 
-          // Play audio
-          const src = audioMap[ideo.name];
-          if (src) {
-            audio.src = src;
-            audio.volume = 0.4;
-            audio.play().catch(() => {});
-            muteBtn.style.display = "flex";
-          }
-        });
+  // Close all other cards
+  document.querySelectorAll(".card.expanded").forEach(c => {
+    if (c !== card) c.classList.remove("expanded");
+  });
+
+  // Toggle current card
+  card.classList.toggle("expanded");
+
+  if (isExpanding) {
+    // Expanding → play the song
+    const src = audioMap[ideo.name];
+    if (src) {
+      // Stop any currently playing audio first
+      audio.pause();
+      audio.currentTime = 0;
+
+      audio.src = src;
+      audio.volume = 0.4;
+      audio.play().catch(() => {});
+      muteBtn.style.display = "flex";
+    }
+  } else {
+    // Collapsing → stop the song completely
+    audio.pause();
+    audio.currentTime = 0;
+    muteBtn.style.display = "none";
+  }
+});
 
         grid.appendChild(card);
       });
