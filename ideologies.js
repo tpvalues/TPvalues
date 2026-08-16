@@ -12,59 +12,59 @@ const ideologies = [
     scores: { interference: -22, ownership: -28, tradition: -15, faith: -35 }
   },
     {
-    name: "Ragnarok Circle",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ragnarok.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
+  name: "Ragnarok Circle",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ragnarok.png",
+  description: "The Ragnarok Circle was a radical Norwegian National Socialist group active in the 1930s that rejected both Quisling’s Nasjonal Samling and mainstream German Nazism as insufficiently pure. It combined extreme Germanic racialism, neo-paganism rooted in Norse tradition, and a cult of the ‘Norwegian tribe’. Members sought a total cultural and spiritual revolution returning to pre-Christian values, pan-Germanic unity, and a society ordered by ‘divine racial law’. Strongly anti-Christian and anti-clerical, it emphasised hierarchy, racial hygiene and opposition to both liberalism and Marxism.",
+  scores: { interference: -28, ownership: -22, tradition: 25, faith: -38 }
   },
     {
-    name: "National Socialist Workers' Party",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/NSPR.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "National Socialist Workers' Party",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/NSPR.png",
+  description: "The National Socialist Workers' Party (Polish: Narodowo-Socjalistyczna Partia Robotnicza, NSPR) was a short-lived Polish National Socialist organisation founded in late 1933 by Wacław Kozielski, a former National Democrat expelled for radicalism. It imitated many NSDAP demands while remaining strongly anti-German. Membership was restricted to Christians of “Aryan” descent; the party was antisemitic, anti-Marxist and socially radical in its main faction. It defended Christianity against anti-clericalism without adopting strict Catholic integralism. The party split into Sosnowiec and Katowice factions, was banned in June 1934, and its remnants later tried to join the National Radical Camp or formed successor groups.",
+  scores: { interference: -25, ownership: -20, tradition: 30, faith: 22 }
+},
   {
-    name: "Ratniks",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ratniks.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Ratniks",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ratniks.png",
+  description: "The Ratniks (Union of Warriors for the Advancement of Bulgarianness) was a Bulgarian far-right nationalist and paramilitary organisation founded in 1936 by Asen Kantardzhiev. Closely modelled on National Socialism, it combined extreme Bulgarian nationalism, antisemitism, anti-communism and anti-capitalism with loyalty to the Bulgarian Orthodox Church. It advocated strong state economic intervention, nationalisation of key sectors, hierarchical social order and the creation of a totalitarian national community free of ‘foreign’ influences.",
+  scores: { interference: -32, ownership: -28, tradition: 35, faith: 30 }
+},
   {
     name: "National Social Movement",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/nationalsocial.png",
     description: "The National Social Movement (Bulgarian: Национално социално движение) was a Bulgarian organisation led by Aleksandar Tsankov in the 1930s. It promoted authoritarian nationalism, corporatism and anti-communism, preaching its own idea of 'social nationalism' which for Tsankov involved support of a national workers' syndicate against class struggle. In opposition to other Bulgarian parties, it rejected racialism; Tsankov giving aid to jewish families during WW2.",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
+    scores: { interference: -20, ownership: -15, tradition: 25, faith: 18 }
   },
   {
-    name: "Papadopoulism",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/papadopoulism.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Papadopoulism",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/papadopoulism.png",
+  description: "Papadopoulism refers to the ideology of the Greek military junta (1967–1974) under Colonel Georgios Papadopoulos. It combined authoritarian nationalism, anti-communism, militarism and a strong emphasis on ‘Helleno-Christian civilisation’. The regime rejected parliamentary democracy and liberal individualism, promoted traditional family values, Orthodoxy and national regeneration, while pursuing developmentalist economic policies under military guidance. It presented itself as a regenerative force restoring order, hierarchy and Greek cultural continuity against both communism and Western secularism.",
+  scores: { interference: -18, ownership: 10, tradition: 40, faith: 35 }
+},
   {
-    name: "Ustaše",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ustase.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Ustaše",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ustase.png",
+  description: "The Ustaše (Croatian Revolutionary Movement) was a Croatian fascist and ultra-nationalist organisation founded by Ante Pavelić. It sought an independent Greater Croatia through revolutionary violence and later ruled the Independent State of Croatia (1941–1945). Ideology fused extreme Croatian ethnic nationalism, national Catholicism, corporatism, anti-Serbian sentiment and a cult of the leader and the warrior. It rejected both liberalism and communism, aiming at a totalitarian national community purified of ‘foreign’ elements and organised on hierarchical, traditional and Catholic principles.",
+  scores: { interference: -25, ownership: -10, tradition: 42, faith: 45 }
+},
   {
-    name: "Political Circle 'Zveno'",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/zveno.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Political Circle 'Zveno'",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/zveno.png",
+  description: "Political Circle ‘Zveno’ was a Bulgarian authoritarian-nationalist organisation of officers and intellectuals founded around 1930. It advocated the abolition of the multi-party system, corporatist economic organisation, technocratic modernisation and a strong non-partisan state independent of both the Axis and the Soviet Union. Strongly anti-parliamentary and anti-IMRO, it carried out the 1934 coup, dissolved parties and trade unions, and pursued a programme of national rationalisation, social solidarity and state-directed development while remaining largely secular and modernising rather than clerical or monarchical.",
+  scores: { interference: -22, ownership: -5, tradition: 5, faith: -15 }
+},
   {
-    name: "New Swedish Movement",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/newswedishmovement.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "New Swedish Movement",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/newswedishmovement.png",
+  description: "The New Swedish Movement (Nysvenska Rörelsen) was a Swedish fascist organisation led by Per Engdahl from the 1930s onward. It promoted a distinctly Swedish form of corporatism and nationalism (‘nysvenskhet’), rejecting both German National Socialism and pure Italian fascism as foreign imports while still drawing on them. Anti-communist, anti-parliamentary and socially conservative, it sought national unity above class conflict, a hierarchical organic society and European fascist cooperation after the war through the European Social Movement.",
+  scores: { interference: -20, ownership: 5, tradition: 30, faith: 10 }
+},
   {
-    name: "Swedish Socialist Gathering",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/SSS.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Swedish Socialist Gathering",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/SSS.png",
+  description: "Swedish Socialist Gathering (Svensk Socialistisk Samling, formerly the National Socialist Workers’ Party) was the principal Swedish National Socialist party under Sven Olov Lindholm. After an early phase closely copying German Nazism it rebranded toward a more national ‘Swedish socialism’, retaining antisemitism, anti-capitalism, anti-communism, corporatism and authoritarian nationalism. It organised youth and paramilitary structures and advocated strong state direction of the economy in the service of the national community.",
+  scores: { interference: -28, ownership: -22, tradition: 25, faith: 10 }
+},
   {
     name: "Army Comrades Association",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/blueshirts.png",
@@ -72,29 +72,29 @@ const ideologies = [
     scores: { interference: -18, ownership: 12, tradition: 32, faith: 38 }
   },
   {
-    name: "Ecuadorian Nationalist Revolutionary Action",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ecuadornatsynd.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Ecuadorian Nationalist Revolutionary Action",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/ecuadornatsynd.png",
+  description: "Acción Revolucionaria Nacionalista Ecuatoriana (ARNE) was an Ecuadorian fascist and national-syndicalist party founded in 1942 under the influence of Spanish Falangism. Led by Jorge Luna Yépez, it combined intense nationalism, anti-communism, anti-capitalism, corporatism and hierarchical organisation. It sought a ‘third-position’ Ecuadorian state free of both liberal democracy and Marxism, emphasising national unity, social justice through syndicates, and traditional Hispanic-Catholic values adapted to local conditions.",
+  scores: { interference: -15, ownership: -12, tradition: 32, faith: 30 }
+},
   {
-    name: "Bolivian Socialist Falange",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/bolsocfal.png",
-    description: "The Bolivian Socialist Falange (Spanish: Falange Socialista Boliviana) is a Falangism-inspired party founded in 1937 by Óscar Únzaga de la Vega. It combines nationalism, corporatism, and an 'heterodox' form of socialism focused on 'human solidarity' with a strong emphasis on Catholic values. After WW2, the party's stance evolved from an adherence to Spanish falangism to a more moderate form of statism; with the leaders adopting a strong anti-communist stance, with its leaders being particularly critical of Cuba's Fidel Castro following his emergence in the 50's.",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Bolivian Socialist Falange",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/bolsocfal.png",
+  description: "The Bolivian Socialist Falange (Spanish: Falange Socialista Boliviana) is a Falangism-inspired party founded in 1937 by Óscar Únzaga de la Vega. It combines nationalism, corporatism, and an 'heterodox' form of socialism focused on 'human solidarity' with a strong emphasis on Catholic values. After WW2, the party's stance evolved from an adherence to Spanish falangism to a more moderate form of statism; with the leaders adopting a strong anti-communist stance, with its leaders being particularly critical of Cuba's Fidel Castro following his emergence in the 50's.",
+  scores: { interference: -12, ownership: 5, tradition: 35, faith: 40 }
+},
   {
-    name: "Authentic Party",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/authenticparty.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Authentic Party",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/authenticparty.png",
+  description: "The Authentic Party (Partido Auténtico) was a Cuban revolutionary-nationalist party founded by Ramón Grau San Martín after the 1933 revolution. It combined anti-imperialist nationalism, social reform, and a rejection of both pure liberalism and communism. While not strictly fascist, it contained corporatist and authoritarian-nationalist currents, emphasised Cuban sovereignty against foreign (especially U.S.) influence, and promoted a form of national solidarity and state-guided social justice rooted in the 1933 programme.",
+  scores: { interference: -10, ownership: -8, tradition: 15, faith: 5 }
+},
   {
-    name: "Revolutionary National Syndicalist Movement",
-    img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/revnatsynd.png",
-    description: "WORK IN PROGRESS",
-    scores: { interference: 1, ownership: 1, tradition: 1, faith: 1 }
-  },
+  name: "Revolutionary National Syndicalist Movement",
+  img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/revnatsynd.png",
+  description: "The Movimiento Revolucionario Nacional Sindicalista (MRNS) was a Chilean national-syndicalist and fascist movement founded in 1952 (with roots in the late 1940s). Inspired by Spanish Falangism and the ideas of José Antonio Primo de Rivera and Ramiro Ledesma Ramos, and influenced by Catholic traditionalist thinkers such as Osvaldo Lira, it advocated a corporatist, hierarchical national state organised through syndicates and functional communities. Strongly anti-communist, anti-liberal and Hispanicist, it sought national unity through justice, rejected both capitalism and Marxism, and later collaborated with the Pinochet regime through the guilds system.",
+  scores: { interference: 15, ownership: -22, tradition: 35, faith: 32 }
+},
   {
     name: "All-Russian Fascist Party",
     img: "https://raw.githubusercontent.com/tpvalues/tpvalues/main/logos/russianfascism.png",
