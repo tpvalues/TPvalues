@@ -310,18 +310,16 @@
 
   <script src="ideologies.js"></script>
   <script>
-    // ===== LOAD SCORES =====
+
     const saved = localStorage.getItem("scores");
     if (!saved) window.location.href = "index.html";
     let userScores = JSON.parse(saved);
 
-    // Cap scores
     Object.keys(userScores).forEach(key => {
       if (userScores[key] > 50) userScores[key] = 50;
       if (userScores[key] < -50) userScores[key] = -50;
     });
 
-    // ===== AXIS CARDS =====
     const axisDisplay = {
       interference: "Less / More State Interference",
       ownership: "Collective / Private Ownership",
@@ -350,7 +348,6 @@
       grid.appendChild(card);
     });
 
-    // ===== MATCHING =====
     let currentMatches = [];
     const THRESHOLD = 1;
     const userInter = userScores.interference || 0;
@@ -384,7 +381,6 @@
     currentMatches.sort((a, b) => a.dist - b.dist);
     const maxDist = 75;
 
-    // ===== UPDATE MAIN MATCH =====
     function updateMainMatch(index) {
       const selected = currentMatches[index];
       const closest = selected.ideology;
@@ -401,7 +397,6 @@
       document.getElementById("matchPercent").textContent = percent + "% compatibility";
       document.getElementById("matchDesc").textContent = closest.description;
 
-      // Audio
       const audioMap = {
        "Ailtirí na hAiséirghe": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/ailtiri-na-haiseirghe.mp3",
         "Army Comrades Association": "https://raw.githubusercontent.com/tpvalues/tpvalues/main/audio/blueshirts.mp3",
@@ -507,10 +502,8 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    // Initial match
     updateMainMatch(0);
 
-    // ===== NEXT MATCHES =====
     const nextList = document.getElementById("nextList");
 
     function renderNextMatches() {
@@ -555,8 +548,6 @@
 
     renderNextMatches();
 
-    // ===== CANVAS (SIMPLE & RELIABLE) =====
-// ===== CANVAS – more space between logo and name =====
     window.onload = function() {
       const banner = document.getElementById("banner");
       const background = new Image();
@@ -568,10 +559,8 @@
         c.height = background.height + bottomHeight;
         const ctx = c.getContext("2d");
 
-        // Draw chart
         ctx.drawImage(background, 0, 0);
 
-        // Scores
         const state = Math.max(-50, Math.min(50, userScores.interference || 0));
         const owner = Math.max(-50, Math.min(50, userScores.ownership || 0));
         const trad  = Math.max(-50, Math.min(50, userScores.tradition || 0));
@@ -579,7 +568,6 @@
 
         const cx = 597, cy = 595, half = 510;
 
-        // Main square
         ctx.beginPath();
         ctx.arc(cx + (state / 50) * half, cy - (owner / 50) * half, 12, 0, 2 * Math.PI);
         ctx.fillStyle = "#000";
@@ -588,7 +576,6 @@
         ctx.strokeStyle = "#fff";
         ctx.stroke();
 
-        // Tradition (frozen)
         ctx.beginPath();
         ctx.arc(1293, 597 - (trad / 50) * half, 12, 0, 2 * Math.PI);
         ctx.fillStyle = "#000";
@@ -597,7 +584,6 @@
         ctx.strokeStyle = "#fff";
         ctx.stroke();
 
-        // Faith (frozen)
         ctx.beginPath();
         ctx.arc(1493, 597 - (faith / 50) * half, 12, 0, 2 * Math.PI);
         ctx.fillStyle = "#000";
@@ -606,18 +592,15 @@
         ctx.strokeStyle = "#fff";
         ctx.stroke();
 
-        // ===== WHITE BOTTOM SECTION =====
         const panelY = background.height;
         ctx.fillStyle = "#f8f9fc";
         ctx.fillRect(0, panelY, c.width, bottomHeight);
 
-        // Title
         ctx.fillStyle = "#111827";
         ctx.font = "bold 32px system-ui, sans-serif";
         ctx.textAlign = "center";
         ctx.fillText("Top 4 Closest Matches", c.width / 2, panelY + 38);
 
-        // Helper – wrap text
         function wrapText(text, maxWidth) {
           const words = text.split(" ");
           const lines = [];
@@ -635,7 +618,6 @@
           return lines;
         }
 
-        // Helper – local logo path
         function getLocalLogo(imgUrl) {
           if (!imgUrl) return null;
           const parts = imgUrl.split("/");
@@ -657,7 +639,6 @@
           top4.forEach((m, i) => {
             const x = startX + i * (cardW + gap);
 
-            // Card
             ctx.fillStyle = "#ffffff";
             ctx.strokeStyle = "#cbd5e1";
             ctx.lineWidth = 2;
@@ -665,14 +646,12 @@
             ctx.fill();
             ctx.stroke();
 
-            // Logo background – pure white
             const logoX = x + (cardW - logoSize) / 2;
             const logoY = cardY + 15;
             ctx.fillStyle = "#ffffff";
             roundRect(ctx, logoX - 4, logoY - 4, logoSize + 8, logoSize + 8, 10);
             ctx.fill();
 
-            // Logo
             if (logos[i]) {
               try {
                 const img = logos[i];
@@ -686,18 +665,16 @@
               } catch (e) {}
             }
 
-            // Name – 36px, pushed much lower
             ctx.fillStyle = "#0f172a";
             ctx.font = "bold 24px system-ui, sans-serif";
             ctx.textAlign = "center";
             const name = m.ideology.name || "Unknown";
             const lines = wrapText(name, cardW - 30);
-            const nameStartY = cardY + 230;   // much lower
+            const nameStartY = cardY + 230;
             lines.forEach((line, idx) => {
               ctx.fillText(line, x + cardW / 2, nameStartY + idx * 42);
             });
 
-            // Percentage
             const percent = Math.round(100 - (m.dist / maxDist) * 100);
             ctx.fillStyle = "#334155";
             ctx.font = "18px system-ui, sans-serif";
@@ -707,7 +684,6 @@
           banner.src = c.toDataURL("image/png");
         }
 
-        // Load local logos
         top4.forEach((m, i) => {
           const localPath = getLocalLogo(m.ideology.img);
           const img = new Image();
@@ -724,7 +700,6 @@
           img.src = localPath || "";
         });
 
-        // Safety timeout
         setTimeout(function() {
           if (loaded < top4.length) finish();
         }, 3000);
@@ -749,7 +724,6 @@
       ctx.closePath();
     }
 
-    // ===== MUTE BUTTON =====
     const muteBtn = document.getElementById("musicMute");
     const audio = document.getElementById("introAudio");
     muteBtn.style.display = "flex";
