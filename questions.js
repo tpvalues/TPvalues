@@ -108,7 +108,6 @@ const questions = [
   { text: "Astrology accurately explains many things.", axis: "faith", direction: -1 }
 ];
 
-// Shuffle questions randomly every time the page loads
 function shuffle(array) {
   let currentIndex = array.length;
   while (currentIndex !== 0) {
